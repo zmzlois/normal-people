@@ -22,8 +22,8 @@ function BlogCards(blog: Blog) {
         </time>
         <div
           className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0"
-          dangerouslySetInnerHTML={{ __html: blog.body.html }}
-        />
+          
+          >{blog.description}</div>
       </div>
        </Link>
     </div>

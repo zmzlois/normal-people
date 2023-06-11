@@ -6,6 +6,7 @@ export default function Home() {
   const posts = allBlogs.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   )
+  
 
   return (
     <div className="mx-auto max-w-xl py-8">
