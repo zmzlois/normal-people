@@ -1,0 +1,403 @@
+---
+author: zmzlois
+date: 2022-12-05
+title: Rethink “Built to be blazing fast” — Next.js 13, Turbopack and TurboRepo
+type: Blog
+featured: true
+published: true
+description: 'Speed — one of the core vitals in user experience, traffic conversion and cohort retention.'
+---
+
+
+Published in [Bootcamp](https://bootcamp.uxdesign.cc/?source=post_page-----c12a000b4158--------------------------------) and hit 2k views omg.
+
+15 min Read
+
+[_Next.js 13_](https://nextjs.org/blog/next-13) [was released on October 26 2022, by Vercel.](https://nextjs.org/blog/next-13)
+
+Disclaimer: this article was written at early November 2023 which does not represent situation at the time of your reading.
+
+#### [Vercel](https://vercel.com/) wants to reinvent front-end development. Empower startups and small teams. Dynamic at the speed of static — front-end tech stack behind Netflix, Solana, Nintendo, EventBrite, Adobe, and Zapier.
+
+This article will help you understand your dev guys better if you are a UX designer. The chase of [100ms rule](https://blog.superhuman.com/superhuman-is-built-for-speed/#:~:text=What%20is%20the%20100ms%20rule,%22where%20interactions%20feel%20instantaneous%22.) for small start-ups slowly becomes realistic.
+
+**Speed in UX design is like dating experiences**: if one is slow, not many people have the patience to stick around — unless you are scratching the pain that no one reaches. But it is best not to risk it — what if you have too many competitors? Never be too confident in solving customers’ pain. **Like what they say in** [**The Art of War**](https://en.wikipedia.org/wiki/The_Art_of_War)**:** one can triumph by playing fast without a good strategy but rarely win by having a good strategy and playing it slow.
+
+That being said, great product comes with great speed.
+
+![Turbo.build](https://miro.medium.com/v2/resize:fit:1270/format:webp/1*l5puETik6aXooYhMPSUmSQ.png)
+[turbo.build](https://turbo.build/)
+
+> It’s time for a new beginning in compiler infrastructure for the entire web ecosystem. Webpack has been downloaded over 3 billion times. It’s become an integral part of building for the web. But just like Babel and Terser, it’s time to go all-in on native. I joined Vercel and assembled a team of world class engineers to build the web’s next generation bundler.
+>
+> This team has taken lessons from 10 years of Webpack, combined with the innovations in incremental computation from Turborepo and Google’s Bazel, and invented an architecture ready to withstand the next 10 years.
+>
+> With that, we’re excited to introduce Turbopack, our Rust-powered successor to Webpack. It will harness the power of our build system, Turborepo, for massive performance improvements. Turbopack is the new foundation of high-performance bare-metal tooling and is now open source — we’re excited to share it with you.
+>
+> — — Tobias Koppers, Creator of Webpack
+
+Even though Vercel humbly stated Next.js 13 and Turbopack are still in the alpha/beta stage and don’t recommend people to use them in production, they are in fact relatively stable for production(although bugs here and there, you can always throw `{/*ts-ignore*/}` on top of `<Link/>`. This is REALLY not a good practice so don’t get indulged). There are ways to work around the functionalities that haven’t been covered in Next.js 13, like shared components and advanced routing patterns. The impact on functionality is minor. The frontend tech stack is much easier to choose when comparing backend development that can be shipped in Go, Rust, Haskell and numerous languages based on memory, performance, functionality, and tools for pipeline, containing, configuring, databases and so force.
+
+# Why Next.js 13
+
+**1\. The first question is — on top of Javascript, which framework to choose:** [**React**](https://reactjs.org/)**,** [**Vue**](https://www.ideamotive.co/blog/vue-vs-react) **or** [**Angular**](https://www.ideamotive.co/blog/reactjs-vs-angular-which-one-is-better-for-your-front-end)**?**  
+\- Similarity: Component-based, use Javascript(or typescript — the superset of Javascript).  
+**\- React wins at:**  
+a. Scalability (introduced and maintained by Facebook. Both Facebook and Instagram use it.)  
+b. Community support (React’s community is larger, and so as its libraries)  
+c. Good testing guidelines with [Jest](https://jestjs.io/), [Enzyme](https://enzymejs.github.io/enzyme/), …  
+d. Ease of hiring: there are simply… a lot of React developers. Unlike Vue will need a job board to help companies use Vue’s official site to hire developers.  
+e. Performance ( win over Angular )  
+f. Debug: easier with one-way data binding+nested component→ code is more stable.  
+g. State management: support from [Redux](https://redux.js.org/)(predictable state container). Or you can opt for something easier like [Recoil](https://recoiljs.org/) — a new global state management library from Facebook, or [Jotai](https://jotai.org/) (These guys look fun).
+
+**2\. Nested routes. Layout.tsx. Less code. Ship faster.**  
+File-based routing makes creating new routes breezy. `layout.tsx` allow you to reuse a UI template again and again while [RootLayout](https://beta.nextjs.org/docs/routing/pages-and-layouts#root-layout-required) [in](https://beta.nextjs.org/docs/routing/pages-and-layouts#root-layout-required) [app](https://beta.nextjs.org/docs/routing/pages-and-layouts#root-layout-required) [file’s root directory is required](https://beta.nextjs.org/docs/routing/pages-and-layouts#root-layout-required) (otherwise, it will throw an error! See the example below for the basic syntax required for `RootLayout`) Are they trying to catch up with [Remix](https://remix.run/)? XD. Creating dynamic segments ahead of time? Wrap a folder’s name like so`[folderName]` that it can be passed as the `params` props to Layout, Page and Head components.
+
+```
+//.app/layout.tsx
+export default function RootLayout({ children }: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+The new `<Link>` component acts as an extension of the HTML `<a>` tag to provide prefetching and client-side navigation between routes.
+
+**3\. Easy to customise**  
+First of all, the birth of Next.js came from the notion of the “zero-configuration React framework”. One might find the unopinionated `create-react-app` easy to scaffold a new application with built-in [Webpack](https://webpack.js.org/) and [babel](https://babeljs.io/) inside [react-scripts](https://blog.logrocket.com/everything-you-need-know-about-react-scripts/), but it’s hard to customise. Once you eject Webpack, you’d lose most of the benefit of the built-in bundler. If you want to use Babel and Webpack or Vercel’s own TurboPack and TurboRepo, Next.js is highly customisable with [clear configuration guidelines](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config).
+
+**4\. Speed of learning**  
+The available repos out there made learning it and templating applications a lot easier. Even if you are not a master in Javascript, Typescript, JSX or TSX, you can still learn it through [Next.js’ documentation](https://nextjs.org/learn/foundations/about-nextjs).
+
+**5\. Build on top of React.js**
+React.js innovated how we think of the front end by breaking pages into components so that we seldom need to leave \*.js/\*.ts files unless we want to simplify some extreme cases of chunky CSS styling with support from [TailwindCSS](https://tailwindcss.com/). It’s an absolute joy to write logic, HTML, CSS in the same .tsx file with the help of [React hooks](https://reactjs.org/docs/hooks-intro.html). The overall development experienppce is amazing.
+
+**6\. Live Reload. Streaming. Revalidating. Time Interval. _All come together in_ [**_Next.js 13_**](https://beta.nextjs.org/docs/getting-started)**
+
+ Benefits of [static-site generation](https://nextjs.org/docs/basic-features/pages#static-generation)(HTML has generated at **build time/ahead of time, reused on each request** and served from CDN geographically closer to the user), [server-side rendering](https://nextjs.org/docs/basic-features/pages#server-side-rendering)(also referred to as SSR or Dynamic rendering, HTML is generated on each request, can be configured in [segment config](https://beta.nextjs.org/docs/api-reference/segment-config)) and [incremental static regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration)(create or update the static page without rebuilding the whole site) is now available through one API, and we can set the revalidating period(see example below).
+
+```
+// This request should be cached until manually invalidated.
+// Similar to \`getStaticProps\`.
+// \`force-cache\` is the default and can be omitted.
+fetch(URL, { cache: 'force-cache' });
+
+// This request should be refetched on every request.
+// Similar to \`getServerSideProps\`.
+fetch(URL, { cache: 'no-store' });
+
+// This request should be cached with a lifetime of 10 seconds.
+// Similar to \`getStaticProps\` with the \`revalidate\` option.
+fetch(URL, { next: { revalidate: 10 } });
+
+//in app/page.tsx
+export const revalidate = 60; // revalidate this page every 60 seconds
+```
+
+**7\. SEO**
+
+Another issue is [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide). React harnesses client-side rendering/data-fetching, but it harms search engine indexing if you don’t hack your header file carefully. Next.js is a server-side rendering framework by default. It solves this problem in ways like `[getServerSideProps](https://nextjs.org/learn/seo/crawling-and-indexing/xml-sitemaps)` , create a `siteMetadata.jsx` (example below) or others to facilitate search engines to crawl, index, rank and improve core web vitals for your site/application.
+
+```
+const siteMetadata = {
+  title: 'Next.js Starter Blog',
+  author: 'Tails Azimuth',
+  headerTitle: 'TailwindBlog',
+  description: 'A blog created with Next.js and Tailwind.css',
+  language: 'en-us',
+  theme: 'system', // system, dark or light
+  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteLogo: '/static/images/logo.png',
+  image: '/static/images/avatar.png',
+  socialBanner: '/static/images/twitter-card.png',
+  email: 'address@yoursite.com',
+  github: 'https://github.com',
+  twitter: 'https://twitter.com/Twitter',
+  facebook: 'https://facebook.com',
+  youtube: 'https://youtube.com',
+  linkedin: 'https://www.linkedin.com',
+  locale: 'en-US',
+  analytics: {
+    // If you want to use an analytics provider you have to add it to the
+    // content security policy in the \`next.config.js\` file.
+    // supports plausible, simpleAnalytics, umami or googleAnalytics
+    plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
+    simpleAnalytics: false, // true or false
+    umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
+    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+    posthogAnalyticsId: '', // posthog.init e.g. phc\_5yXvArzvRdqtZIsHkEm3Fkkhm3d0bEYUXCaFISzqPSQ
+  },
+  newsletter: {
+    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
+    // Please add your .env file and modify it according to your selection
+    provider: 'buttondown',
+  },
+  comment: {
+    // If you want to use a commenting system other than giscus you have to add it to the
+    // content security policy in the \`next.config.js\` file.
+    // Select a provider and use the environment variables associated to it
+    // https://vercel.com/docs/environment-variables
+    provider: 'giscus', // supported providers: giscus, utterances, disqus
+    giscusConfig: {
+      // Visit the link below, and follow the steps in the 'configuration' section
+      // https://giscus.app/
+      repo: process.env.NEXT\_PUBLIC\_GISCUS\_REPO,
+      repositoryId: process.env.NEXT\_PUBLIC\_GISCUS\_REPOSITORY\_ID,
+      category: process.env.NEXT\_PUBLIC\_GISCUS\_CATEGORY,
+      categoryId: process.env.NEXT\_PUBLIC\_GISCUS\_CATEGORY\_ID,
+      mapping: 'pathname', // supported options: pathname, url, title
+      reactions: '1', // Emoji reactions: 1 = enable / 0 = disable
+      // Send discussion metadata periodically to the parent window: 1 = enable / 0 = disable
+      metadata: '0',
+      // theme example: light, dark, dark\_dimmed, dark\_high\_contrast
+      // transparent\_dark, preferred\_color\_scheme, custom
+      theme: 'light',
+      // Place the comment box above the comments. options: bottom, top
+      inputPosition: 'bottom',
+      // Choose the language giscus will be displayed in. options: en, es, zh-CN, zh-TW, ko, ja etc
+      lang: 'en',
+      // theme when dark mode
+      darkTheme: 'transparent\_dark',
+      // If the theme option above is set to 'custom\`
+      // please provide a link below to your custom theme css file.
+      // example: https://giscus.app/themes/custom\_example.css
+      themeURL: '',
+    },
+    utterancesConfig: {
+      // Visit the link below, and follow the steps in the 'configuration' section
+      // https://utteranc.es/
+      repo: process.env.NEXT\_PUBLIC\_UTTERANCES\_REPO,
+      issueTerm: '', // supported options: pathname, url, title
+      label: '', // label (optional): Comment 💬
+      // theme example: github-light, github-dark, preferred-color-scheme
+      // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
+      theme: '',
+      // theme when dark mode
+      darkTheme: '',
+    },
+    disqusConfig: {
+      // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+      shortname: process.env.NEXT\_PUBLIC\_DISQUS\_SHORTNAME,
+    },
+  },
+}
+
+module.exports = siteMetadata
+```
+
+**8\. The future is at the edge.** 
+
+[**Streaming with two server runtime options**](https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes).  
+Vercel [Edge Runtime library was released on June 21st 2022](https://vercel.com/blog/introducing-the-edge-runtime), in collaboration with [WinterCG](https://wintercg.org/) to help developers harness the power of edge computing. Purposely designed to be minimal for security and speed, Edge-runtime reduces latency caused by server-client communication due to server location(most of them in the US).
+
+You can configure runtime options on both the application level and segment(route) level like so:
+
+```
+//Application level in \[next.config.js\]
+
+module.exports = {
+  experimental: {
+    runtime: 'experimental-edge', // 'node.js' (default) | 'experimental-edge'
+  },
+};
+
+// Segement Runtime option in \[app/page.js\]
+
+export const runtime = 'experimental-edge'; // 'node.js' (default) | 'experimental-edge'
+
+```
+
+If we take a closer look at runtime differences:
+
+![Runtime Difference](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*M3z711JsNK646vk8DSnFeg.png)
+[Runtime differences](https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes#runtime-differences)
+
+Edge runtime is superb for performance.
+
+**9\. Power of** [**Partial Streaming and Suspense**](https://beta.nextjs.org/docs/data-fetching/streaming-and-suspense)  
+If you use non-streaming server rendering, the server is blocked from transferring data back to the client until it has completed rendering the entire page. The page is not interactive until the client-side js bundle is downloaded and executed.
+
+![Non-streaming server-rendering performance
+](https://miro.medium.com/v2/resize:fit:1380/format:webp/1*I5aLhoWkH_i-FQNuXaGdEw.png
+)
+Non-streaming server-rendering performance
+
+With the newly introduced `app` directory in Next.js 13, components can be incrementally streamed in and reduce both [TTFB](https://web.dev/ttfb/) and [FCP](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/). _(On 19th Dec, 2022 I tested the latest released Next.js 13 they have quietly removed the app directory. Not sure if it is temporary.)_
+
+![Streamed server-rendering performance
+](https://miro.medium.com/v2/resize:fit:1376/format:webp/1*cumRRg7_ldSvAl22XtDX6w.png)
+Streamed server-rendering performance
+
+While the content is rendering, the `<Suspense>` function wraps around the part can show a loading status by calling `fallback`. Throw this chunk in the part of your page that requires a bit of time to load:
+
+```
+import { Suspense } from "react";
+import { PostFeed, Weather } from "./Components";
+import "./styles/output.css"; // with support from TailwindCSS
+
+export default function Posts() {
+  return (
+    <section>
+      <Suspense fallback={(
+<div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+  <div className="animate-pulse flex space-x-4">
+    <div className="rounded-full bg-slate-700 h-10 w-10"></div>
+    <div className="flex-1 space-y-6 py-1">
+      <div className="h-2 bg-slate-700 rounded"></div>
+      <div className="space-y-3">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="h-2 bg-slate-700 rounded col-span-2"></div>
+          <div className="h-2 bg-slate-700 rounded col-span-1"></div>
+        </div>
+        <div className="h-2 bg-slate-700 rounded"></div>
+      </div>
+    </div>
+  </div>
+</div>)}>
+        <PostFeed />
+      </Suspense>
+      <Suspense fallback={(
+<div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+  <div className="animate-pulse flex space-x-4">
+    <div className="rounded-full bg-slate-700 h-10 w-10"></div>
+    <div className="flex-1 space-y-6 py-1">
+      <div className="h-2 bg-slate-700 rounded"></div>
+      <div className="space-y-3">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="h-2 bg-slate-700 rounded col-span-2"></div>
+          <div className="h-2 bg-slate-700 rounded col-span-1"></div>
+        </div>
+        <div className="h-2 bg-slate-700 rounded"></div>
+      </div>
+    </div>
+  </div>
+</div>)}>
+        <Weather />
+      </Suspense>
+    </section>
+  );
+}
+
+```
+
+**10\. International Routing  
+**Although there is no support for internationalisation in Next.js 13, it already has built-in support for internationalized routing since `v10.0.0` and you can opt for [sub-path routing or domain routing](https://nextjs.org/docs/advanced-features/i18n-routing#locale-strategies) in `next.config.js`. Prepare your application to scale globally at the very beginning and facilitate browser-level translation on the website.
+
+**11\. New font, open graph libraries with** `[**@next/font**](https://nextjs.org/blog/next-13#nextfont)` **and** `**@next/image**`  
+The new font system downloads CSS and font files from Google Fonts(if you use them) at build time and is self-hosted with the rest of the static assets, so no requests are sent to Google by the browser during run time with the CDN link on top of HTML file.  
+And the open graph library `@vercel/og`enabled us to generate dynamic social cards on the fly by leveraging React Component Abstraction.
+
+**12\. Next.js is a Backend Framework**
+
+It generates HTML by `getServerSideProps` on request or `getStaticProps` at build time; handles requests and responses in `/pages/api` ; handles redirects, middleware and …(string literal here)
+
+**React is now a backend framework as well (I patched this update on 25 Dec 2022)**
+
+![Backend Framework](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*oAUogqwzR_iaD23GLgQF5w.png)
+
+React just dropped an announcement on 27 Oct 2022.
+
+![React Announcement](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*utR1DHvuHFJruR1gK72qFg.png)
+We are now able to render backend objects directly on server components.
+
+Next.js dealt with a lot of backend hell-like problems with community solutions:
+
+- Websockets: pusher, liveblocks;
+- CRON jobs: GitHub Actions, Zeplo, Upstash(able to set interval loops);
+- Event Queues: SQS, Zeplo, Upstash;
+- Large File Storage: S3 pre-signed URLs(without going to servers)
+
+Check someone interesting and I can watch him for hours — [**Theo Browne: Next.js is a backend framework**](https://www.youtube.com/watch?v=W4UhNo3HAMw&ab_channel=Vercel)
+
+# Why TurboPack
+
+but not [Babel](https://babeljs.io/), [Terser](https://terser.org/), [esbuild](https://esbuild.github.io/), [swc](https://swc.rs/) and [Webpack](https://webpack.js.org/)?
+
+#### **It is important enough to have a separate section to introduce it.**
+
+> Using [TurboPack Alpha](https://turbo.build/pack) with Next.js 13 results in:
+>
+> **\- 700x faster** updates than Webpack
+>
+> **\- 10x faster** updates than Vite
+>
+> **\- 4x faster** cold starts than Webpack
+
+To visualise/quantify this result: if you have 5,000 react components(which a lot of applications do), the cold start speed looks like this:
+
+![Performance Comparison](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*v0H1Wnqaz8SWDNps2Tt5Vw.png)
+Turbopack+Next.js 13 performance compare to Next.js 12, Vite and Next.js 11
+
+There are two ways to make a process faster:  
+1\. do less work;  
+2\. do work in parallel.
+
+Fast build system like [**Vite**](https://vitejs.dev/) **doesn’t bundle application source code in development mode** but rely on the browser’s native ES Modules system and resulting in incredibly responsive updates, but the bottleneck is scaling — large applications are made up of many modules, and huge web traffic can results in a relatively slow start-up time. Vite might sound amazing 2–3 years ago, and Tailwind guys still love them; in the field of intelligent-build systems, it might not be the case anymore(who knows what will happen a couple of years down the line!).
+
+Another thing about Vite is they utilise a supremely fast tool under the hood — [esbuild](https://esbuild.github.io/). It only does one job — bundling. Here is the catch: it doesn’t support [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/)(save [app state](https://reactjs.org/docs/state-and-lifecycle.html), only update what’s changed, native-speed level style change) in the development server; it doesn’t do much caching either, resulting in repetitive build — slow down even at the speed of native. When esbuild is bundling, it’s all or nothing(unless you heavily configure it).
+
+#### And how Turbopack redoes the job:
+
+**1\. Lazy bundling**
+Turbopack’s approach was to bundle the code in the development server, which can be achieved way faster than [Webpack](https://webpack.js.org/), especially for large applications. Webpack was written in Javascript, while **Turbopack was written in** [**Rust**](https://www.rust-lang.org/), a language created with **optimal performance, thread safety and incorruptible memory** in mind without runtime or garbage collection. Regarding performance stats, Rust is faster than Javascript on every benchmark(see below).
+
+![Rust-vs-Javascript Performance
+](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4ScSnZW9IOdJQGCzi_azsA.png
+)
+[Rust-vs-Javascript Performance](https://programming-language-benchmarks.vercel.app/rust-vs-javascript)
+
+Go back to lazy bundling, take an example when you request a home page, Turbopack will only bundle `app/page.tsx` and the modules related to it — as minimal work as possible.
+
+**2\. While bundling, it skips optimisation work which is only necessary for the production**
+
+**3\. Incremental Computation**
+Turbopack only computes the requested assets and caches the result of all the functions it did, so it never does the same job twice. You can read about it [here](https://turbo.build/pack/docs/core-concepts).
+
+Performance benchmarks of [Turbopack vs Vite](https://turbo.build/pack/docs/comparisons/turbopack-vs-vite) and [Turbopack vs Webpack](https://turbo.build/pack/docs/comparisons/turbopack-vs-webpack) can be found by clicking on the links.
+
+You can feel the speed by taking a glance at code updates during refresh time for an application with 5,000 React components(comparing Turbopack and Webpack):
+
+![Speed](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gk53-8Tuujq_IpnUMlqqJA.png)
+
+### Why TurboRepo(First of all you need to have monorepo in mind)
+
+Hundreds-of-Apps. Single Codebase. High-Performance Build System.
+
+**How many applications and modules you can stuff into one monorepo?** The answer is hundreds — in extreme cases — thousands. But to do it faster? There are multiple tools: Google has [Bazel](https://bazel.build/?utm_source=monorepo.tools), Microsoft has [Lage](https://microsoft.github.io/lage/?utm_source=monorepo.tools) and [Rush](https://rushstack.io/?utm_source=monorepo.tools), and others like [Lerna](https://lerna.js.org/?utm_source=monorepo.tools), [Nx](https://nx.dev/?utm_source=monorepo.tools) or [TurboRepo](https://turbo.build/repo) by Vercel.
+
+**Advantages of using monorepo** as opposed to polyrepo(read more [here](https://monorepo.tools/) as I am merely summarising, but some parts of this link are not applicable anymore as TurboRepo has new updates. Ex: advisable to use pnpm, while npm and yarn are both available in TurboRepo, but the link stated TurboRepo only supports npm. Still, this link can give you a general overview of what a monorepo offers):
+
+1\. **A single repository** containing multiple distinct projects with well-defined relationships(if there are no relationships between them, it’s not a monorepo but a polyrepo);
+
+![Monorepo and Polyrepo](https://miro.medium.com/v2/resize:fit:1028/format:webp/1*vxjbrgoJOQWzh_JrSt4qEw.png)
+
+**2\. Allow more team autonomy/mobility:** The industry has changed — teams that build different functions/modules would want to make their own decisions about what libraries they’ll use and who can contribute or use their code. They also want to verify if others’ changes are safe.
+
+**3\. Reduce code duplication:** if teams work in isolation, they will likely rewrite code…which is not optimal.
+
+**4\. No more** `**create-xxx-app**` **within the code base**
+
+**5\. One version of everything:** say there is a bug in a shared library; they need to apply the change to every repo, versioning issue, and update packages…monorepo controls all modules in one codespace.
+
+**6\. Everything works together at every commit**
+
+Among all the build tools, **Google’s Bazel shines** through others; the key differentiator is **_the ability to execute any command on multiple machines while developing locally_**. It’s perfect for gigantic organisations with global development teams. But to empower start-ups and smaller teams that focus on performance and speed, TurboRepo wants to outrun others by:
+
+![TurboRepo Core Concept](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-4DYot6dvGNOqcam55zX9Q.png)
+[TurboRepo core concept — hashed cache](https://turbo.build/repo/docs/core-concepts/caching)
+
+1.  **Cache tasks in hash — never do the same job twice**
+2.  **Ridiculously fast build: boost build speed by 65% to 85%.** For large applications which take 30-min to build, build time in TurboRepo can be reduced to 100 milliseconds.
+3.  **Multi-task:** inspired by Lage from Microsoft.
+4.  **Intuitive commands:** super easy to learn! If you want to compare [Nx’s documentation](https://nx.dev/recipes/nx-console/console-generate-command)(created by a bunch of ex-Google engineers. One question tho: why would I want to learn everything through video??? It’s incredibly slow when I can read&glance) — functionality-wise, they are largely similar; **TurboRepo’s commands are more elegant** and intuitive.
+
+#### Hope this article can help builders make something great. I look forward to hearing more people trying this stack and comment below on how you think!
+
+_If you find errors in this post, please leave me a comment or email me at [lois.z@projectwaitless.io](mailto:lois.z@projectwaitless.io), and we’ll work on fixing them._

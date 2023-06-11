@@ -1,0 +1,103 @@
+---
+author: zmzlois
+pubDatetime: 2022-08-21
+title: Doctrine Of The Mean — Part 1
+postSlug: doctrine-of-the-means-part-1
+featured: true
+draft: true
+tags:
+  - literature
+  - chinese
+  - history
+ogImage: "https://miro.medium.com/v2/resize:fit:1400/0*YGSJ2DYgogfqdQvw"
+descriptions: They are both wankers.
+---
+# Self, (object),→ and : in python detangled
+
+[![Lois Z.](https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg)
+
+](https://medium.com/@zmzlois?source=post_page-----fbfcf75809e2--------------------------------)
+
+[Lois Z.](https://medium.com/@zmzlois?source=post_page-----fbfcf75809e2--------------------------------)
+
+·
+
+[Follow](https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fsubscribe%2Fuser%2F241e57d3f74c&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40zmzlois%2Fself-object-and-in-python-detangled-fbfcf75809e2&user=Lois+Z.&userId=241e57d3f74c&source=post_page-241e57d3f74c----fbfcf75809e2---------------------post_header-----------)
+
+6 min read·Oct 30, 2022
+
+\--
+
+Listen
+
+Share
+
+When I first studied python, I started with variables, lists, dictionaries, methods, arithmetic, data visualization, machine learning, and quantitative methods through six lectures. **Basically, anything useful to write financial documentation, build portfolios, and hedge risk.**
+
+Photo by [Hitesh Choudhary](https://unsplash.com/@hiteshchoudhary?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+
+But there were so many myths around class, instance — the core of object-oriented programming, regex(regular expression), list comprehension, memory, multidimensional array manipulation, the difference between object-oriented programming language and event-driven language and how they are being used, etc.
+
+In particular, what are those `def`, `self`, `->`, `:`, `__init__` ,`__main__`, `@`(decorators) in the classes? It caused me headaches, not to mention in all the decks from school, there was only one page talking about class. It looks like this but nothing else.
+
+And what the heck is an object? I thought we were talking about class and defining methods??? It is almost as if school teaches you 1+1=2 and in the real world, you come cross
+
+- _Reference from Incremental Implementation in_ [_Reinforcement Learning_](https://www.amazon.co.uk/Reinforcement-Learning-Introduction-Richard-Sutton/dp/0262039249/ref=asc_df_0262039249/?tag=googshopuk-21&linkCode=df0&hvadid=311000051962&hvpos=&hvnetw=g&hvrand=8173975054624812944&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9044962&hvtargid=pla-458692329113&psc=1&th=1&psc=1)
+
+Further down the line in coding(end of 2021), I realized my lack of fundamental knowledge impedes my speed of learning, my ability to work with other developers, understanding of code, not to mention managing complex data models and writing scalable, robust applications.
+
+I did manage to understand the content in the deck, but when it comes to looking at real-life examples like this [Django-React-Boilerplate](https://github.com/loisisar/django-react-boilerplate/blob/master/backend/common/views.py) Or this [cookiecutter-django](https://github.com/loisisar/cookiecutter-django/blob/master/scripts/create_django_issue.py): **My knowledge in python fell short and I hated my shallow understanding. I guess many others felt the same and hope this article can be of help.**
+
+# `self :` why is it everywhere — in a bracket or outside a bracket and how to use it
+
+I had a look at python documentation about [why](https://docs.python.org/3/faq/design.html#why-must-self-be-used-explicitly-in-method-definitions-and-calls) `[self](https://docs.python.org/3/faq/design.html#why-must-self-be-used-explicitly-in-method-definitions-and-calls)`[is explicitly used](https://docs.python.org/3/faq/design.html#why-must-self-be-used-explicitly-in-method-definitions-and-calls), and it certainly doesn’t sound like human language. It can be only understood after you have actually written classes and created instance attributes and learned the behavior by playing around with it.
+
+> First, it’s more obvious that you are using a method or instance attribute instead of a local variable. Reading `self.x` or `self.meth()` makes it absolutely clear that an instance variable or method is used even if you don’t know the class definition by heart. In C++, you can sort of tell by the lack of a local variable declaration (assuming globals are rare or easily recognisable) – but in Python, there are no local variable declarations, so you’d have to look up the class definition to be sure. Some C++ and Java coding standards call for instance attributes to have an `m_` prefix, so this explicitness is still useful in those languages, too.
+>
+> Second, it means that no special syntax is necessary if you want to explicitly reference or call the method from a particular class. In C++, if you want to use a method from a base class which is overridden in a derived class, you have to use the `::` operator – in Python you can write `baseclass.methodname(self, <argument list>)`. This is particularly useful for `__init__()` methods, and in general in cases where a derived class method wants to extend the base class method of the same name and thus has to call the base class method somehow.
+>
+> Finally, for instance variables it solves a syntactic problem with assignment: since local variables in Python are (by definition!) those variables to which a value is assigned in a function body (and that aren’t explicitly declared global), there has to be some way to tell the interpreter that an assignment was meant to assign to an instance variable instead of to a local variable, and it should preferably be syntactic (for efficiency reasons). C++ does this through declarations, but Python doesn’t have declarations and it would be a pity having to introduce them just for this purpose. Using the explicit `self.var` solves this nicely. Similarly, for using instance variables, having to write `self.var` means that references to unqualified names inside a method don’t have to search the instance’s directories. To put it another way, local variables and instance variables live in two different python namespaces, and you need to tell Python which namespace to use.
+
+## If we translate this in layman's term — why and when to use `self`:
+
+- Quicker understanding: Reading `something.something`, or `something.something()` (read it out loud like rubber duck as `something dot something`) would help you understand that this is a method or instance attribute defined in some `class` or some `def` , without going too deep into the same file or other files. (Method and instance attributes are different. **A method** is whatever thing right after `def`, but **instance attribute** is the things you have indented, written at the lines below def.)
+- Clarity of variable’s [scope and namespace](https://realpython.com/python-namespaces-scope/#:~:text=the%20next%20level.-,Namespaces%20in%20Python,values%20are%20the%20objects%20themselves.): Python doesn’t have `var`, `const` or `let` like Javascript to differentiate whether a variable can be updated and in which scope, neither like in C you can declare a global variable in the main function or a local variable somewhere else. Everything is implicit. (Well, you can sort of declare a global variable in python by typing `global YOURVARIABLE`.) Hence calling `self.var` state clear that this is a local variable inside a function and you can use `isinstance()` to check which class/method this variable belongs.
+- Quick coding time and interpreting: after you define the method in a class by `baseclass.method(self,argument1,..)`, you will be able to either call the method by `baseclass.method(object, argument1,…)`, or `object.method(argument1,…)` after you `object = baseclass()`which is much faster. Both two methods are the same thing. In a class, it acts somewhat like a placeholder to simulate what you can do once you assign an object to this class and call it by `object.method`. The interpreter can refer to the local scope first and the variable can be found faster. When you call a variable, the searching sequence of the interpreter will first search local scope —> enclosing scope —> global scope —> built-in. If you don’t put `self` as the first argument when the method doesn’t have any arguments, you will trigger TypeError when you call the method by `object.method`.
+
+# Why some people write \``` class ClassName(object)`: `` and some others write \``` class ClassName`: ``
+
+In some examples of GeekforGeeks, especially the [one explaining magic methods](https://www.geeksforgeeks.org/customize-your-python-class-with-magic-or-dunder-methods/?ref=gcse)(anything with double underscore, also called dunder methods) `(object)` appeared behind the class name. The `class ClassName(object):` was used in Python 2.x but in Python 3.x it’s redundant to write `(object)` as when you use `__init__` the object is inherited.
+
+If they write it in this way it’s likely they have been coding for quite some time.
+
+Also include some more references if you are interested:
+
+[Why do Python classes inherit object](https://stackoverflow.com/questions/4015417/why-do-python-classes-inherit-object)  
+[Old style and new style class](https://docs.python.org/2.7/reference/datamodel.html#new-style-and-classic-classes)  
+[Difference between old style and new style classes in Python — StackOverflow](https://stackoverflow.com/questions/54867/what-is-the-difference-between-old-style-and-new-style-classes-in-python)  
+[What do (object) do next to class name in Python](https://stackoverflow.com/questions/19614196/what-does-object-do-next-to-class-name-in-python)
+
+# “→” and “:”
+
+Sometime you’d come across very cryptic and long functions like this
+
+```
+def StrongHuman(forearm:'circumference\_of\_forearm', abdomen:'number\_of\_pack\_on\_abdomen')-> 'Judging\_a\_strong\_human': self.forearm = 0 self.abdomen = 1
+```
+
+`→` and `:` are part of function annotation. Don’t worry about how it looks like a hairy and filthy guy, they are merely helping with documenting if you are working on a class method included in other files(quick check with `__annotations__`)or pre-coding conditional checking.
+
+```
+StrongHuman.\_\_annotations\_\_
+```
+
+It will return you with an annotation dictionary associated to this method. \_\_annotations\_\_ is part of the built-in function within the built-in scope.  
+Output:
+
+```
+{'forearm': 'circumference\_of\_forearm',  'abdomen': 'number\_of\_pack\_on\_abdomen',  'return': 'Judging\_a\_strong\_human'}
+```
+
+For more things about function annotations and how they are used, see [here](https://peps.python.org/pep-3107/#idle). [Raymond](https://stackoverflow.com/questions/3038033/what-are-good-uses-for-python3s-function-annotations#:~:text=Function%20annotations%20are%20what%20you%20make%20of%20them.)’s answer also detailed use cases of function annotations.
+
+To understand the local scope, global scope, built-in scope and namespaces, I found [this](https://realpython.com/python-scope-legb-rule/) and [this](https://realpython.com/python-namespaces-scope/#:~:text=the%20next%20level.-,Namespaces%20in%20Python,values%20are%20the%20objects%20themselves.) helpful.

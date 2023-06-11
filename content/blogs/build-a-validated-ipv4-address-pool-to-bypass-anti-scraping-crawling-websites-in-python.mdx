@@ -1,0 +1,176 @@
+---
+author: zmzlois
+pubDatetime: 2022-10-23
+title: Build a validated IPv4 address pool to bypass anti-scraping/crawling websites in Python
+postSlug: build-a-validated-ipv4-address-pool
+featured: true
+draft: false
+tags:
+  - web-scraping
+  - python
+ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*i42vJxfUu68Tdv290oPqYA.png"
+descriptions: This article is for sharing/educational purposes only.
+---
+
+[![Lois Z.](https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg)
+
+](https://medium.com/@zmzlois?source=post_page-----5061df20bfb6--------------------------------)
+
+6 min read
+
+
+## Disclaimer: This article is for sharing/educational purposes only.
+
+# I am writing this because:
+
+1.  You will need this at some point if you are scraping a huge amount of websites at scale, especially Google {sites} or when you come across some state-of-art anti-crawling sites. Add `robots.txt` at the end of your desired website’s URL to check their crawling policy or whether they have a crawling policy in place.
+2.  Using different IP addresses/proxies is one of the ways to bypass websites that are built for anti-scraping/crawling. Other methods can be modifying user-agents, JS decryption, CSS and font decryption, option.add_experimental_option and etc.
+3.  Purchasing a bunch of IP addresses is pricey. Manually copy-paste IP addresses from VPN hosts like [NordVPN](https://nordvpn.com/) is tedious.
+4.  Selenium has recently been updated on Sept 28, 2022, and questions related to Selenium 4 on StackOverFlow answered before 2022 are outdated.
+5.  Regex for matching numbers is not properly explained in many sources.
+
+If you have better methods please do let me know. The _requests_ module + Beautiful Soup can do a similar and decent job much simpler and quicker but I am a big fan of Selenium so I will use it here. It’s hard to locate the path `chromedriver.exe`if you play this on JupyterNotebook or Google Colab. I’d recommend you go with VS Code or your local IDEs.
+
+# To follow this tutorial you will need:
+
+- Python
+- [Chromedriver](https://chromedriver.chromium.org/home) (Have the testing environment)
+- [Selenium](https://www.selenium.dev/) v4.5.0 (For interacting with the browser on top of Chromedriver)
+- [Pandas](https://pandas.pydata.org/) (Don’t think 80% of Medium readers don’t have this installed and updated)
+- [Ipaddress](https://docs.python.org/3/library/ipaddress.html)(To validate if the scraped IP Address works, Python built-in module)
+- [Re](https://docs.python.org/3/library/re.html) (Regex module to capture IPv4 address in blocks of text, Python Built-in module)
+
+# Let’s dive in.
+
+## Install and set up the virtual environment:
+
+1.  Check your Google Chrome Version by going to your Google Chrome> Settings>About Chrome:  
+    Super important step!! Your chromedriver might fail if the version doesn’t match.
+
+Picture by Author
+
+Then go to [ChromeDriver](https://chromedriver.chromium.org/downloads)👈🏻 (Click this) and download the compatible version.
+
+Make sure your downloaded file is in the environment path or you know where it is. Set up safely by following this [guide](https://chromedriver.chromium.org/getting-started).
+
+2\. Create your virtual environment to make sure all dependencies are separated from your global environment, especially if you don’t want to constantly maintain your code if any of the packages get updated.
+
+On Mac:
+
+`pip3 install virtualenv`
+
+And then create your scraping file, `cd YOURDIRECTORY`and activate the virtual environment in the directory:
+
+`virtualenv [NAME OF YOUR VIRTUAL ENVIRONMENT]`
+
+If you don’t have selenium installed, open your terminal and put (this will install the latest selenium:
+
+`pip install selenium`
+
+If it doesn’t work on your Mac try:
+
+`pip3 install selenium`
+
+Brilliant. You are already in your terminal and virtual environment is created, you should see this
+
+`(NAME OF VIRTUAL ENVIRONMENT) YOURUSERNAME YOURDIRECTORY %`
+
+Put this in the terminal:
+
+`touch YOURFILENAME.py`
+
+and then
+
+`code YOURFILENAME.py`
+
+You should be seeing your fresh empty file waiting for you in your IDE.
+
+## Find a start URL to scrape
+
+The one I found was [https://dnschecker.org/public-dns/](https://dnschecker.org/public-dns/) as they provided IP addresses from around the world. But the challenge of this website is they don’t have buttons for navigation/pagination — as in when you click in one country you can’t click on a sequence of numbers or a specific button to the next page. Lastly, we are not sure if the IP addresses are valid or not.
+
+So to break down the three main steps of scraping this website:
+
+1, Obtain all the URL links to every country  
+2, Create a for loop to scrape IP addresses from every country  
+3, Validate every IP address scraped and store them
+
+## Import all required modules and related methods:
+
+## Get your chromedriver.exe up and running:
+
+## Optional — Explicit wait until the driver finds cookies and clicks on it:
+
+Once you start to query the webpage, you’d start to notice the cookie banner is at the bottom after several seconds. It is not necessary to wait, click on it, and performance wise it wouldn’t matter that much, but if you want to here is the code.
+
+Until this point, you can probably figure out Javascript is a much better tool for web scraping or testing web apps, if anything comes across as interactive or dynamic.
+
+## Define a method to store all the links containing IP addresses in a list:
+
+## Create a for loop to scrape IP addresses in every country:
+
+## Find IPv4 addresses with Regular Expressions(Regex) in results and append it to your list:
+
+Use a simpler [regular expression](https://docs.python.org/3/library/re.html) with mixed notation uses 4 decimal bytes:
+
+```
+ip\_list.append(re.findall("^(?:\[0-9\]{1,3}\\.){3}\[0-9\]{1,3}$", box\_text))
+```
+
+## `**^(?:[0–9]{1,3}\.){3}[0–9]{1,3}$**` does seem a bit scary so let’s break down the why and how:
+
+**1\. Version 4 IP address and data from website:**  
+\- usually written down in the form of 255.255.255.255  
+\- every four numbers are 0<x<255  
+\- if we print out each `ip_box` and add a `print("-----")` at the end of for loop, we will find that the IP addresses and the internet providers are in separate lines, and sometimes the internet providers are not listed
+
+**2\. The regex:  
+\-** use `^` and `$` at the start and end of the string to check whether a string is a valid IP address in its entirety and they will match at line breaks. If your print results(from other websites) of the IP addresses are mixed with characters/letters, use `\b` at the beginning and end as indicators of word boundaries;  
+\- use `[0–9]{1,3}`to match every four blocks of digits in IPv4 and it will match any numbers from 0 to 999 rather than 0 to 255, as we already know these IP addresses are somewhat valid and will further test them. The performance between `([0-2]?[0-5]?[0-5]\.)` and `[0–9]{1,3}` is unnoticeable, the first would return anything from 0 to 255 and create an accurate match;  
+\- `{}` act as an interval quantifier to indicate how many times of range(0,9) will be repeated in a number, in the syntax of `[0–9]{1,3}`;  
+\- `(?:number\.){3}number` will match the first block of three numbers and a dot sign by a non-capturing group, opened by `(?:` and close it by`)`; adding `?` after an expression would make it optional;  
+\- `()` is for grouping an expression;  
+\- `\` the backlash will make any special character literal;  
+\- the first expression will be repeated three times, as indicated by `{3}`;  
+\- the last part of the regex matches the final block of numbers in the IP address.  
+To get familiar with number match in regex: `2[0-4][0-9]` would match 200 to 249, `25[0-5]` will match anything from 250 to 255 — you get the idea.
+
+Note that this regex will only find IPv4 addresses, if you want to find IPv6 or both of them, try this:
+
+```
+\# IPv6
+^(?:\[A-F0-9\]{1,4}:){7}\[A-F0-9\]{1,4}$
+\# Match both IPv4 and IPv6
+/(\[\\w\\:\]+\\:\\w+)|((\[\\d\\.\]+))/gm
+```
+
+You can write your own expression and test them [here](https://www.regextester.com/)👈🏻.
+
+## Clean up empty nested lists by list comprehension:
+
+```
+new\_ip\_list = \[x for x in ip\_list if x != \[\]\]
+```
+
+## Flatten/unwrap a nested list with list comprehension(if you prefer):
+
+```
+flatten\_ip\_list = \[n for sublist in new\_ip\_list for n in sublist\]
+```
+
+## Validate IP addresses:
+
+Store them in a DataFrame and save them to a CSV file:
+
+```
+df\_ip = pd.DataFrame(tested\_ip)
+df\_ip.to\_csv('USER/PATH/FILENAME.csv', index=False)
+```
+
+# Complete code
+
+Brilliant. Now you are all set. Let’s watch the ChromeDriver dance. Don’t forget to add `driver.quit()` at the end of your code/method so you don’t end up with 40 windows open on your laptop.
+
+## The performance is slow, insanely slow — nowhere as elegant as Scrapy. But if you want to know more about web scraping in Python involving interaction with websites, it is good to play with selenium.
+
+If you really want to do it with Beautiful Soup, this is the complete code

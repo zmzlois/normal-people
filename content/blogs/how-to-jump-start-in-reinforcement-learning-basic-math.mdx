@@ -1,0 +1,136 @@
+---
+author: zmzlois
+date: 2022-11-13
+title: How to jump-start in Reinforcement Learning — Basic Math
+type: Blog
+featured: true
+published: true
+description: 'Math is like love. Give it time.'
+---
+
+5 min read
+
+> “The laws of nature are written in the language of mathematics.” — Galileo.
+
+![Math](https://miro.medium.com/v2/resize:fit:4800/0*eNdLdlXHKO457WLw
+)
+Photo by [Dan Cristian Pădureț](https://unsplash.com/@dancristianpaduret?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+
+I don’t plan to explain the sexiness of math in this article as you can see it in Richard W. Hamming’s essay ‘[The unreasonable effectiveness of mathematics](<https://github.com/zmzlois/Essay-Obsessions/blob/7d6f08d6e965ee0b0eadc49aa389270e4556ffae/math/%5BAmerican%20Mathematical%20Monthly%201980-feb%20vol.%2087%20iss.%202%5D%20R.%20W.%20Hamming%20-%20The%20Unreasonable%20Effectiveness%20of%20Mathematics%20(1980)%20%5B10.2307_2321982%5D%20-%20libgen.li.pdf>)’ or Jim Simons' TED talk ‘[The mathematician who cracked Wall Street](https://youtu.be/U5kIdtMJGc8?t=226)’ at 3:45. The importance of studying mathematics for programming and machine learning is probably the same as [Justin Meiners](https://github.com/justinmeiners) said, [he was able to code faster by thinking in math](https://www.jmeiners.com/think-in-math/). [Logan Yang](https://medium.com/u/59aa671cf125?source=post_page-----2b3e42c62aff--------------------------------) also said in his article about [self-designed ML CS degree](https://medium.com/towards-data-science/how-i-designed-my-own-full-stack-ml-engineering-degree-297a31e3a3b2#:~:text=Another%20example%20that,are%20a%20nerd).) that your understanding of math and basics in CS will determine how far you can go in technology.
+
+But to be frank, you don’t need to have a math PhD to study reinforcement learning, same as you don’t need a linguistic PhD to study law.
+
+## Why is Reinforcement Learning important?
+
+In traditional machine learning, consisting of unsupervised and supervised learning, data collection and processing are tedious and manual. But the flip coin is: it fostered a new field in machine learning research — the development of Reinforcement Learning — the state of art algorithm behind AlphaGo and automotive cars/aircraft. In TableTop games, it allows us to evaluate every action within an environment, where the state of the environment is constantly evolving as actions take place. The value and reward of every action are assigned, learnt by reinforcement learning algorithms, or in other words in the book of [Reinforcement Learning written by Richard S. Sutton and Andrew G. Barto](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf), aka playing agents, through trial and error interactions.
+
+The future of artificial intelligence could be exactly as [Andrew Ng said in IEEE, ‘Unbiggen AI’](https://spectrum.ieee.org/andrew-ng-data-centric-ai) — everything will be geared towards more well-engineered, smaller datasets and as computing power increases, commercial applications in video processing and computer vision will become much more accessible.
+
+But in my humble opinion, reinforcement learning will ultimately change how everything plays out. It might not be the subject of commercial applications in the next 5 years, but it will conquer the market in the next 10–20 years. Think about it: should I hire a team of consultants and engineers to solve the problem, or I simulate the situation and let the algorithms find and suggest the best next move? This is a game for the Metaverse.
+
+To learn about Reinforcement Learning, you only need to be comfortable converting English into Python or any other code and some basic math. I will only cover the mathy part in this article, but if you want to see how to convert English and computing logic into code, you can see some samples implemented by James LeDoux on solving [Multi-Armed Bandits Problem in Python](https://jamesrledoux.com/algorithms/bandit-algorithms-epsilon-ucb-exp-python/), or Ankit Choudhary one about Monte Carlo Learning at [here](https://www.analyticsvidhya.com/blog/2018/11/reinforcement-learning-introduction-monte-carlo-learning-openai-gym/#:~:text=The%20Monte%20Carlo%20method%20for,be%20applied%20to%20episodic%20MDPs.).
+
+## Basic knowledge of the below topics
+
+Some basic knowledge and comfortable with
+
+### A. Statistics
+
+a. Expected values: it will help you understand the value of each action taken  
+\- [Easy taster from Khan](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/a/expected-value-basic)  
+\- If you want to know ideas around it, [Columbia’s Statistics 4109](http://www.stat.columbia.edu/~liam/teaching/4109-fall10/) explained it in [Chapter 4](http://www.stat.columbia.edu/~liam/teaching/4109-fall10/chapter4.pdf) or [Statlect](https://www.statlect.com/)’s [version](https://www.statlect.com/fundamentals-of-probability/expected-value)
+
+b. [Distribution](https://www.statlect.com/probability-distributions/): understanding the value/reward distribution of each action and how they are evaluated
+
+c[. Sampling](https://www.scribbr.co.uk/research-methods/sampling/#:~:text=Sampling%20means%20selecting%20the%20group,a%20sample%20of%20100%20students.)
+
+### B. Basic Calculus
+
+a. Derivatives  
+\- For something light and fun with basic functions and rules, check the [explanation by Math is Fun](https://www.mathsisfun.com/calculus/derivatives-introduction.html)  
+\- For something more detailed and how every function is calculated, check [CUEMATH](https://medium.com/@zmzlois/https%3A%2F%2Fwww.cuemath.com%2Fcalculus%2Fderivatives%2F b814ba96-4bcd-48ca-871f-35db06835614.md).
+
+b. Linear Algebra
+
+1). Vectors  
+\- [Essence of Linear Algebra](https://youtu.be/fNk_zzaMoSs): video by 3Blue1Brown  
+\- [Magnitude of a vector 3D](https://youtu.be/1Btju9LXLgg)  
+**Angle between vectors  
+\-** [Scalar or Dot Product](https://youtu.be/5XVFQix8tAk)  
+\- [Equation of a line](https://youtu.be/0HvfuK5wS30)  
+\- [Equation of a line through two points](https://youtu.be/r24zBidwago)
+
+2). Matrices  
+\- [Dimension of a matrix](https://youtu.be/ilFJYjfKYjk)  
+\- [Transpose of a matrix](https://youtu.be/TZrKrNVhbjI)  
+**Matrix Arithmetic  
+\-** [Matrix addition and subtraction](https://youtu.be/WR9qCSXJlyY)  
+\- [Matrix multiplication introduction](https://youtu.be/kT4Mp9EdVqs)  
+\- [Multiplying a matrix by a matrix](https://youtu.be/OMA2Mwo0aZg)  
+**Inverse of a Matrix  
+\-** [Evaluating determinants of a 2x2 and 3x3 Matrix](https://youtu.be/OI07C1HsOuc)  
+\- [Inverse of a 2x2 matrix](https://youtu.be/01c12NaUQDw)
+
+3). [Inner products](https://mathworld.wolfram.com/InnerProduct.html#:~:text=An%20inner%20product%20is%20a,this%20multiplication%20being%20a%20scalar.)
+
+[4).Functions](https://youtu.be/BQMyeQOLvpg): For matrix transformation and also [factoring polynomials](https://youtu.be/9NhTVXhfqzU).
+
+If the above videos are too much to consume, I reckon Wolfram’s explanation on [Vector](https://mathworld.wolfram.com/Vector.html) and [Matrix](https://mathworld.wolfram.com/Matrix.html) are good resources to look into
+
+## Reading Mathematics
+
+The best book to learn about how to read math is probably [‘How to READ and DO PROOFS’ by Daniel Solow](https://www.amazon.co.uk/How-Read-Proofs-Introduction-Mathematical/dp/1118164024/ref=asc_df_1118164024/?tag=googshopuk-21&linkCode=df0&hvadid=310867999190&hvpos=&hvnetw=g&hvrand=14733086516614461016&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9046004&hvtargid=pla-426474771046&psc=1&th=1&psc=1), but of course, it is scary to finish a 338 pages book only about the tools of how to learn math. It is somewhat useful if you want to do business as science/set up a product roadmap and hypothesis with a scientific approach. I have received mixed reviews regarding this opinion. CS PhDs say true, but some math PhDs told me it is unnecessary (some of them have built great products!). If a book is too daunting, check out [Alireza Dehbozorgi](https://medium.com/u/e2ba994f1989?source=post_page-----2b3e42c62aff--------------------------------)’s ‘[Reading Mathematics](https://github.com/zmzlois/Essay-Obsessions/blob/8a63dccb99fdb7bee12297b80ce150d2b5df6e9f/math/Reading%20Mathematics.pdf)’.
+
+Well if a 5-page essay is still too long to deal with, here are some bullet points:
+
+### Dealing with symbolic shocks
+
+It is almost the same as drinking whiskey or alike: you will be shocked by the intensity of alcohol content if you drink it too fast. A function can quickly developed from _f(x)=kx+d_ to this:
+
+![Symbolic Shock](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*DOEF8-EmeL5nY6uqab1xvg.png
+)
+So you need to understand:
+
+**a. Math takes time, don’t rush**  
+\- When a new symbol is introduced: pause and commit it to memory, work through it symbol by symbol  
+\- With time, you will get much better at reading math and take much less effort  
+\- Math is easier to learn by reading than by listening. You can always refer to previous pages to understand what’s going on without attention drift.  
+\- Keep a cool head — this is not reading a novel or PPT
+
+**b. Assign colours to specific symbols and types of objects**  
+\- The logic of the page will reveal itself more clearly to you  
+\- That being said: learn Latex.
+
+**c. Think about _why_ certain symbols are chosen.**  
+\- Never memorise notation  
+\- Try to understand the design principles behind the notation
+
+**d. Set yourself realistic goals**  
+\- Don’t attempt to read 20 pages in one sitting (don’t think mathematicians are gods).  
+\- Go in with the expectation that you will have to read some passages multiple times
+
+**e. Don’t give up**  
+\- Mathematics is a marathon. No one can finish it on the first attempt.  
+\- But with a few months of training, tenacity and discipline, anyone can.
+
+### Dealing with some other stumbling blocks
+
+**a. No implicatures**
+
+When you see a statement or definition, always think about the simplest object that satisfies it, and ask yourself how much this object can change before it no longer fits the description.
+
+**b. Questioning definitions**
+
+Always ask: What is it makes a given definition useful? This is the key to study — you will better understand what the definition even defines.
+
+**c. Making definition concrete**
+
+Come up with two distinct lists: examples that fit in and ones that do not. Both are equally important.
+
+**d. Implication and equivalence are not the same**
+
+Separate natural language and the language of math: natural languages are sloppy.
+
+Whether the text uses an **if** or **if and only if** statement is important, the former is an implication, and the latter is a bi-implication.
+
+If you want to know more about [Mathematics for Machine Learning](https://medium.com/dev-genius/mathematics-for-machine-learning-beginners-guide-8d1d249cec43), I think [kanger.dev](https://medium.com/u/a9103369c76f?source=post_page-----2b3e42c62aff--------------------------------)’s article is also great.

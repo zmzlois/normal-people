@@ -11,7 +11,7 @@ const components = {
 	h1: ({ className, ...props }) => (
 		<h1
 			className={clsx(
-				"mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
+				"mt-8 scroll-m-20 text-4xl font-bold tracking-tight",
 				className,
 			)}
 			{...props}
@@ -154,7 +154,7 @@ const components = {
 	code: ({ className, ...props }) => (
 		<code
 			className={clsx(
-				"relative rounded border bg-zinc-300 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-zinc-600",
+				"relative rounded bg-zinc-500 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-green-300",
 				className,
 			)}
 			{...props}
