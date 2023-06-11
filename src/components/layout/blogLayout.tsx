@@ -13,7 +13,7 @@ const navLink = [{
         href: "/contact",
         label: "Contact"
     }]
-function BlogLayout() {
+export default function BlogHeader() {
     const path = usePathname()
 
   return (
@@ -26,15 +26,17 @@ function BlogLayout() {
       {/* Include shared UI here e.g. a header or sidebar */}
       <div>
       <nav className="md:space-x-4 space-y-4 space-x-2">
-                  {navLink.map((link) => (
-                      <Link href={link.href} key={link.href}>
-                          <span className="text-sm font-light text-zinc-400 hover:text-zinc-200 transition transform">{link.label}</span>
-                      </Link>
-                    ))}
+                 
+                      <Link href="/">
+                          <span className="text-sm font-light text-zinc-400 hover:text-zinc-200 transition transform">Home</span>
+                  </Link>
+                  <Link href={path==="/contact"? "/blogs" : "/contact"}>
+                      <span className="text-sm font-light text-zinc-400 hover:text-zinc-200 transition transform">{path==="/contact"? "Blogs" : "Contact"}</span>
+                    </Link>
+                  
       </nav>
           </div>
       </div>
   )
 }
 
-export default BlogLayout;

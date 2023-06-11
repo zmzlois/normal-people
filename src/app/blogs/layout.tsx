@@ -2,7 +2,7 @@
 
 import LeftIcon from "@/components/icons/left"
 import Link from "next/link"
-import BlogLayout from "@/components/layout/blogLayout"
+import BlogHeader from "@/components/layout/blogLayout"
 
 
 export default function Layout({
@@ -14,8 +14,8 @@ export default function Layout({
 
 
   return (
-    <div className="md:py-10 py-6 md:px-24 px-8 justify-between">
-      <BlogLayout  />
+    <div className="md:py-10 py-6 md:px-24 px-8">
+      <BlogHeader />
       {children}
     </div>
   )
