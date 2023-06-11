@@ -1,18 +1,38 @@
 // app/posts/[slug]/page.tsx
 import { format, parseISO } from 'date-fns'
 import { allBlogs } from 'contentlayer/generated'
+import { notFound } from "next/navigation";
 
-export const generateStaticParams = async () => allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }))
+type Props = {
+  params: {
+    slug: string
+  }
+}
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const blog = allBlogs.find((blog) => `/${blog._raw.flattenedPath}` === params.slug)
-  if (!blog) throw new Error(`Post not found for slug (metadata): ${params.slug}`)
+export const generateStaticParams = async () =>
+  allBlogs.filter((blog)=>blog.published).map((blog) => ({ slug: blog.slug }))
+
+export const generateMetadata = ({ params }: Props) => {
+  console.log('Checking params ------------------------------------')
+  console.log('params', params, 'slug', params.slug)
+
+  const blog = allBlogs.find(
+    (blog) => `${blog.slug}` === params.slug
+  )
+
+  if (!blog)
+    throw new Error(`Post not found for slug (metadata): ${params.slug}`)
   return { title: blog.title }
 }
 
-const BlogLayout = ({ params }: { params: { slug: string } }) => {
-  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug)
-  if (!blog) throw new Error(`Post not found for slug: ${params.slug}`)
+const BlogLayout = ({ params }: Props) => {
+  const slug = params.slug;
+  const blog = allBlogs.find((blog) => blog.slug === slug)
+
+  if (!blog) {
+    throw new Error(`Post not found for slug: ${params.slug}`, notFound()) 
+   
+  } 
 
   return (
     <article className="mx-auto max-w-xl py-8">
@@ -22,9 +42,12 @@ const BlogLayout = ({ params }: { params: { slug: string } }) => {
         </time>
         <h1 className="text-3xl font-bold">{blog.title}</h1>
       </div>
-      <div className="[&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: blog.body.html }} />
+      <div
+        className="[&>*]:mb-3 [&>*:last-child]:mb-0"
+        dangerouslySetInnerHTML={{ __html: blog.body.html }}
+      />
     </article>
   )
 }
 
-export default BlogLayout;
+export default BlogLayout

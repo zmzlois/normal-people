@@ -1,12 +1,12 @@
-import Link from "next/link";
-import React from "react";
-import Particles from "../components/particles";
+import Link from 'next/link'
+import React from 'react'
+import Particles from '../components/particles'
 
 const navigation = [
   //{ name: "Projects", href: "/projects" },
-  { name: "Blog", href: "/blogs" },
-  { name: "Contact", href: "/contact" },
-];
+  { name: 'Blog', href: '/blogs' },
+  { name: 'Contact', href: '/contact' },
+]
 
 export default function Home() {
   return (
@@ -32,13 +32,13 @@ export default function Home() {
       {/* bg-gradient-to-tr from-yellow-200 via-orange-100 to-red-200 cursor-default text-edge-outline animate-title bg-clip-text */}
       <h1 className="z-10 text-4xl  duration-800  font-extrabold sm:text-6xl md:text-9xl whitespace-nowrap  tracking-tighter text-zinc-50 cursor-default text-edge-outline animate-title bg-clip-text ">
         zmzlois
-      </h1> 
+      </h1>
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <div className="my-16 text-center animate-fade-in">
         <h2 className="text-sm text-zinc-400 font-light">
-        <b className="text-zinc-300">Also called Lois. </b>  
-          <br /> Stumbling on building SaaS like{" "}
+          <b className="text-zinc-300">Also called Lois. </b>
+          <br /> Stumbling on building SaaS like{' '}
           <Link
             target="_blank"
             href="https://wait.gg"
@@ -46,23 +46,28 @@ export default function Home() {
           >
             Wait
           </Link>
-          .<br className="block md:hidden"/> Tinker with{" "}
+          .<br className="block md:hidden" /> Tinker with{' '}
           <a
             target="_blank"
             href="https://modernjs.dev/en"
             className="underline duration-500 hover:text-zinc-300"
           >
             Bytedance Infra
-          </a>{" "}
-          and{" "}
+          </a>{' '}
+          and{' '}
           <a
             target="_blank"
             href="https://zenstack.dev/"
             className="underline duration-500 hover:text-zinc-300"
           >
             ZenStack
-          </a>{" "}
-          at night.<br className="block"/>Occasionally detangle <span className="rotate-180">businesses</span> in my head for fun and turn them into{" "}
+          </a>{' '}
+          at night.
+          <br className="block" />
+          Occasionally detangle <span className="rotate-180">
+            businesses
+          </span>{' '}
+          in my head for fun and turn them into{' '}
           <Link
             target="_blank"
             href="/blog"
@@ -74,5 +79,5 @@ export default function Home() {
         </h2>
       </div>
     </div>
-  );
+  )
 }
