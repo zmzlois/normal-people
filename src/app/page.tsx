@@ -70,7 +70,7 @@ export default function Home() {
           in my head for fun and turn them into{' '}
           <Link
             target="_blank"
-            href="/blog"
+            href="/blogs"
             className="underline duration-500 hover:text-zinc-300"
           >
             blogs
