@@ -30,7 +30,7 @@ export default function Home() {
         quantity={100}
       />
       {/* bg-gradient-to-tr from-yellow-200 via-orange-100 to-red-200 cursor-default text-edge-outline animate-title bg-clip-text */}
-      <h1 className="z-10 text-4xl text-transparent duration-800  font-extrabold sm:text-6xl md:text-9xl whitespace-nowrap  tracking-tighter bg-gradient-to-tr from-yellow-200 via-orange-100 to-red-200 cursor-default text-edge-outline animate-title bg-clip-text ">
+      <h1 className="z-10 text-4xl  duration-800  font-extrabold sm:text-6xl md:text-9xl whitespace-nowrap  tracking-tighter text-zinc-50 cursor-default text-edge-outline animate-title bg-clip-text ">
         zmzlois
       </h1> 
 
