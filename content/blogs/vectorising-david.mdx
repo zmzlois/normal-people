@@ -1,27 +1,17 @@
 ---
-author: zmzmlois
-pubDatetime: 2023-01-07
-title: What I’ve learnt from Superhuman’s Customer Onboarding
-postSlug: Learning from superhuman
-featured: false
-draft: false
-tags:
-  - learning-notes
-  - reinforcement-learning
-  - generative-ai
-ogImage: "https://miro.medium.com/v2/resize:fit:1400/0*up1JcpKkKny8s1NW"
-description: This article is part of the original draft I have written for the book Prompt with my friend David Boyle. Touch lightly on transformer architecture and how tokeniser work.
+author: zmzlois
+date: 2023-01-07
+title: 'Vectorising David'
+type: Blog
+featured: true
+published: true
+description: 'Part of the original draft I have written for the book Prompt'
 ---
 
-# Vectorising David
 
-## This article is part of the original draft I have written for the book [Prompt](https://prompt.mba/) with my friend [David Boyle](https://medium.com/u/85197d987a5b?source=post_page-----48253fc1582--------------------------------). Touch lightly on transformer architecture and how tokeniser work.
+##### This article is part of the original draft I have written for the book [Prompt](https://prompt.mba/) with my friend [David Boyle](https://medium.com/u/85197d987a5b?source=post_page-----48253fc1582--------------------------------). Touch lightly on transformer architecture and how tokeniser work.
 
-[![Lois Z.](https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg)
-
-](https://medium.com/@zmzlois?source=post_page-----48253fc1582--------------------------------)
-
-12 min read·Jan 7
+12 min read
 
 **A very brief intro in case the whole article is too long to read:**
 
@@ -41,7 +31,6 @@ Every time it generates a word, it looks for the next most possible word to pair
 
 ### Context: Beyond the pattern of a sentence
 
-=========================================
 
 One of the most common natural language processing applications is at our fingertips: every time we type in something on our phone it suggests the next word.
 
@@ -68,7 +57,7 @@ Matrices are rows of vectors(or numbers, but here we refer to vectors because th
 
 ### Tokenizers: Translator between machine and human
 
-================================================
+
 
 A high-performance, high-functional tokenizer is essential in a machine-learning system focusing on NLP tasks. Because your users don’t want to wait as soon as they hit enter. In production, time is calculated in milliseconds. The longer they wait, the more likely they will leave the site with bad reviews. And that happened on a lot of generative AI applications.
 
@@ -98,8 +87,6 @@ Now the gap between humans and machines is sorted. How shall we solve the contex
 
 ### Attention is all you need: The science of context and transformer architecture
 
-==============================================================================
-
 Researchers were scratching their heads to find what could be the best solution for the next generation neural network — a model doesn’t just do a dummy job–prompting a simple sentence and outputting something silly; something avoids [vanishing or exploding gradient problems](https://programmathically.com/understanding-the-exploding-and-vanishing-gradients-problem/#:~:text=The%20exploding%20gradient%20problem%20describes,weights%2C%20and%20learning%20becomes%20unstable.); something can take a sequence as input and give a sequence as output; something has longer memory; a model saves computation cost and able to be trained with a relatively smaller amount of text.
 
 Basically, they were looking for god.
@@ -121,7 +108,6 @@ Like every data science project, there is a lot of preprocessing before the actu
 
 ### Preprocessing 🤯
 
-================
 
 The first step is input encoding. We have mentioned tokenizers before. It will convert “David” into numbers first (I am using one-hot encoding here because it makes much sense since you are aware computers work with binaries, but it is [a bad choice](https://d2l.ai/chapter_natural-language-processing-pretraining/word2vec.html#one-hot-vectors-are-a-bad-choice) if you come across someone using it. ) at a vector size of 50,257.
 
@@ -175,7 +161,6 @@ So we do some [**positional encoding**](https://d2l.ai/chapter_attention-mechani
 
 ## Encoder and Decoder
 
-===================
 
 ![Encoder and decoder](https://miro.medium.com/v2/resize:fit:1116/0*z8iroxIM5cQJYz3V)
 _Encoder and Decoder_

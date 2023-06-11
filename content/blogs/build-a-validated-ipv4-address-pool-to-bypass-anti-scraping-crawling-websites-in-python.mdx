@@ -1,27 +1,19 @@
 ---
 author: zmzlois
-pubDatetime: 2022-10-23
-title: Build a validated IPv4 address pool to bypass anti-scraping/crawling websites in Python
-postSlug: build-a-validated-ipv4-address-pool
+date: 2022-10-23
+title: Build a validated IPv4 address scraper with Selenium 4 and Python
+type: Blog
 featured: true
-draft: false
-tags:
-  - web-scraping
-  - python
-ogImage: "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*i42vJxfUu68Tdv290oPqYA.png"
-descriptions: This article is for sharing/educational purposes only.
+published: true
+description: 'Learning notes.'
 ---
-
-[![Lois Z.](https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg)
-
-](https://medium.com/@zmzlois?source=post_page-----5061df20bfb6--------------------------------)
 
 6 min read
 
 
 ## Disclaimer: This article is for sharing/educational purposes only.
 
-# I am writing this because:
+#### I am writing this because:
 
 1.  You will need this at some point if you are scraping a huge amount of websites at scale, especially Google {sites} or when you come across some state-of-art anti-crawling sites. Add `robots.txt` at the end of your desired website’s URL to check their crawling policy or whether they have a crawling policy in place.
 2.  Using different IP addresses/proxies is one of the ways to bypass websites that are built for anti-scraping/crawling. Other methods can be modifying user-agents, JS decryption, CSS and font decryption, option.add_experimental_option and etc.
@@ -121,7 +113,7 @@ ip\_list.append(re.findall("^(?:\[0-9\]{1,3}\\.){3}\[0-9\]{1,3}$", box\_text))
 
 **1\. Version 4 IP address and data from website:**  
 \- usually written down in the form of 255.255.255.255  
-\- every four numbers are 0<x<255  
+\- every four numbers are `0<x<255`
 \- if we print out each `ip_box` and add a `print("-----")` at the end of for loop, we will find that the IP addresses and the internet providers are in separate lines, and sometimes the internet providers are not listed
 
 **2\. The regex:  

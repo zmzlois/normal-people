@@ -1,11 +1,11 @@
 ---
 author: zmzlois
-date: 2022-09-11
+date: 2023-03-11
 title: 'Feeld — Not just another dating app'
 type: Blog
 featured: true
 published: true
-description: 'The business of love.'
+description: 'Some thoughts on the business of love. And no. This is not about BDSM.'
 ---
 
 
@@ -63,7 +63,7 @@ Pricing Strategy from [tinder.com/](http://tinder.com)
 ![11](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*sDhgnVc9Z8SrY6cxqa13aw.png)
 [_Bumble is free, but you can pay for extra features — here’s what the dating app offers_](https://www.businessinsider.com/guides/tech/is-bumble-free) \_— Business Insider_
 
-1[12](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Fe58vUANu7ekMSPXl17Wpw.png)
+![12](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Fe58vUANu7ekMSPXl17Wpw.png)
 Source: [The downside of dating apps, and how to overcome them](https://theconversation.com/the-downsides-of-dating-apps-and-how-to-overcome-them-131997)
 
 **2, Development background**
@@ -89,6 +89,8 @@ It is a 30-year-old language to develop native iOS apps with great community sup
 
 [The downfall — Apple is no longer supporting design system and components for Objective-C.](https://kb.vmware.com/s/article/79981) If they use Swift to write an app the component and design system can be automatically updated if Apple updates their design system/icons/components thus decreasing the development cost during iteration. I am guessing they are recruiting new guys to migrate from Objective-C from their recruiting post but I wonder how did that go. Good side: their principal developer knows a lot about Swift so the safe bet — integration in the process, but it will take some time.
 
+![infra-task](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*jJgFYRBHLqn7ATvWYIk7qA.png)
+
 > **React-Native**
 
 The performance on the iOS system was visibly higher than on Android. If I need to take a guess based on my previous assumption that they are catering for people who are using much older version phones, they are trading off speed for capacity? I could be wrong.
@@ -113,11 +115,14 @@ Some smaller details could have been improved.
 
 - [_Icons should not be the only thing conveying meaning_](https://www.nngroup.com/articles/icon-usability/), but when it is, it shouldn’t cause confusion.
 
-Filter Icon but looks like a search icon
+![App screenshot 1](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*x8h6N_x2zoyVJSZEEyByaQ.png)
+
+It is filter Icon but looks like a search icon
 
 It is slightly misleading for users → what, I can search someone on here? It sounds like some strategy to lure users to tap on it, but instead, it is a filter icon to help users filter search results. Slightly misleading here. Is it because the majestic features are included here? Even so it causes confusion for people who uses it.
 
-- [Component spacing should be consistent](https://material.io/design/layout/spacing-methods.html)
+![Component spacing](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*9n8WvnphwJ-WE_Oyyh7XKw.png)
+- [Be careful with component spacing](https://material.io/design/layout/spacing-methods.html)
 
 Close distance between critical elements
 
@@ -153,6 +158,8 @@ Features:
 
 > **A precise segmentation approach in a highly niche market**
 
+
+![User Forecast in Spotify](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*R79ZiFbWIYHLC2wroI5KEw.jpeg)
 [How We Built Infrastructure to Run User Forecasts at Spotify](https://engineering.atspotify.com/2022/06/how-we-built-infrastructure-to-run-user-forecasts-at-spotify/), Spotify Engineering
 
 The data processing infrastructure for new market forecasts could be done in a snapshot above as Feeld is entering Toronto and South Africa markets. However, this picture does not provide granular details, and the service provided by Spotify and Feeld is different as Spotify matches music and artist to users and dating apps match users between users which creates unpredictability.
@@ -165,15 +172,21 @@ The unique target market Feeld is placed in represents an unparalleled segmentat
 
 If we break down the life cycle of a relationship:
 
+![Lifecycle of a relationship](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*X-qP-KLPrvBg3_wYCMEk0w.jpeg)
+
 Most dating apps can only serve users during two stages, before and after, potentially during a relationship but they are not likely to be mainstream. But Feeld would be able to serve users at all lifecycles without question of doubt due to features like ‘Couple match’.
 
 If we go back to the basic needs of users and what are Feeld serving in majestic features:
 
+![Majestic Feature](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1yU4ytT8rAIUj1zwAADnFQ.jpeg)
+
 Feeld is currently satisfying the speed of matching and quality of the match, extra functionally for app-wise user experience and putting them all in one basket. But by increasing the number of matches, and building a cascading subscription model depending on the intensity of the needs, Feeld can become much more profitable.
 
 Current user base on Feeld potentially looks like this:
+![Current user base](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*8Y8jBPtONKzJ8whUST_43g.jpeg)
 
 And revise their subscription model based on user base and relationship cycle:
+![Revised subscription model](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*PpNLDdNq8e-44-Ijm8FwbQ.jpeg)
 
 Ok maybe dedicated customer support for pre-meetup advice is going a bit too far, but breaking the tiers down, and adding more selection criteria will increase the speed and quality of the match. Asking users to finish a comprehensive test, and label themselves before joining the platinum feature would make training prediction model easier. It would be beneficial in terms of user experience, psychological wise too xx
 
