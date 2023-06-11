@@ -1,0 +1,208 @@
+---
+author: zmzlois
+date: 2022-09-11
+title: 'Feeld — Not just another dating app'
+type: Blog
+featured: true
+published: true
+description: 'The business of love.'
+---
+
+
+9 min read
+
+If you come to check out BDSM-related content, this article will disappoint you.
+
+This article includes some dating market fact check, their development background, a slight chunk about UX and potential growth strategy suggestions and 3 reasons why I deleted Feeld after using it for two weeks.
+
+![App Review](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Fi1DU-4oNI_sZz30TAYPAg.png)
+[App Review 2022](https://appreview360.com/feeld-review/)
+
+The first half might be more neutral but feel free to skip the later half as it would be off-putting for Feeld users or whoever is using dating apps in general.
+
+One of my friends suggested Feeld — He thinks Feeld is fantastic and encouraged me to try? So I was curious, and even opened a ‘Majestic’ account, the premium feature, to see if the app’s algorithm performs any better in understanding what I like. The overall experience is exactly what they said — for open-minded to meet the like-minded. I like [what they said on their GitHub too ‘ Software on a mission to upgrade society’s norms.’](https://bit.ly/3wHlPdO) Before I jump into some personal details, let’s start with fact check and what I suspected ( I could be wrong ) — they are cash-rich and want more paying users. They are at the stage where they have found their product market fit( my friend would talk about it — straight proof of social capital/words of mouth) but searching for ways to scale and increase profitability. In short, they want to make ‘kinks’ mainstream.
+
+**1, Dating Apps Market Overview**
+
+![1](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*RH0N8weFi3Nulr0JfDTsgg.png)
+![2](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*g6bQWuArRCpvhL76lvxIwg.png)
+[_Online Dating Application Market Sizing Global Report, 2022–2030, Polaris Market Research_](https://www.polarismarketresearch.com/industry-analysis/online-dating-application-market)
+
+![3](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ZjbRsq9DYPa688wba1xNnA.png)
+_Source:_
+
+_1,_ [_Match Group, Inc.,_](https://mtch.com/ourcompany)
+
+_2,_ [_Metaverse dating app popular with young people in China vies for HK listing, Financial Times, July 1 2022_](https://www.ft.com/content/a475774a-6f54-426d-99b0-08f05bd992dc)
+
+_3,_ [_True Love? Priceless. Global Spend on Dating Apps Surged Past $4.2 Billion in 2021_](https://www.data.ai/fr/insights/data-ai-news/global-spend-on-dating-apps-surged-in-2021/)
+
+![4](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*FHA665rQWg1gSqPoehZt2A.png)
+
+[_Online Dating Application Market Sizing Global Report, 2022–2030, Polaris Market Research_](https://www.polarismarketresearch.com/industry-analysis/online-dating-application-market)
+
+![5](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*dc1MG_YwnneuOCxFCmLWUQ.png)
+
+[Google Trends of Tinder, Baddo, Bumble, Hinge and Feeld](https://trends.google.com/trends/explore?date=today 5-y&q=tinder,badoo,bumble,feeld,hinge)
+
+![6](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*WY6Mn3_5yBGrG0XY8eQI3A.png)
+Dating App User Monetisation Ranking [_data.ai_](http://data.ai)
+
+![7](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*6BaEf5nHWOA2ImzsmYY5xA.png)
+Dating App Audience Attention Ranking [_data.ai_](http://data.ai)
+
+![8](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*7gbGS5KUCJYiMTdvToBBvw.png)
+Dating App Usage Stickiness Ranking [_data.ai_](http://data.ai)
+
+![9](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*2kvROoSG9yUmvNKR2NHddg.png)
+Relative Active User Ranking and Average Time Spent On App vs User Number Ranking [_data.ai_](http://data.ai)
+
+![10](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*doAU68aEDukEhFE-6WzfTw.png)
+Pricing Strategy from [tinder.com/](http://tinder.com)
+
+![11](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*sDhgnVc9Z8SrY6cxqa13aw.png)
+[_Bumble is free, but you can pay for extra features — here’s what the dating app offers_](https://www.businessinsider.com/guides/tech/is-bumble-free) \_— Business Insider_
+
+1[12](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*Fe58vUANu7ekMSPXl17Wpw.png)
+Source: [The downside of dating apps, and how to overcome them](https://theconversation.com/the-downsides-of-dating-apps-and-how-to-overcome-them-131997)
+
+**2, Development background**
+
+I looked on their GitHub Profile and Linkedin profile combined. 21 dev, including the founder himself, software engineers, infrastructure engineers and data engineers(I love their hiring approach as they are background agnostic and you don’t need to have a computer science degree). Obviously great company culture as their employees are [enragingly applauding company culture](https://www.glassdoor.co.uk/Overview/Working-at-Feeld-EI_IE2466987.11,16.htm). They use JavaScript, Haskell, Objective-C(for iOS), Java(React-Native for Android), Shell, PostgresSQL and MongoDB (from the look of it).
+
+![Feeld Github](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*HGDyoLUDg5YJpF8qf-AC5g.png)
+[Feeld GitHub Page](https://bit.ly/3wHlPdO)
+
+This is not a time-critical app(if messaging at speed counts as time critical?), yet they are trying to make it compatible with fintech and other big comps’ applications. Good initiative and ambition xx
+
+> **Haskell**
+
+Using Haskell, and people who know Haskell are a risky move. It is unquestionably a high-performing language that achieves high-level type safety and inference. GHC(Glasgow Haskell Compiler) is actively being developed and updated for high-performance computing so supporting language-wise can pass the check. But the downside of using Haskell is obvious too, which is why I know Haskell is an excellent language but have been reluctant to learn it.
+
+- Haskell is a myth; everyone knows it. Once you learn Haskell it will change the way you look at programming and every other language you write will look like Haskell.
+- The learning curve is deep → difficult to hire new joiners due to a lack of talents, so they might face difficulty scaling the organisation further down the line. (That was my hypothesis; their hiring report on Linkedin says the opposite.)
+- It is a cryptic language; even the programmer himself would forget about what he wrote after several days without appropriate documentation ( extra input + time on maintaining documentation). Even Haskell is concise and awesome for rapid prototyping, it will also increase the friction for new joining dev to know what’s going on.
+
+> **Objective-C**
+
+It is a 30-year-old language to develop native iOS apps with great community support and documentation. Users who are using much older versions of iPhone can use the app without performance issues such as unexpected exiting, etc. (it’s so nice of them to be considerate!)
+
+[The downfall — Apple is no longer supporting design system and components for Objective-C.](https://kb.vmware.com/s/article/79981) If they use Swift to write an app the component and design system can be automatically updated if Apple updates their design system/icons/components thus decreasing the development cost during iteration. I am guessing they are recruiting new guys to migrate from Objective-C from their recruiting post but I wonder how did that go. Good side: their principal developer knows a lot about Swift so the safe bet — integration in the process, but it will take some time.
+
+> **React-Native**
+
+The performance on the iOS system was visibly higher than on Android. If I need to take a guess based on my previous assumption that they are catering for people who are using much older version phones, they are trading off speed for capacity? I could be wrong.
+
+Alternatively, they could write the texting features in Go and increase texting performance(which their principal dev does know but maybe they are putting it in private repo).
+
+**3, User Experience**
+
+For a more detailed usability review, check [this](https://beyondages.com/feeld-dating-app-review/).
+
+> Design
+
+Pretty good. From pixel rate, components, layout, typography, carousal and overall branding. I rate the overall visual experience.
+
+> Latency
+
+From the speed of uploading photos, it performs better than Tinder in 2018. But messaging feature seems to be lagged at 0.5–1s.
+
+> Usability
+
+Some smaller details could have been improved.
+
+- [_Icons should not be the only thing conveying meaning_](https://www.nngroup.com/articles/icon-usability/), but when it is, it shouldn’t cause confusion.
+
+Filter Icon but looks like a search icon
+
+It is slightly misleading for users → what, I can search someone on here? It sounds like some strategy to lure users to tap on it, but instead, it is a filter icon to help users filter search results. Slightly misleading here. Is it because the majestic features are included here? Even so it causes confusion for people who uses it.
+
+- [Component spacing should be consistent](https://material.io/design/layout/spacing-methods.html)
+
+Close distance between critical elements
+
+If someone wrote a long profile, you will need to scroll down to find ‘Report this profile ’, while ‘dislike’(first left), ‘like’(second left) and ‘Ping’(Equivalent to superlike on Tinder, first right) is being sticky on the page.
+
+But if someone wrote a short profile, these four elements are super close to each other. I accidentally clicked on ‘Report this profile’ multiple times. That was annoying too.
+
+> Lacking key features in messaging to stimulate conversation
+
+Modern messaging applications have key features to elevate conversations to hot and steamy, included in Discord, Telegram, Messenger and Whatsapp. Those are ‘react to message’ and ‘swipe to reply’. I have heard multiple people saying they kept tapping on the message to like the message but it didn’t work. So it’s potentially some important functions to keep in mind in the next update.
+
+**4, Potential growth strategy(Hypothesis Based)**
+
+I might not know enough about the market Feeld is targeting, but based on best practice and industry benchmark, this is potentially what they could do to improve their profit margin.
+
+> **Current Pricing Model on Feeld**
+
+One: Majestic, Feeld’s premium feature.
+
+Monthly: $11.99
+
+Three months: 23.99(23.99(23.99 (8.00 per month)
+
+Features:
+
+- Hide from Facebook friends if connected to Facebook
+- Your profile is only viewable to people you liked
+- Immediately see when someone likes you rather than having to match
+- See when users were last online
+- Access to ‘Dawn Theme’ (Fancy but not useful for monetisation)
+- Add private photos that only matches can see
+- 1 Ping( Superlike ) a day
+
+> **A precise segmentation approach in a highly niche market**
+
+[How We Built Infrastructure to Run User Forecasts at Spotify](https://engineering.atspotify.com/2022/06/how-we-built-infrastructure-to-run-user-forecasts-at-spotify/), Spotify Engineering
+
+The data processing infrastructure for new market forecasts could be done in a snapshot above as Feeld is entering Toronto and South Africa markets. However, this picture does not provide granular details, and the service provided by Spotify and Feeld is different as Spotify matches music and artist to users and dating apps match users between users which creates unpredictability.
+
+Music feature extraction techniques in artificial neural networks like [Mel-Frequency Cepstral Coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum), or [Onset Detection](http://www.cp.jku.at/research/papers/Boeck_etal_ISMIR_2012.pdf) are relatively mature and ready for production when audios are ready. But dating apps’ user prediction will rely heavily on user data and its demographic-based, case by case. It is also heavily dependent on the cost-benefit of running a prediction model. A forecasting model can easily burn a ton of cash depending on the team, user behaviour, how many active users exist on Feeld and the daily sign-up numbers.
+
+> **Current User segmentation break down other than demographics**
+
+The unique target market Feeld is placed in represents an unparalleled segmentation opportunity more than normal dating apps.
+
+If we break down the life cycle of a relationship:
+
+Most dating apps can only serve users during two stages, before and after, potentially during a relationship but they are not likely to be mainstream. But Feeld would be able to serve users at all lifecycles without question of doubt due to features like ‘Couple match’.
+
+If we go back to the basic needs of users and what are Feeld serving in majestic features:
+
+Feeld is currently satisfying the speed of matching and quality of the match, extra functionally for app-wise user experience and putting them all in one basket. But by increasing the number of matches, and building a cascading subscription model depending on the intensity of the needs, Feeld can become much more profitable.
+
+Current user base on Feeld potentially looks like this:
+
+And revise their subscription model based on user base and relationship cycle:
+
+Ok maybe dedicated customer support for pre-meetup advice is going a bit too far, but breaking the tiers down, and adding more selection criteria will increase the speed and quality of the match. Asking users to finish a comprehensive test, and label themselves before joining the platinum feature would make training prediction model easier. It would be beneficial in terms of user experience, psychological wise too xx
+
+After reflecting on my behaviour and what I found after two weeks — I terminated the account as a corollary to balance my life and pursue what I want. Potentially I am not as open-minded as I think I am. And here is why. 3 reasons similar to why I gave up using Tinder years ago.
+
+> 3 reasons similar to why I gave up using Tinder years ago.
+
+## 1, Time
+
+**_I’d rather spend my time in quality conversations. 95% of people don’t fall into ‘my type of people’._**
+
+**_Spontaneous meet-up?_** Not a chance. Which part of
+
+```
+for i in combination(reply, meet):time.sleep(2,569,000)
+```
+
+you don’t understand? If you don’t understand or try to figure it out, don’t talk to me. No one has pointed out the error in this block.
+
+## 2, Exploring intimate boundaries with a stranger
+
+**_Genuine conversation?_** Doesn’t seem to be as genuine as they claim. Can’t be bothered to reply to BS.
+
+## 3, Exclusivity — impossible
+
+True love…fine I hate to sound like a Disney princess but love should be slow. It takes time. And people don’t seem to understand anymore. Not to mention I have no idea how many people feeld guys are seeing at the same time. Security problem. LMAO.
+
+Anyway, good experiment to have, and if one day I want to develop a dating app, it might come off useful and maybe I can make a dating app for workaholics or ‘Dating, slow’, but for now — Yeah let me just go back to do whatever I think is right — anything I won’t regret in 10 years. Sorry Feeld. It’s not your fault that I terminated my account.
+
+Sex is Easy.
+
+Mind is hard.
