@@ -6,14 +6,16 @@ import { allBlogs, Blog } from 'contentlayer/generated'
 function BlogCards(blog: Blog) {
   return (
     <div>
-      <div className="mb-8">
-        <h2 className="mb-1 text-xl">
-          <Link
+       <Link
             href={blog.url}
-            className="text-blue-700 hover:text-blue-900 dark:text-blue-400"
+            className=""
           >
+      <div className="mb-8">
+
+        <h2 className="mb-1 text-xl text-blue-700 hover:text-blue-900 dark:text-blue-400">
+         
             {blog.title}
-          </Link>
+         
         </h2>
         <time dateTime={blog.date} className="mb-2 block text-xs text-gray-600">
           {format(parseISO(blog.date), 'LLLL d, yyyy')}
@@ -23,6 +25,7 @@ function BlogCards(blog: Blog) {
           dangerouslySetInnerHTML={{ __html: blog.body.html }}
         />
       </div>
+       </Link>
     </div>
   )
 }
