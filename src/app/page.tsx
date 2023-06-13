@@ -38,14 +38,8 @@ export default function Home() {
       <div className="my-16 text-center animate-fade-in">
         <h2 className="text-sm text-zinc-300 font-light">
           <b className="text-zinc-200">Also called Lois. </b>
-          <br /> Stumbling on building SaaS like{' '}
-          <Link
-            target="_blank"
-            href="https://wait.gg"
-            className="underline duration-500 hover:text-zinc-300"
-          >
-            Wait
-          </Link>
+          <br /> Stumbling on building SaaS
+          
           .<br className="block md:hidden" /> Tinker with{' '}
           <a
             target="_blank"
