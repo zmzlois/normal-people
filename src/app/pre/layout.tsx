@@ -1,9 +1,14 @@
 
 
-
+import { Indie_Flower } from "next/font/google"
 import Link from "next/link"
 import BlogHeader from "@/components/layout/blogLayout"
 
+export const indie_flower = Indie_Flower({
+    weight: "400",
+    subsets: ['latin'],
+    display: 'swap',
+})
 
 export default function Layout({
   children, // will be a page or nested layout
@@ -14,10 +19,8 @@ export default function Layout({
 
 
   return (
-    <div className="md:py-10 py-6 md:px-24 px-8">
-     <BlogHeader/>
-              {children}
-            
+      <div className={`${indie_flower.className}`}>
+              {children}      
     </div>
   )
 }
