@@ -4,14 +4,20 @@ import React from 'react'
 function Page1() {
   return (
       <PreLayout href={"/pre/hate-aws/3"}>
+          <div className="  text-black border-4 px-10 py-4 border-indigo-600 rounded-full">
           <h1 className="text-center flex justify-center text-8xl">Database</h1>
-          <h3 className="text-center flex justify-center text-4xl text-red-500">By AWS Cost Estimate and PlanetScale Pricing Plan</h3>
-          <table className="table-auto border-collapse border rounded-md border-green-800 m-4">
+              <h3 className="text-center flex justify-center text-4xl text-red-500">By AWS Cost Estimate and PlanetScale Pricing Plan</h3>
+              </div>
+          <div className="">
+              <img src="https://cdn-images-1.medium.com/max/1600/1*jOnnzUxhts8gp6AOlImGXA.png" className="m-10" />
+          </div>
+         
+          <table className="table-auto border-collapse border rounded-md border-green-800 m-4 ">
               <thead>
                   <tr className="text-4xl font-md">
                       <th className="border border-green-800 px-4 py-2">Items</th>
-                      <th className="border border-green-800 px-4 py-2">PlanetScale</th>
-                      <th className="border border-green-800 px-8 py-2">AWS</th>
+                      <th className="border border-green-800 text-purple-400 px-4 py-2">PlanetScale</th>
+                      <th className="border text-yellow-300 border-green-800 px-8 py-2">AWS</th>
                      
                   </tr>
               </thead>

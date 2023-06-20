@@ -11,7 +11,7 @@ export default function PreLayout({
 
 
   return (
-    <Link href={`${href}`} className=" w-[100vw] h-[100vh] text-center flex flex-col content-center items-center justify-center p-24">
+    <Link href={`${href}`} className=" w-[100vw] h-[110vh] py-10 overflow-visible text-center flex flex-col content-center items-center justify-center p-24">
             {children}   
       </Link>
                

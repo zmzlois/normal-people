@@ -13,7 +13,7 @@ function HateAWS() {
   return (
       <PreLayout href={"/pre/hate-aws/1"}>
           <h1 className="text-center flex justify-center text-7xl">🌶️ WHY ENGINEERS HATE AWS? 🌶️</h1>
-          <h3 className="text-center flex justify-center text-4xl text-red-500">Spicy alert</h3>
+          <h3 className="text-center flex justify-center text-4xl text-red-500">Spice alert - The REAL COST</h3>
       </PreLayout>
   )
 }
