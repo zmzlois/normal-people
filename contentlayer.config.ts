@@ -1,5 +1,5 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from '@contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 
 export const Blog = defineDocumentType(() => ({
