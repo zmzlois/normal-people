@@ -7,3 +7,4 @@ To do:
   - Favorate article on top etc
 - BlogCards animation on Group hover
 - Contact page redesign
+- RSS Feed
