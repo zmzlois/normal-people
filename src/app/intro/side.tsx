@@ -15,7 +15,7 @@ import tailwindcssIcon from '@iconify/icons-logos/tailwindcss-icon';
 import reactIcon from '@iconify/icons-devicon/react';
 import postgresqlIcon from '@iconify/icons-logos/postgresql';
 import nodejsIcon from '@iconify/icons-logos/nodejs-icon';
-import mysqlIcon from '@iconify/icons-logos/mysql';
+import mysqlDark from '@iconify/icons-skill-icons/mysql-dark';
 import prismaIcon from '@iconify/icons-logos/prisma';
 import trpcIcon from '@iconify/icons-devicon/trpc';
 import html5 from '@iconify/icons-logos/html-5';
@@ -45,6 +45,7 @@ import machineLearningModel from '@iconify/icons-carbon/machine-learning-model';
 import investIcon from '@iconify/icons-arcticons/invest';
 import wineIcon from '@iconify/icons-ph/wine';
 import textLineDuotone from '@iconify/icons-solar/text-line-duotone';
+import kafkaIcon from '@iconify/icons-logos/kafka';
 
 export interface NavigationType {
     name: string;
@@ -190,8 +191,13 @@ export const navigation: NavigationType[] = [
             name: "PostgreSQL",
         },
         {
-            icon: <Icon icon={mysqlIcon} width="24" height="24" />,
+            icon: <Icon icon={mysqlDark} width="24" height="24" className="p-[1px] border rounded-full border-slate-50" />,
             name: "MySQL",
+        },
+        {
+            icon: <Icon icon={kafkaIcon} width="24" height="24" className="rounded-full bg-slate-50 p-[1px]"/>,
+            name: "Kafka",
+
         },
         {
             icon: <Icon icon={nodejsIcon} width="24" height="24" />,
