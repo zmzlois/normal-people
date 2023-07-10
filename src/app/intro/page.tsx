@@ -10,7 +10,7 @@ import { useInView } from "react-intersection-observer"
 
 function Resume() {
     
-    const isMobile = window.innerWidth < 768 
+   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
     const { ref:firstref, inView: firstinView } = useInView({
     threshold: isMobile ? 0.5 : 1, // Trigger the animation when the element is 50% in view
     triggerOnce: true, // Only trigger the animation once
