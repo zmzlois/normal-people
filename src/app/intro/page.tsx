@@ -17,7 +17,7 @@ function Resume() {
    
     return (
       
-        <div className="flex flex-col justify-center w-screen h-auto px-8 py-10 space-y-10 border border-blue-400 bg-slate-950" >
+        <div className="flex flex-col justify-center w-auto h-auto px-8 py-10 space-y-10 border border-blue-400 bg-slate-950" >
            
                 <Head />
                 
