@@ -1,0 +1,92 @@
+{
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "red",
+    "background": "white",
+    "opacity": 50,
+    "iconColour": "blue"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "alert",
+      "type": "line",
+      "background": "darkslategray",
+      "foreground": "lightgray",
+      "textDecoration": "underline",
+      "gutterIcon": "mark",
+      "iconColour": "darkslategray",
+      "rulerColour": "darkslategray"
+    },
+    "URGENT": {
+      "icon": "alert",
+      "iconColour": "crimson",
+      "type": "line",
+      "background": "crimson",
+      "foreground": "lightgray",
+      "textDecoration": "underline",
+      "gutterIcon": "mark",
+      "rulerColour": "crimson"
+    },
+    "SECONDARY": {
+      "icon": "alert",
+      "type": "line",
+      "background": "indigo",
+      "foreground": "lightgray",
+      "textDecoration": "underline",
+      "gutterIcon": "mark",
+      "iconColour": "orchid",
+      "rulerColour": "indigo"
+    },
+
+    "FIXME": {
+      "foreground": "black",
+      "background": "darkviolet",
+      "iconColour": "yellow",
+      "rulerColour": "darkviolet",
+      "gutterIcon": true
+    },
+    "NOTE": {
+      "foreground": "lightgray",
+      "iconColour": "yellow",
+      "background": "olive",
+      "rulerColour": "darkblue",
+      "textDecoration": "underline"
+    },
+    "BUG": {
+      "foreground": "lightgray",
+      "iconColour": "yellow",
+      "background": "orangered",
+      "rulerColour": "darkred",
+      "textDecoration": "underline"
+    }
+  },
+  "todo-tree.general.tags": [
+    "TODO",
+    "URGENT",
+    "SECONDARY",
+    "FIXME",
+    "NOTE",
+    "COMPLETE",
+    "BUG"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "discord.enabled": false,
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
