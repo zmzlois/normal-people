@@ -9,7 +9,8 @@ type Content = NavigationType['content'][number]
 function Left() {
   return (
      
-                <div className="flex flex-col gap-8 px-2 sm:col-span-1 ">
+      <div className="flex flex-col col-span-2 gap-8 mt-8 sm:mt-0 sm:col-span-1 ">
+          <h1 className="flex font-mono text-xl font-bold sm:hidden text-sky-400 sm:text-2xl">Miscellaneous</h1>
                     {navigation.map((item, navindex) => (
                         <div className={clsx("flex flex-col", item.name==="Tech" && "sm:mb-72 lg:mb-0 mb-0")} key={navindex}>
                              <div className="flex items-center content-center justify-end py-3 pr-3 space-x-4 border border-red-400 text-end">
