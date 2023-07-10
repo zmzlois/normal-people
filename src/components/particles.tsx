@@ -12,7 +12,7 @@ interface ParticlesProps {
 }
 
 export default function Particles({
-  className = 'bg-yellow-400',
+  className = 'bg-sky-200',
   quantity = 200,
   staticity = 50,
   ease = 50,

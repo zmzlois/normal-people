@@ -1,12 +1,26 @@
+"use client"
 import React from 'react'
 import { Companies, Volunteer, Education } from './config'
+
 import type { CompanyType, VolunteerType, EducationType } from './config'
 import clsx from 'clsx'
 import { Balancer } from "react-wrap-balancer"
+import { motion } from 'framer-motion'
+import { useInView } from "react-intersection-observer"
 
 function Right() {
-  return (
-      <div className="flex flex-col col-span-2 gap-4 text-slate-50">
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+    const { ref:secondref, inView: secondinView } = useInView({
+    threshold: isMobile ? 0.05: 0.1, // Trigger the animation when the element is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+  })
+    return (
+       <div ref={secondref} className="flex flex-col col-span-2 text-slate-50">
+            <motion.div animate={
+          secondinView ? { y: [50,0], opacity: [0, 1] } : { y: [50], opacity: [0] }
+        }
+        transition={{ ease: "linear", duration: 1 }} >
+      <div className="space-y-8">
           <div className="text-slate-50">
               <h1 className="font-mono text-lg font-bold sm:text-2xl text-sky-400">Professional Experience</h1>
           </div>
@@ -119,7 +133,9 @@ function Right() {
                 </div>
             ))}
          
-    </div>
+                </div>
+            </motion.div>
+        </div>
   )
 }
 

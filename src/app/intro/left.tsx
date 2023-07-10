@@ -1,14 +1,28 @@
+"use client"
 import React from 'react'
 import { navigation, NavigationType } from './side'
 import { ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
 import { Balancer } from "react-wrap-balancer"
+import { motion } from 'framer-motion'
+import { useInView } from "react-intersection-observer"
 
 type Content = NavigationType['content'][number]
 
 function Left() {
+     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+    const { ref:firstref, inView: firstinView } = useInView({
+    threshold: isMobile ? 0.05 : 0.1, // Trigger the animation when the element is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+    })
+  
   return (
-     
+      <div ref={firstref}>
+            <motion.div animate={
+          firstinView ? { y: [50, 0], opacity: [0, 1] } : { y: [50], opacity: [0] }
+        }
+        transition={{ ease: "easeOut", duration: 1 }}
+            >
       <div className="flex flex-col col-span-2 gap-8 mt-8 sm:mt-0 sm:col-span-1 ">
           <h1 className="flex font-mono text-xl font-bold sm:hidden text-sky-400 sm:text-2xl">Miscellaneous</h1>
                     {navigation.map((item, navindex) => (
@@ -35,7 +49,9 @@ function Left() {
                             </div>
                         ))}
                   
-                    </div>
+          </div>
+           </motion.div>
+                </div>
          
   )
 }
