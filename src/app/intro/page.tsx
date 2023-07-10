@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer"
 
 
 
+
 function Resume() {
     
    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
@@ -24,7 +25,7 @@ function Resume() {
         <div className="flex flex-col justify-center w-screen h-auto px-8 py-10 space-y-10 border border-blue-400 bg-slate-950" >
             <div ref={firstref}>
             <motion.div animate={
-          firstinView ? { y: [20, 0], opacity: [0, 1] } : { y: [50], opacity: [0] }
+          firstinView ? { y: [ 0], opacity: [1] } : { y: [50], opacity: [0] }
         }
         transition={{ ease: "easeOut", duration: 1 }}
             >
@@ -33,9 +34,9 @@ function Resume() {
                 </div>
             <div ref={secondref}>
             <motion.div animate={
-          secondinView ? { y: [30, 0], opacity: [0, 1] } : { y: [50], opacity: [0] }
+          secondinView ? { y: [0], opacity: [1] } : { y: [50], opacity: [0] }
         }
-        transition={{ ease: "easeOut", duration: 1 }} className="flex flex-col-reverse gap-4 sm:grid sm:grid-cols-3">
+        transition={{ ease: "easeOut", duration: 2 }} className="flex flex-col-reverse gap-4 sm:grid sm:grid-cols-3">
                 <Left />
                 <Right />
                 </motion.div>
