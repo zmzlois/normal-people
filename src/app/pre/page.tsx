@@ -11,17 +11,18 @@ const fileNames = fs.readdirSync(presentationsDirectory).filter((file) => !file.
 
 
 function Presentation() {
+ 
     
     return (
-        <div className="md:py-10 py-6 md:px-24 px-8 w-screen h-auto">
+        <div className="w-screen h-auto px-8 py-6 md:py-10 md:px-24">
             <BlogHeader/>
-      <div className="mx-auto max-w-xl py-8">
+      <div className="max-w-xl py-8 mx-auto">
           
       <div className="mb-8">
-      <h1 className=" text-center text-2xl font-black">
+      <h1 className="text-2xl font-black text-center ">
        Presentations
       </h1>
-        <p className="text-md font-sm text-center">at different places.</p> 
+        <p className="text-center text-md font-sm">at different places.</p> 
           </div>
           {allPresentations.map((file, idx) => (
               <PresentationCards key={idx} href={`/pre/${file.slug}`} title={file.title} date={file.date} description={file.description} />

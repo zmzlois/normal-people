@@ -40,17 +40,18 @@ const BlogLayout = ({ params }: Props) => {
   } 
 
   return (
-    <article className="mx-auto max-w-xl py-8">
-      <div className="mb-8 text-center my-4">
-        <h1 className="text-4xl font-black my-3">{blog.title}</h1>
+    <article className="max-w-xl py-8 mx-auto">
+      <div className="my-4 mb-8 text-center">
+        <h1 className="my-3 text-4xl font-black">{blog.title}</h1>
         <time dateTime={blog.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(blog.date), 'LLLL d, yyyy')}
         </time>
-        <h3 className="text-md font-normal text-zinc-400 my-3">Author: <Link href="/" className="text-md text-zinc-400 font-normal hover:text-zinc-200 transition transform">{blog.author}</Link></h3>
+        <h3 className="my-3 font-normal text-md text-zinc-400">Author: <Link href="/" className="font-normal transition transform text-md text-zinc-400 hover:text-zinc-200">{blog.author}</Link></h3>
         <Link href="/" className="mb-2">
-          <img src="https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg" alt="author" className="rounded-full h-16 w-16 mx-auto" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg" alt="author" className="w-16 h-16 mx-auto rounded-full" />
           </Link>
-        <h3 className="text-md font-light tracking-wide mt-4 mb-2 text-start italic"> {blog.description}</h3>
+        <h3 className="mt-4 mb-2 italic font-light tracking-wide text-md text-start"> {blog.description}</h3>
       </div>
       <hr className="border-gray-200/30" />
       <div className="my-8">
