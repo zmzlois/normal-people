@@ -1,5 +1,7 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import highlight from 'rehype-highlight'
+import rehypePlugins from "rehype"
 
 
 export const Blog = defineDocumentType(() => ({
@@ -16,7 +18,7 @@ export const Blog = defineDocumentType(() => ({
 	  repository: { type: 'string', required: false },
 	  ogImage: { type: 'string', required: false },
 	  image : { type: 'string', required: false },
-	 
+
     },
   computedFields: {
     url: {
@@ -27,11 +29,14 @@ export const Blog = defineDocumentType(() => ({
 	},
 	slug: {
 		type: "string",
-		resolve: (doc) => {	
+		resolve: (doc) => {
 			return `${doc._raw.flattenedPath.split("/").slice(1).join("/")}`;
 		},
 	},
 },
 }))
 
-export default makeSource({ contentDirPath: './content', documentTypes: [Blog] })
+export default makeSource({
+	contentDirPath: './content',
+	documentTypes: [Blog],
+mdx: { rehypePlugins: [highlight]}})

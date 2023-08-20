@@ -23,7 +23,7 @@ export const generateMetadata = ({ params }: Props) => {
   const blog = allBlogs.find(
     (blog) => `${blog.slug}` === params.slug
   )
-  
+
 
   if (!blog)
     throw new Error(`Post not found for slug (metadata): ${params.slug}`)
@@ -35,9 +35,9 @@ const BlogLayout = ({ params }: Props) => {
   const blog = allBlogs.find((blog) => blog.slug === slug)
 
   if (!blog) {
-    throw new Error(`Post not found for slug: ${params.slug}`, notFound()) 
-   
-  } 
+    throw new Error(`Post not found for slug: ${params.slug}`, notFound())
+
+  }
 
   return (
     <article className="max-w-xl py-8 mx-auto">
@@ -55,6 +55,7 @@ const BlogLayout = ({ params }: Props) => {
       </div>
       <hr className="border-gray-200/30" />
       <div className="my-8">
+
         <Mdx code={blog.body.code} />
         </div>
     </article>

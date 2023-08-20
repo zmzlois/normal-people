@@ -3,6 +3,10 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+
+hljs.registerLanguage('javascript', javascript);
 
 function clsx(...args: any) {
 	return args.filter(Boolean).join(" ");
@@ -145,21 +149,23 @@ const components = {
 	pre: ({ className, ...props }) => (
 		<pre
 			className={clsx(
-				"mt-6 mb-4 overflow-x-auto rounded-lg bg-zinc-900 py-4",
+				"mt-6 mb-4 overflow-x-auto  rounded-lg bg-zinc-900 py-4",
 				className,
 			)}
 			{...props}
 		/>
 	),
 	code: ({ className, ...props }) => (
-		<code
-			className={clsx(
-				"relative rounded bg-zinc-500 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-green-300",
-				className,
-			)}
-			{...props}
-		/>
-	),
+
+
+
+			<code
+				className={clsx(
+					"block text-sm whitespace-break-spaces font-mono leading-6 overflow-x-auto",
+					className,
+				)}
+				{...props}
+			/>),
 	Image,
 };
 
