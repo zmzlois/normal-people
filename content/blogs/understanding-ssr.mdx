@@ -1,0 +1,220 @@
+---
+author: zmzlois
+date: 2023-07-09
+title: 'Understanding React Streaming SSR(server-side-rendering)'
+type: Blog
+featured: true
+published: true
+description: "Draft doc for modern.js"
+---
+[Original Article](https://mp.weixin.qq.com/s/w4FS5sBcHqRl-Saqi19Y6g)
+---
+### Feature summary
+
+React 18 gave us a new type of SSR: Streaming SSR. Through Streaming SSR we can achieve two things:
+- Streaming HTML: HTML can be sent to the browser parts by parts from server without waiting for the whole HTML to be generated(how it used to work prior to React 18). Browsers can render HTML faster and improve performance scores such as FP, FCP, LCP, etc.
+- Selective Hydration: During the hydration stage in the browser, you can choose to hydrate only the sections already gets rendered, rather than waiting for the whole page to be rendered and all the javascript to be loaded -> and then start the hydration. It can achieve better interactivity for websites by binding events to the area already rendered.
+---
+### How it works
+####Example usage
+React docs gave a simple usage example in node.js environment:
+```
+let didError = false;
+const stream = renderToPipeableStream(
+  <App />,
+  {
+    bootstrapScripts: ["main.js"],
+    onShellReady() {
+      // The content above all Suspense boundaries is ready.
+      // If something errored before we started streaming,
+      // we set the error code appropriately.
+      res.statusCode = didError ? 500 : 200;
+      res.setHeader('Content-type', 'text/html');
+      stream.pipe(res);
+    },
+    onShellError(error) {
+      // Something errored before we could complete the shell
+      // so we emit an alternative shell.
+      res.statusCode = 500;
+      res.send('<!doctype html><p>Loading...</p><script src="clientrender.js"></script>');
+    },
+    onAllReady() {
+      // stream.pipe(res);
+    },
+    onError(err) {
+      didError = true;
+      console.error(err);
+    }
+  }
+);
+```
+Note: <span style="color:blue;font-weight:700;">
+renderToPipeableStream </span> is the API to achieve Streaming SSR in node.js environment.
+---
+#### Streaming HTML
+HTTP supports data transimission through streaming, thus when we set <span style="color:blue;font-weight:700;">
+Transfer-Encoding: chunked </span> in Request headers, the server will send the Response back in chunkcs. A simple example be like:
+```
+const http = require("http");
+const url = require("url");
+
+const sleep = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
+const server = http.createServer(async (req, res) => {
+  const { pathname } = url.parse(req.url);
+  if (pathname === "/") {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.setHeader("Transfer-Encoding", "chunked");
+    res.write("<html><body><div>First segment</div>");
+    // Manually setup delay to show make the chunked response more obvious
+    await sleep(2000);
+    res.write("<div>Second segment</div></body></html>");
+    res.end();
+    return;
+  }
+
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("okay");
+});
+
+server.listen(8080);
+```
+When we visit localhost:8080, we can see the HTML is rendered in two segments of `First Segment` and `Second Segment`, with a 2s delay in between. `First segment` is rendered immediately, and `Second segment` is rendered after 2s.
+
+<br/>
+But Streaming HTML in React is much more complex. If we take below App component as an example:
+
+```
+//File 1:  Content.js
+export default function Content() {
+  return (
+    <div> This is content </div>
+  );
+}
+
+//File 2：App.js
+import { Suspense, lazy } from "react";
+
+const Content = lazy(() => import("./Content"));
+
+export default function App() {
+    return (
+        <html>
+        <head></head>
+        <body>
+        <div>App shell</div>
+        <Suspense>
+            <Content />
+        </Suspense>
+        </body>
+        </html>
+    );
+}
+```
+
+When we visit the website for the first time, the results rendered by SSR will be separated into two parts. The first part will look like this after formatting:
+
+```
+<!DOCTYPE html>
+<html>
+   <head></head>
+   <body>
+      <div>App shell</div>
+      <!--$?-->
+      <template id="B:0"></template>
+      <!--/$-->
+   </body>
+</html>
+```
+
+The <span style="color:blue;font-weight:700;">template</span> tag is a placeholder slot for the content of the Suspense component. The content between  <span style="color:blue;font-weight:700;">`<!--$?-->`</span> and <span style="color:blue;font-weight:700;">`<!--/$-->`</span> are rendered in separate stage.
+
+And the transmitted second part will look like this after formatting:
+
+```
+<div hidden id="S:0">
+  <div> This is content </div>
+</div>
+<script>
+  function $RC(a, b) {
+    a = document.getElementById(a);
+    b = document.getElementById(b);
+    b.parentNode.removeChild(b);
+    if (a) {
+        a = a.previousSibling;
+        var f = a.parentNode,
+            c = a.nextSibling,
+            e = 0;
+        do {
+            if (c && 8 === c.nodeType) {
+                var d = c.data;
+                if ("/$" === d)
+                    if (0 === e) break;
+                    else e--;
+                else "$" !== d && "$?" !== d && "$!" !== d || e++
+            }
+            d = c.nextSibling;
+            f.removeChild(c);
+            c = d
+        } while (c);
+        for (; b.firstChild;) f.insertBefore(b.firstChild, c);
+        a.data = "$";
+        a._reactRetry && a._reactRetry()
+    }
+  };
+  $RC("B:0", "S:0")
+</script>
+```
+The <span style="color:blue;font-weight:700;">div</span> includes <span style="color:blue;font-weight:700;">id="S:0"</span> is the result rendered by <span style="color:blue;font-weight:700;">Suspense</span>. But this <span style="color:blue;font-weight:700;">div</span> has a `hidden` attribute. And the <span style="color:blue;font-weight:700;">$RC</span> attribute will insert this div to the placeholder slot in the first part of the HTML where  <span style="color:blue;font-weight:700;">template</span> tag is located while deleting <span style="color:blue;font-weight:700;">template</span> label.
+
+In conclusion, React Streaming SSR will render everything first other than <span style="color:blue;font-weight:700;">`<Suspense>`</span>, and when <span style="color:blue;font-weight:700;">`<Suspense>`</span> finishes the component rendering, it will send the rendering result as well as the javascript related to this component to browser. And the javascript will update `dom` at the end to reach the final result of HTML(full page).
+
+But when you visit the website for the second time, the whole page of HTML will be rendered but not separated. Why? Because when the user requests the website for the first time, the <span style="color:blue;font-weight:700;">Content</span> component is not cached in the browser, so the server will render the HTML in two parts. But when the user requests the website for the second time, the <span style="color:blue;font-weight:700;">Content</span> component is cached in the browser, so the server will render the whole HTML at once.
+
+Hence, the HTML will only be rendered separately when it is needed.
+
+Requesting data in a separate stage is a more common usage for Streaming SSR, other than dynamically render javascript modules(code splitting) to achieve rendering HTML at a separate stage.
+
+If we change the <span style="color:blue;font-weight:700;">Content</span> component to below, and use <span style="color:blue;font-weight:700;">getData</span> to obtain data:
+
+```
+let data;
+const getData = () => {
+  if (!data) {
+    data = new Promise((resolve) => {
+      // Transfer the data 2 seconds later
+      setTimeout(() => {
+        data = "content from remote";
+        resolve();
+      }, 2000);
+    });
+    throw data;
+  }
+
+  // promise-like
+  if (data && data.then) {
+    throw data;
+  }
+
+  const result = data;
+  data = undefined;
+  return result;
+};
+
+export default function Content() {
+  // Get the data here
+  const data = getData();
+
+  return <div>{data}</div>;
+}
+```
+The data required by <span style="color:blue;font-weight:700;">Content</span> component will be rendered 2 seconds later. Note that codesandbox just upgraded their website, the effect on Streaming SSR might not work -- try it in local development.
+
+> To ensure Streaming SSR runs smoothly: before the data is ready, `getData` needs to throw a `promise` and the `promise` will be catched by <span style="color:blue;font-weight:700;">Suspense</span>.
+
+#### Selective Hydration
