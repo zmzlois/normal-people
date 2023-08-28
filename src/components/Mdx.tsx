@@ -149,7 +149,7 @@ const components = {
 	pre: ({ className, ...props }) => (
 		<pre
 			className={clsx(
-				"mt-6 mb-4 overflow-x-auto  rounded-lg bg-zinc-900 py-4",
+				"mt-6 mb-4 overflow-x-auto  rounded-lg bg-zinc-800 py-4",
 				className,
 			)}
 			{...props}
@@ -161,7 +161,7 @@ const components = {
 
 			<code
 				className={clsx(
-					"block text-sm whitespace-break-spaces font-mono leading-6 overflow-x-auto",
+					" text-sm bg-zinc-800 p-1 rounded-md font-mono overflow-x-auto",
 					className,
 				)}
 				{...props}
