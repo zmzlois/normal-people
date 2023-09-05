@@ -10,11 +10,11 @@ export default function Layout({
 }: {
   children: React.ReactNode
   }) {
- 
+
 
 
   return (
-    <div className="md:py-10 py-6 md:px-24 px-8">
+    <div className=" md:px-24 px-8">
       <BlogHeader />
       {children}
     </div>
