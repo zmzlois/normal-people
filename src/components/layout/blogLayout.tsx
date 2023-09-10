@@ -17,7 +17,7 @@ export default function BlogHeader() {
     const path = usePathname()
 
   return (
-      <div className="flex justify-between sticky top-10">
+      <div className="flex justify-between sticky top-0 py-4 sm:py-6 backdrop-blur-lg">
           <div>
         <Link href={path==="/blogs"? "/":"/blogs"} >
           <LeftIcon/>
