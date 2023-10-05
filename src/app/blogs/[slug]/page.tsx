@@ -51,7 +51,7 @@ const BlogLayout = ({ params }: Props) => {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg" alt="author" className="w-16 h-16 mx-auto rounded-full" />
           </Link>
-        <h3 className="mt-4 mb-2 italic font-light tracking-wide text-md text-start"> {blog.description}</h3>
+        <h3 className="mt-4 mb-2 italic font-light tracking-wide text-md text-center"> {blog.description}</h3>
       </div>
       <hr className="border-gray-200/30" />
       <div className="my-8">
