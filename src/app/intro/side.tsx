@@ -21,6 +21,7 @@ import trpcIcon from '@iconify/icons-devicon/trpc';
 import html5 from '@iconify/icons-logos/html-5';
 import astroIcon from '@iconify/icons-devicon/astro';
 import awsIcon from '@iconify/icons-logos/aws';
+import golangIcon from '@iconify/icons-skill-icons/golang';
 import { T3 } from "./t3";
 import githubIcon from '@iconify/icons-mdi/github';
 import globeIcon from '@iconify/icons-flat-color-icons/globe';
@@ -173,6 +174,10 @@ export const navigation: NavigationType[] = [
                 icon: <Icon icon={astroIcon} width="24" height="24" className="rounded-full bg-slate-100 py-[2px]"/>,
                 name: "Astro.build",
             },
+            {
+                icon: <Icon icon={golangIcon} width="24" height="24" className="rounded-full bg-slate-100 py-[2px]"/>,
+                name: "Golang",
+            },
       
     
         ],
@@ -287,7 +292,7 @@ export const siteConfig = {
     name: "ZHAOMIAN ZHAO(Lois)",
     occupation: "Software Engineer",
     location: "London, UK",
-    avatar: "https://pbs.twimg.com/profile_images/1564680728419487744/PDHPS2VZ_400x400.jpg",
+    avatar: "https://pbs.twimg.com/profile_images/1696601645038112768/PfKCwuVk_400x400.jpg",
     intro: "Self-taught engineer. Writer. TEDx Speaker. Crossfitter. Entrepreneurial. Behavioral Finance Graduate."
 }
     

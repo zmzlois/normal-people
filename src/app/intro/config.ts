@@ -6,14 +6,14 @@ export const Companies: CompanyType[] = [
     location: "London, UK",
     slug: "https://projectwaitless.io/",
     title: "Founder",
-    description: "Project Waitless is a tech start up that aims to improve operation efficiency while combining entertaining experiences for remote teams.",
-    context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration using large language model and improvement in user experience.",
+    description: "Project Waitless is a tech start up that aims to improve operation efficiency for companies.",
+    context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration. We soon pivoted to develop ComCord https://comcord.vision to help companies to manage their sales and customer support in one place.",
     responsibility: [
-      "Business development and outreach.",
+      // "Business development and outreach.",
+      "Designed and implemented product frontend and database schema using Next.js v3 with server actions, TailwindCSS, tRPC and DrizzleORM",
       "Deployed and orchestrated Kafka and Redis on Upstash.",
       "Designed multi-tenancy SaaS software architecture.",
-      "Implemented web application using Next.js, TailwindCSS and PlanetScale.",
-      "Developed mobile application using React Native and Expo.",
+
     ]  
   },
   {
