@@ -11,8 +11,9 @@ export const Companies: CompanyType[] = [
     responsibility: [
       // "Business development and outreach.",
       "Designed and implemented product frontend and database schema using Next.js v3 with server actions, TailwindCSS, tRPC and DrizzleORM",
-      "Deployed and orchestrated Kafka and Redis on Upstash.",
-      "Designed multi-tenancy SaaS software architecture.",
+      "Worked with one developer to build the MVP of ComCord for YC Application. An express app as a discord bot to manage cron job for company's team standup and daily internal report",
+      "Deployed and orchestrated Kafka and Redis to enable an event driven architecture for better load balancing avoiding app crashing",
+      "Designed multi-tenancy SaaS software architecture",
 
     ]  
   },

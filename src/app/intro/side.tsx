@@ -76,8 +76,8 @@ export const navigation: NavigationType[] = [
         },
         {
             icon: <Icon icon={outlineMail} width="24" height="24" className="text-slate-50"/>,
-            name: "zhaozm.lois@gmail.com",
-            href: "mailto:zhaozm.lois@gmail.com",
+            name: "loisisar@outlook.com",
+            href: "mailto:loisisar@outlook.com",
         },
         {
             icon:  <Icon icon={phoneIcon} width="24" height="24" className="text-slate-50"/>,
