@@ -22,7 +22,7 @@ function Head() {
                     <h1 className="font-mono text-2xl font-bold sm:text-5xl text-slate-50">{config.name}</h1>
                     <h3 className="text-xl font-semibold tracking-wide sm:text-3xl text-slate-200">{config.occupation}</h3>
                     <p className="text-md font-medium tracking-wide sm:text-md text-slate-300">{config.location}</p>
-                    <p className="text-xs font-normal tracking-wide sm:text-md text-slate-300">Want to check this CV live? Click 👉🏻 <a href={"https://normal-people/intro"} className={"decoration underline decoration-cyan-300 underline-offset-4"}>here</a></p>
+                    <p className="text-xs font-normal tracking-wide sm:text-md text-slate-300">Want to check this CV live? Click 👉🏻 <a href={"https://normal-people.com/intro"} className={"decoration underline decoration-cyan-300 underline-offset-4"}>here</a></p>
                 </div>
                 <div className="">
                     {/* eslint-disable-next-line */}
