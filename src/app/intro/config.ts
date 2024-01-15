@@ -1,8 +1,24 @@
 export const Companies: CompanyType[] = [
+  {
+    name: "Daytona.io",
+    type: "DevTool Start Up",
+    time: "2023.11 - Present",
+    location: "Remote | Part time",
+    slug: "https://daytona.io/",
+    title: "Unknown",
+    description: "Daytona develops self-hostable Github Codespaces alternative for developers to code in their own infrastructure with standardised development environment.",
+    context: "In Daytona, I do not have a specific title, internally, to part of the team I am called 'community manager', while I am also responsible for product testing, quality assurance, related tooling deployment, customer facing documentation (frontend and content) and open source projects.",
+    responsibility: [
+      "Documentation: https://github.com/daytonaio/docs",
+      "Installer testing and rewrite: https://github.com/daytonaio/installer ",
+      "Tooling: https://github.com/zmzlois/Docksible",
+      "Growing and maintaining an engaging community."
+    ]
+  },
  {
     name: "Project Waitless",
     type: "Start Up",
-    time: "2022.04 - Present",
+    time: "2022.04 - 2023.11",
     location: "London, UK",
     slug: "https://projectwaitless.io/",
     title: "Founder",
@@ -101,6 +117,16 @@ export interface CompanyType {
 
 
 export const Volunteer: VolunteerType[] = [
+  {
+    name: "Reading React source code",
+    type: "Open Source",
+    time: "2023.12 - Present",
+    location: "Everywhere",
+    title: "Author | Translator",
+    description: "Reading React source code is a project that aims to provide a comprehensive understanding of React.js and how a frontend framework was designed and developed.",
+    context: "I did it for fun.",
+    responsibility: ["Writing: https://github.com/zmzlois/reading-react"]
+  },
   {
   name: "Data Science Speaker Club | QuantumBlack by Mckinsey & Company",
   type: "Non-profit",
