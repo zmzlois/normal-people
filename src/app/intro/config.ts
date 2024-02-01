@@ -3,10 +3,13 @@ export const Companies: CompanyType[] = [
     name: "Daytona.io",
     type: "DevTool Start Up",
     time: "2023.11 - Present",
-    location: "Remote | Part time",
-    slug: "https://daytona.io/",
-    title: "Unknown",
+    location: "Remote | Contract",
+    slug: "https://daytona.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
+    // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". But a general person knows everything. 
+    title: "Ambassador", // show ansible, terraform, kubernetes, docker, linux: what you know. 
     description: "Daytona develops self-hostable Github Codespaces alternative for developers to code in their own infrastructure with standardised development environment.",
+    // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
+    // be more intentional with your words. less shit. 
     context: "In Daytona, I do not have a specific title, internally, to part of the team I am called 'community manager', while I am also responsible for product testing, quality assurance, related tooling deployment, customer facing documentation (frontend and content) and open source projects.",
     responsibility: [
       "Documentation: https://github.com/daytonaio/docs",
@@ -15,7 +18,7 @@ export const Companies: CompanyType[] = [
       "Growing and maintaining an engaging community."
     ]
   },
- {
+  {
     name: "Project Waitless",
     type: "Start Up",
     time: "2022.04 - 2023.11",
@@ -31,7 +34,7 @@ export const Companies: CompanyType[] = [
       "Deployed and orchestrated Kafka and Redis to enable an event driven architecture for better load balancing avoiding app crashing",
       "Designed multi-tenancy SaaS software architecture",
 
-    ]  
+    ]
   },
   {
     name: "The Vulture Company",
@@ -61,7 +64,7 @@ export const Companies: CompanyType[] = [
       "Conducting market research, market valuation and analysis.",
       "Recruited, trained and managed new recruits.",
     ]
-  }, 
+  },
   {
     name: "HVS",
     type: "Gloabl Hospitality Consultancy",
@@ -83,14 +86,14 @@ export const Companies: CompanyType[] = [
     location: "Macau SAR, China",
     title: "Intern",
     description: "Las Vegas Sands Corp. is an American casino and resort company based in Paradise, Nevada, United States.",
-    context: "I was working in the Macau office as a part of the internship program.", 
+    context: "I was working in the Macau office as a part of the internship program.",
     responsibility: [
       "Assisted data scientists converting high value customers by Tensorflow in smart casino project.",
       "Managed, translate and proof read multiple social media platforms with 3 languages.",
       "Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management.",
       "Increased cross-department communication efficiency on workflow design and task scheduling."
     ]
-  }, 
+  },
   {
     name: "Sheraton Hotel",
     type: "Hotel",
@@ -101,16 +104,16 @@ export const Companies: CompanyType[] = [
   }
 ]
 export interface CompanyType {
- 
-    name: string;
-    type: string;
-    time: string;
-    location: string;
-    slug?: string;
-    title: string;
-    description?: string;
-    context?: string;
-    responsibility?: string[];
+
+  name: string;
+  type: string;
+  time: string;
+  location: string;
+  slug?: string;
+  title: string;
+  description?: string;
+  context?: string;
+  responsibility?: string[];
 
 }
 
@@ -128,18 +131,18 @@ export const Volunteer: VolunteerType[] = [
     responsibility: ["Writing: https://github.com/zmzlois/reading-react"]
   },
   {
-  name: "Data Science Speaker Club | QuantumBlack by Mckinsey & Company",
-  type: "Non-profit",
-  time: "2022.04 - Present",
-  location: "London, UK",
-  title: "Vice President of Public Relations",
-  description: "Data Science Speaker Club is a non-profit organisation that aims to provide a platform for data science enthusiasts to practice public speaking and share their knowledge.",
-  context: "I am responsible for the public relations of the club, including social media management, event planning and outreach.",
-  responsibility: [
-    "Handle press release and media presence.",
-    "Collaborate and liaise with guest speakers and evaluators within techonology space for fornightly events.",
-  ]
-  }, 
+    name: "Data Science Speaker Club | QuantumBlack by Mckinsey & Company",
+    type: "Non-profit",
+    time: "2022.04 - Present",
+    location: "London, UK",
+    title: "Vice President of Public Relations",
+    description: "Data Science Speaker Club is a non-profit organisation that aims to provide a platform for data science enthusiasts to practice public speaking and share their knowledge.",
+    context: "I am responsible for the public relations of the club, including social media management, event planning and outreach.",
+    responsibility: [
+      "Handle press release and media presence.",
+      "Collaborate and liaise with guest speakers and evaluators within techonology space for fornightly events.",
+    ]
+  },
   {
     name: "ByteDance Infrastructure Team",
     type: "Open Source",
@@ -152,7 +155,7 @@ export const Volunteer: VolunteerType[] = [
     ]
   },
   {
-    name: "ZenStack", 
+    name: "ZenStack",
     type: "Open Source",
     time: "2023.04 - Present",
     location: "Remote",
@@ -174,7 +177,7 @@ export const Volunteer: VolunteerType[] = [
       "Designed an occupation curriculum for disadvantaged children in rural area of China to learn about different occupations and career paths.",
       "Taught English and Mathematics to children.",
     ]
-  }, 
+  },
   {
     name: "Best Buddies International",
     type: "Charity",
@@ -222,7 +225,7 @@ export const Education: EducationType[] = [
       "Finance Society",
       "Rugby Union Women's Team"
     ]
-  }, 
+  },
   {
     name: "Macau University of Science and Technology",
     major: "BHM. Hospitality Management",
@@ -237,7 +240,7 @@ export const Education: EducationType[] = [
       "Consumer Behaviours",
       "Food and Beverage Management",
       "Cost Control",
-      
+
     ],
     activity: [
       "Outstanding Leader Award",
