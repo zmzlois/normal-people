@@ -12,6 +12,7 @@ export const Companies: CompanyType[] = [
     // be more intentional with your words. less shit. 
     context: "In Daytona, I do not have a specific title, internally, to part of the team I am called 'community manager', while I am also responsible for product testing, quality assurance, related tooling deployment, customer facing documentation (frontend and content) and open source projects.",
     responsibility: [
+      "Identify the strength and ",
       "Documentation: https://github.com/daytonaio/docs",
       "Installer testing and rewrite: https://github.com/daytonaio/installer ",
       "Tooling: https://github.com/zmzlois/Docksible",
