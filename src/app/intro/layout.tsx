@@ -1,5 +1,4 @@
 import BlogHeader from "@/components/layout/blogLayout";
-
 export default function Layout({
   children, // will be a page or nested layout
 }: {
