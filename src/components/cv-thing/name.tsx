@@ -3,7 +3,8 @@ import React from "react";
 import { siteConfig as config } from "./side";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import CanvaAnimate from "../canva-animate";
+import ChineseAnimate from "../chinese-animate";
+import EnglishAnimate from "../english-animate";
 
 function Head() {
   return (
@@ -33,7 +34,8 @@ function Head() {
         </div>
         <div className="pb-6">
           {/* eslint-disable-next-line */}
-          <CanvaAnimate />
+          {/* <ChineseAnimate /> */}
+          <EnglishAnimate />
           {/* <img
             className="w-20 h-20  rounded-full sm:w-36 sm:h-36 hover:cursor-pointer "
             src={config.avatar}
