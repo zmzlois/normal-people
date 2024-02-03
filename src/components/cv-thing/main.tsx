@@ -5,7 +5,7 @@ import Right from "../../components/cv-thing/right";
 
 function Resume() {
   return (
-    <div className="flex flex-col sm:grid sm:grid-cols-2 justify-center py-10 space-y-10  ">
+    <div className="flex flex-col sm:grid sm:grid-cols-2 justify-center  ">
       <Head />
 
       {/* <div className="flex flex-col-reverse gap-4 sm:grid sm:grid-cols-3"> */}
