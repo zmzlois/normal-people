@@ -6,17 +6,33 @@ export const Companies: CompanyType[] = [
     location: "Remote | Contract",
     slug: "https://daytona.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
     // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". But a general person knows everything. 
-    title: "Ambassador", // show ansible, terraform, kubernetes, docker, linux: what you know. 
-    description: "Daytona develops self-hostable Github Codespaces alternative for developers to code in their own infrastructure with standardised development environment.",
+    title: "Community Manager", // show ansible, terraform, kubernetes, docker, linux: what you know. 
+    description: "Self-hostable Github Codespaces alternative for enterprises.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
     // be more intentional with your words. less shit. 
-    context: "In Daytona, I do not have a specific title, internally, to part of the team I am called 'community manager', while I am also responsible for product testing, quality assurance, related tooling deployment, customer facing documentation (frontend and content) and open source projects.",
+    context: "Responsible for the frontend and content of technical documentation, including but not limited in testing, growing and managing community. ",
+    tags: ["Astro", "Alpine.js", "CSS", "Terraform", "Docker", "Virtual Machine", "Kubernetes"],
     responsibility: [
       "Identify the strength and ",
       "Documentation: https://github.com/daytonaio/docs",
       "Installer testing and rewrite: https://github.com/daytonaio/installer ",
       "Tooling: https://github.com/zmzlois/Docksible",
       "Growing and maintaining an engaging community."
+    ],
+    links: [
+      {
+        name: "Documentation",
+        url: "https://github.com/daytonaio/docs",
+        aria: "Technical documentation for Daytona.io, client facing",
+        title: "Daytona.io documentation"
+      },
+      {
+        name: "Testing",
+        url: "https://github.com/daytonaio/installer",
+        aria: "Testing shell script for user's installation and deployment",
+        title: "Daytona installer shell script"
+      },
+
     ]
   },
   {
@@ -114,8 +130,17 @@ export interface CompanyType {
   title: string;
   description?: string;
   context?: string;
+  tags?: string[];
   responsibility?: string[];
+  links?: LinkType[];
 
+}
+
+export interface LinkType {
+  name: string;
+  url?: string;
+  aria?: string;
+  title?: string;
 }
 
 
