@@ -13,11 +13,14 @@ function Right() {
   return (
     <div className="flex flex-col sm:col-span-1 py-20 sm:mr-10 sm:pr-20">
       <About />
-      <div className="space-y-8 py-20">
+      <div id="body" className="space-y-4 py-20">
         {Companies.map((item: CompanyType, index) => (
           <li className="mb-12" key={index}>
-            <div className="group relative rounded-xl bg-zinc-900 overflow-hidden px-[0.6px] pb-[1.02px] pt-[0.6px]">
-              <div className="absolute glow rotate-45 inset-0 w-[100px] h-[100px] z-0 hidden transition lg:-inset-x-6 lg:hidden lg:group-hover:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+            <div className="group relative rounded-xl bg-zinc-900 overflow-hidden px-[0.6px] pb-[1.02px] pt-[1px]">
+              <div
+                id="glow"
+                className="absolute glow rotate-45 inset-0 w-[100px] h-[100px] z-0 hidden transition lg:-inset-x-6 lg:hidden lg:group-hover:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
+              />
               <div className="z-10 px-5 relative lg:hover:ring ring-slate-500/50 rounded-xl py-6 bg-zinc-900 grid  transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:bg-zinc-800 lg:group-hover/list:opacity-50 lg:group-hover/list:bg-cyan-800">
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
                   {item.time}
@@ -31,14 +34,17 @@ function Right() {
                           {item.title} ·{" "}
                           <span className="inline-block">
                             {item.name}
-                            <DoubleRightArrow className=" lg:ml-4 lg:mb-[0.16rem] inline-block text-slate-200 h-4 w-4 group-hover:-rotate-45 group-hover:scale-125 group-hover:translate-x-2 group-hover:skew-y-2 group-hover:transform-all group-hover:transition-all group-hover:text-sky-300" />
+                            <DoubleRightArrow className=" lg:ml-4 lg:mb-[0.16rem] inline-block text-slate-200 h-4 w-4 lg:group-hover/link:-rotate-45 lg:group-hover/link:scale-125 lg:group-hover/link:translate-x-2 lg:group-hover/link:skew-y-2 lg:group-hover/link:transform-all lg:group-hover/link:transition-all lg:group-hover/link:text-sky-300" />
                           </span>
                         </span>
                       </div>
                     </div>
                   </h3>
                 </a>
-                <p className="z-10 mt-1 text-md tracking-wide text-slate-400 sm:col-span-2 sm:col-start-3 sm:col-end-8">
+                <i className="text-xs tracking-wide text-slate-400 sm:col-start-3 sm:col-end-8 ">
+                  {item.description}
+                </i>
+                <p className="z-0 mt-1 text-md tracking-wide text-slate-400 sm:col-span-2 sm:col-start-3 sm:col-end-8">
                   {item.context}
                 </p>
                 <ul className="z-10 mt-1 flex gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-8">
