@@ -62,15 +62,20 @@ export default function EnglishAnimate() {
     },
   };
 
+  const delay = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { delay: 8 } },
+  };
+
   return (
     <>
       <motion.svg
-        width="80"
-        height="80"
+        width="140"
+        height="140"
         viewBox="0 0 100 100"
         initial="hidden"
         animate="visible"
-        className=""
+        className=" -mb-24 -mr-6"
       >
         {Object.values(figmaPaths).map((path, index) => {
           return (
@@ -82,13 +87,20 @@ export default function EnglishAnimate() {
               key={index}
               custom={index}
               fill="none"
-              stroke="#cbd5e1"
+              stroke="#e2e8f0"
               strokeWidth="4"
               strokeLinecap="round"
             />
           );
         })}
       </motion.svg>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+      >
+        Zhao
+      </motion.div>
     </>
   );
 }
