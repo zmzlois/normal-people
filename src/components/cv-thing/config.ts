@@ -1,4 +1,4 @@
-export const Companies: CompanyType[] = [
+export const Companies: ContentType[] = [
   {
     name: "Daytona.io (Open Source)",
     type: "DevTool Start Up",
@@ -105,34 +105,35 @@ export const Companies: CompanyType[] = [
       "Conducting market research, market valuation and analysis.",
       "Recruited, trained and managed new recruits.",
     ],
-    tags: ["Real Estate", "Valuation", "Feasibility Research", "Bidding", "Investment Consulting", "Market Research"]
+    tags: ["Real Estate", "Merger&Acquisition", "Valuation", "Feasibility Research", "Bidding", "Investment Consulting", "Market Research"]
   },
+  // {
+  //   name: "HVS",
+  //   type: "Gloabl Hospitality Consultancy",
+  //   time: "2018.06 - 2018.12",
+  //   location: "Shenzhen, China",
+  //   title: "Research Intern",
+  //   slug: "https://www.hvs.com/",
+  //   description: "Boutique hospitality consultancy firm.",
+  //   context: "Published and co-authored 'White Paper of Rental Apartment Industry in China' and 'Overview of Rental Apartments in the US'.",
+  //   responsibility: [
+  //     "Conducted market research and analysis.",
+  //     "Analysing and translating English content including reports from Harvard Joint Center for Housing Studies, National Apartmnet Association and multiple media resrouces.",
+  //     "Gathered data of 135 rental apartment operators in China and hotels by cold-calling and desk research in 4 consulting projects, from convention hall for Shenzhen government to 5-star hotel in Shanghai.",
+  //   ]
+  // },
+  // {
+  //   name: "Page Group",
+  //   type: "Recruitment Agency",
+  //   time: "2018.04 - 2018.06",
+  //   location: "Shenzhen, China",
+  //   title: "Intern",
+  //   slug: "https://www.pagepersonnel.com.hk/",
+  //   description: "Global recruitment agency.",
+  //   context: "Assisted in the recruitment process for clients in the technology and finance sectors.",
+  // }
+  //,
   {
-    name: "HVS",
-    type: "Gloabl Hospitality Consultancy",
-    time: "2018.06 - 2018.12",
-    location: "Shenzhen, China",
-    title: "Research Intern",
-    slug: "https://www.hvs.com/",
-    description: "Boutique hospitality consultancy firm.",
-    context: "Published and co-authored 'White Paper of Rental Apartment Industry in China' and 'Overview of Rental Apartments in the US'.",
-    responsibility: [
-      "Conducted market research and analysis.",
-      "Analysing and translating English content including reports from Harvard Joint Center for Housing Studies, National Apartmnet Association and multiple media resrouces.",
-      "Gathered data of 135 rental apartment operators in China and hotels by cold-calling and desk research in 4 consulting projects, from convention hall for Shenzhen government to 5-star hotel in Shanghai.",
-    ]
-  },
-  {
-    name: "Page Group",
-    type: "Recruitment Agency",
-    time: "2018.04 - 2018.06",
-    location: "Shenzhen, China",
-    title: "Intern",
-    slug: "https://www.pagepersonnel.com.hk/",
-    description: "Global recruitment agency.",
-    context: "Assisted in the recruitment process for clients in the technology and finance sectors.",
-  }
-  , {
     name: "Macau University of Science and Technology",
     type: "University",
     time: "2014.09 - 2019.06",
@@ -142,39 +143,42 @@ export const Companies: CompanyType[] = [
     description: "Leading research institution in hospitality management in Asia.",
     tags: ["Casino Mathematics", "Microeconomics", "Advance Calculus", "Statistics", "Accounting", "Consumer Behaviours", "Food and Beverage Management", "Cost Control"],
   },
-  {
-    name: "Las Vegas Sands Corp.",
-    type: "Integrated Resort and Casion",
-    time: "2017.12 - 2018.06",
-    location: "Macau SAR, China",
-    title: "Intern",
-    description: "Las Vegas Sands Corp. is an American casino and resort company based in Paradise, Nevada, United States.",
-    context: "Assisted data scientists converting high value customers by Tensorflow in smart casino project. Managed, translate and proof read multiple social media platforms with 3 languages. Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management. Increased cross-department communication efficiency on workflow design and task scheduling.",
-    responsibility: [
-      "Assisted data scientists converting high value customers by Tensorflow in smart casino project.",
-      "Managed, translate and proof read multiple social media platforms with 3 languages.",
-      "Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management.",
-      "Increased cross-department communication efficiency on workflow design and task scheduling."
-    ]
-  },
+  // {
+  //   name: "Las Vegas Sands Corp.",
+  //   type: "Integrated Resort and Casion",
+  //   time: "2017.12 - 2018.06",
+  //   slug: "https://www.sands.com/",
+  //   location: "Macau SAR, China",
+  //   title: "Intern",
+  //   description: "Las Vegas Sands Corp. is an American casino and resort company based in Paradise, Nevada, United States.",
+  //   context: "Assisted data scientists converting high value customers by Tensorflow in smart casino project. Managed, translate and proof read multiple social media platforms with 3 languages. Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management. Increased cross-department communication efficiency on workflow design and task scheduling.",
+  //   responsibility: [
+  //     "Assisted data scientists converting high value customers by Tensorflow in smart casino project.",
+  //     "Managed, translate and proof read multiple social media platforms with 3 languages.",
+  //     "Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management.",
+  //     "Increased cross-department communication efficiency on workflow design and task scheduling."
+  //   ]
+  // },
   {
     name: "Sheraton Hotel",
     type: "Hotel",
     time: "2015.01 - 2015.06",
+    slug: "https://sheraton.marriott.com/",
     location: "Shantou, China",
     title: "Room Service Intern",
     context: "Cleaning rooms."
 
   }
 ]
-export interface CompanyType {
+export interface ContentType {
 
   name: string;
-  type: string;
-  time: string;
-  location: string;
+  image?: string;
+  type?: string;
+  time?: string;
+  location?: string;
   slug?: string;
-  title: string;
+  title?: string;
   description?: string;
   context?: string;
   tags?: string[];
@@ -190,12 +194,12 @@ export interface LinkType {
   title?: string;
 }
 
-export const Projects = [
+export const Projects: ContentType[] = [
   {
     name: "NormalPeople.js",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    image: "https://repository-images.githubusercontent.com/735431409/0a8ef239-4d29-4a69-935d-44d574b8fdef",
     slug: "https://github.com/zmzlois/NormalPeopleJs",
-    time: "2023.09",
+    // time: "2023.09",
     description: "NormalPeople.js is a backend framework built to support Bun but using interfaces similar to tRPC",
     tags: ["Bun", "Typescript"]
   },
@@ -203,7 +207,7 @@ export const Projects = [
     name: "The Random Times",
     image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
     slug: "https://randomtimes.vercel.app/",
-    time: "2023.09",
+    // time: "2023.09",
     description: "The Random Times is a news website that gathering news from multiple sources and display them in a random order.",
     tags: ["Vite", "TailwindCSS"]
   },
@@ -211,22 +215,30 @@ export const Projects = [
     name: "http-server",
     image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
     slug: "https://github.com/zmzlois/http-server",
-    time: "2023.09",
+    // time: "2023.09",
     description: "A web server with zero dependencies. Built in Golang.",
     tags: ["Golang", "HTTP"]
   },
-  {
-    name: "DDNSed",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
-    slug: "https://github.com/zmzlois/DDNSed",
-    time: "2023.09",
-    description: "A DNS server built in Rust.",
-    tags: ["Rust", "DNS"],
-  },
+  // {
+  //   name: "DDNSed",
+  //   image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+  //   slug: "https://github.com/zmzlois/DDNSed",
+  //   //  time: "2023.09",
+  //   description: "A DNS server built in Rust.",
+  //   tags: ["Rust", "DNS"],
+  // },
+  // {
+  //   name: "lmp-nvm",
+  //   image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+  //   slug: "https://github.com/kerwanp/lmp-nvm",
+  //   //  time: "2023.09",
+  //   description: "Custom configuration for Nvim using Lazy and Lua",
+  //   tags: ["Neovim", "Lua", "Lazy"],
+  // },
   {
     name: "Reading React source code",
     image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4", // placeholde
-    time: "2023.12 - Present",
+    //  time: "2023.12 - Present",
     location: "Everywhere",
     title: "Author | Translator",
     slug: "https://reading-react.vercel.app/",
@@ -237,7 +249,7 @@ export const Projects = [
     name: "Modern.js",
     image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
     slug: "https://modernjs.dev/en",
-    time: "2023.05 - Present",
+    // time: "2023.05 - Present",
     location: "Remote",
     title: "Contributor",
     description: "Modern.js is a web framework developed by ByteDance Infrastructure Team, offering a comprehensive solution of npm packages, frontend and documentation. It solves the problem of big corporates by integrating great technologies in one tech stack to empower development, decrease mental overhead for developers across thousands of apps and codebase in a global team.",
@@ -246,7 +258,7 @@ export const Projects = [
     name: "Docksible",
     image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
     slug: "https://github.com/zmzlois/Docksible",
-    time: "2024.01",
+    // time: "2024.01",
     description: "Docksible is a templating tool to help developers to test Ansible playbooks and roles in Docker container, with SSH and mimicking real world scenario.",
   },
 
