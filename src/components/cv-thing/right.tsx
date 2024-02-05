@@ -1,88 +1,22 @@
 "use client";
 import React from "react";
-import { Companies, Volunteer, Education } from "./config";
+import { Volunteer, Education } from "./config";
 
-import type { CompanyType, VolunteerType, EducationType } from "./config";
+import type { VolunteerType, EducationType } from "./config";
 import clsx from "clsx";
 import { Balancer } from "react-wrap-balancer";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+
 import { About } from "./about";
-import { DoubleRightArrow, LinkTwo } from "../assets/icon";
+
+import { Experience } from "./experience";
+import { Project } from "./project";
 function Right() {
   return (
-    <div className="flex flex-col sm:col-span-1 py-20 sm:mr-10 sm:pr-20">
+    <div className="flex flex-col sm:col-span-1 mx-5 sm:mx-0 py-4 sm:mr-10 sm:pr-20">
       <About />
       <div id="body" className="space-y-4 py-20">
-        {Companies.map((item: CompanyType, index) => (
-          <li className="mb-12" key={index}>
-            <div className="group relative rounded-xl bg-zinc-900 overflow-hidden px-[0.6px] pb-[1.02px] pt-[1px]">
-              <div
-                id="glow"
-                className="absolute glow rotate-45 inset-0 w-[100px] h-[100px] z-0 hidden transition lg:-inset-x-6 lg:hidden lg:group-hover:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
-              />
-              <div className="z-10 px-5 relative lg:hover:ring ring-slate-500/50 rounded-xl py-6 bg-zinc-900 grid  transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:bg-zinc-800 lg:group-hover/list:opacity-50 lg:group-hover/list:bg-cyan-800">
-                <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
-                  {item.time}
-                </header>
-                <a href={item.slug} className="z-10 sm:col-span-6">
-                  <h3 className="font-medium leading-snug text-slate-200">
-                    <div>
-                      <div className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-cyan-300 focus-visible:text-cyan-300 group/link text-base">
-                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-5 md:-inset-y-4 lg:block" />
-                        <span>
-                          {item.title} ·{" "}
-                          <span className="inline-block">
-                            {item.name}
-                            <DoubleRightArrow className=" lg:ml-4 lg:mb-[0.16rem] inline-block text-slate-200 h-4 w-4 lg:group-hover/link:-rotate-45 lg:group-hover/link:scale-125 lg:group-hover/link:translate-x-2 lg:group-hover/link:skew-y-2 lg:group-hover/link:transform-all lg:group-hover/link:transition-all lg:group-hover/link:text-sky-300" />
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </h3>
-                </a>
-                <i className="text-xs tracking-wide text-slate-400 sm:col-start-3 sm:col-end-8 ">
-                  {item.description}
-                </i>
-                <p className="z-0 mt-1 text-md tracking-wide text-slate-400 sm:col-span-2 sm:col-start-3 sm:col-end-8">
-                  {item.context}
-                </p>
-                <ul className="z-10 mt-1 flex gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-8">
-                  {item.links &&
-                    Object.values(item.links).map((res, index) => (
-                      <li
-                        key={index}
-                        className="text-slate-200  px-3 rounded-full py-1"
-                      >
-                        <a
-                          href={res.url}
-                          aria-label={`${res.aria ?? ""} (Open in new tab)`}
-                          title={res.title}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-sky-200 duration-300 transition-color flex items-center space-x-1"
-                        >
-                          <LinkTwo className="inline-block" />
-                          <span>{res.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-                <ul className="z-10 flex-wrap mt-1 gap-2 flex  sm:col-span-2 sm:col-start-3 sm:col-end-8">
-                  {item.tags &&
-                    item.tags.map((res, index) => (
-                      <li
-                        key={index}
-                        className="text-cyan-200 text-xs font-light tracking-wider bg-cyan-700 px-3 rounded-full py-1"
-                      >
-                        <Balancer>{res}</Balancer>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </div>
-          </li>
-        ))}
+        <Experience />
+        <Project />
         <div className="mt-4">
           <h1 className="font-mono text-lg font-bold sm:text-2xl text-sky-400">
             Open Source & Volunteering
