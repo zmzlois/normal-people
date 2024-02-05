@@ -200,23 +200,23 @@ export const Projects: ContentType[] = [
     image: "https://repository-images.githubusercontent.com/735431409/0a8ef239-4d29-4a69-935d-44d574b8fdef",
     slug: "https://github.com/zmzlois/NormalPeopleJs",
     // time: "2023.09",
-    description: "NormalPeople.js is a backend framework built to support Bun but using interfaces similar to tRPC",
+    context: "NormalPeople.js is a backend framework built to support Bun but using interfaces similar to tRPC.",
     tags: ["Bun", "Typescript"]
   },
   {
     name: "The Random Times",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
-    slug: "https://randomtimes.vercel.app/",
+    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
+    slug: "https://random-times.vercel.app/",
     // time: "2023.09",
-    description: "The Random Times is a news website that gathering news from multiple sources and display them in a random order.",
+    context: "The Random Times is a democratised news website that gathering news from multiple sources and display them in a random order.",
     tags: ["Vite", "TailwindCSS"]
   },
   {
     name: "http-server",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    image: "https://repository-images.githubusercontent.com/744997611/f5e0ed56-f5fe-4627-ab00-a549f106731e",
     slug: "https://github.com/zmzlois/http-server",
     // time: "2023.09",
-    description: "A web server with zero dependencies. Built in Golang.",
+    context: "A web server with zero dependencies. Built in Golang.",
     tags: ["Golang", "HTTP"]
   },
   // {
@@ -224,7 +224,7 @@ export const Projects: ContentType[] = [
   //   image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
   //   slug: "https://github.com/zmzlois/DDNSed",
   //   //  time: "2023.09",
-  //   description: "A DNS server built in Rust.",
+  //   context: "A DNS server built in Rust.",
   //   tags: ["Rust", "DNS"],
   // },
   // {
@@ -232,34 +232,35 @@ export const Projects: ContentType[] = [
   //   image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
   //   slug: "https://github.com/kerwanp/lmp-nvm",
   //   //  time: "2023.09",
-  //   description: "Custom configuration for Nvim using Lazy and Lua",
+  //   context: "Custom configuration for Nvim using Lazy and Lua",
   //   tags: ["Neovim", "Lua", "Lazy"],
   // },
   {
     name: "Reading React source code",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4", // placeholde
+    image: "https://repository-images.githubusercontent.com/720122724/9a5671a9-c923-4dd6-ad4d-0cc62550809f", // placeholde
     //  time: "2023.12 - Present",
     location: "Everywhere",
     title: "Author | Translator",
     slug: "https://reading-react.vercel.app/",
-    description: "A project aims to provide a comprehensive understanding the frontend framework React.js and how a frontend framework was designed and developed.",
+    context: "A project aims to provide a comprehensive understanding the frontend framework React.js and how a frontend framework was designed and developed.",
     tags: ["React", "Typescript"],
   },
   {
     name: "Modern.js",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    image: "https://avatars.githubusercontent.com/u/79988376?v=4",
     slug: "https://modernjs.dev/en",
     // time: "2023.05 - Present",
     location: "Remote",
     title: "Contributor",
-    description: "Modern.js is a web framework developed by ByteDance Infrastructure Team, offering a comprehensive solution of npm packages, frontend and documentation. It solves the problem of big corporates by integrating great technologies in one tech stack to empower development, decrease mental overhead for developers across thousands of apps and codebase in a global team.",
+    context: "Modern.js is a web framework developed by ByteDance Infrastructure Team, offering an one-for-all solution for npm packages, frontend and documentation. ",
   },
   {
     name: "Docksible",
-    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    image: "https://repository-images.githubusercontent.com/742522711/ab095e7a-fef3-44e4-909b-1096e255d118",
     slug: "https://github.com/zmzlois/Docksible",
     // time: "2024.01",
-    description: "Docksible is a templating tool to help developers to test Ansible playbooks and roles in Docker container, with SSH and mimicking real world scenario.",
+    context: "Docksible is a templating tool to help developers to test Ansible playbooks and roles in Docker container, with SSH and mimicking real world scenario.",
+    tags: ["Docker", "Ansible", "Shell script", "SSH"]
   },
 
 ]
