@@ -64,7 +64,7 @@ export const Cards = ({
                   </Balancer>
                   <ul className="z-10 sm:mt-1 mt-3 flex gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-10">
                     {item.links &&
-                      Object.values(item.links).map((res, index) => (
+                      item.links.map((res: LinkType, index: number) => (
                         <li
                           key={index}
                           className="text-slate-200  px-3 rounded-full py-1"
