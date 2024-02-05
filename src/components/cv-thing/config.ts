@@ -1,6 +1,6 @@
 export const Companies: CompanyType[] = [
   {
-    name: "Daytona.io",
+    name: "Daytona.io (Open Source)",
     type: "DevTool Start Up",
     time: "2023.11 - Present",
     location: "Remote | Contract",
@@ -10,8 +10,8 @@ export const Companies: CompanyType[] = [
     description: "Self-hostable Github Codespaces alternative for enterprises.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
     // be more intentional with your words. less shit. 
-    context: "Responsible for the frontend and content of technical documentation, including but not limited in testing, growing and managing community. ",
-    tags: ["Astro", "Alpine.js", "CSS", "Terraform", "Docker", "Virtual Machine", "Kubernetes"],
+    context: "Responsible for the frontend and content of technical documentation. Worked closely with engineers and founder to test alpha product before launch, include but not limited in JetBrains' Gateway Plugin, VS Code Extension, installer and CLI tool. Responsibility also include growing and managing community. ",
+    tags: ["Astro", "Alpine.js", "CSS", "Shell script", "Terraform", "Docker", "Google Cloud Platform", "Virtual Machine", "Kubernetes"],
     responsibility: [
       "Identify the strength and ",
       "Documentation: https://github.com/daytonaio/docs",
@@ -42,7 +42,7 @@ export const Companies: CompanyType[] = [
     location: "London, UK",
     slug: "https://projectwaitless.io/",
     title: "Founder",
-    description: "Project Waitless is a tech start up that aims to improve operation efficiency for companies.",
+    description: "Improving operation efficiency for companies.",
     context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration. We soon pivoted to develop ComCord https://comcord.vision to help companies to manage their sales and customer support in one place.",
     responsibility: [
       // "Business development and outreach.",
@@ -51,36 +51,61 @@ export const Companies: CompanyType[] = [
       "Deployed and orchestrated Kafka and Redis to enable an event driven architecture for better load balancing avoiding app crashing",
       "Designed multi-tenancy SaaS software architecture",
 
-    ]
+    ],
+    links: [
+      {
+        name: "ComCord",
+        url: "https://comcord.vision",
+        aria: "ComCord is a project management tool for early start ups working remote.",
+        title: "ComCord"
+      },
+      {
+        name: "Wait.gg",
+        url: "https://wait.gg",
+        aria: "Wait.gg was meant to built as an AI powered outreach CRM for sales and customer support.",
+        title: "Wait.gg"
+      },
+      {
+        name: "Project Waitless",
+        url: "https://projectwaitless.io",
+        aria: "Project Waitless is a start up that aims to improve operation efficiency for hospitality businesses.",
+        title: "Project Waitless"
+      }
+    ],
+    tags: ["Next.js", "TailwindCSS", "tRPC", "DrizzleORM", "Kafka", "Node.js", "Express.js"]
   },
   {
-    name: "The Vulture Company",
-    type: "Urban Planning Consultancy",
-    time: "2019.09 - 2021.12",
-    location: "Guangdong, China",
-    title: "Co-Founder",
-    description: "The Vulture Company is a boutique consultancy that provides urban planning, land surveying and design services for Chinese governments and real estate developers.",
-    context: "Project includes transforming forestry land to maximise economic output and urban renewal of old waterway to improve city landscape and living standards.",
+    name: "Henley Business School",
+    type: "MSc. Behavioural Finance",
+    time: "2020.09 - 2021.12",
+    location: "Reading, UK",
+    slug: "https://www.icmacentre.ac.uk/study/masters/msc-behavioural-finance",
+    title: "MSc. Behavioural Finance",
+    description: "Behavioural Finance is a field of finance that proposes psychology-based theories to investigate investment decisions.",
+    context: "Where I got the first taste of programming. I was part of the MSc. Behavioural Finance program at Henley Business School, University of Reading. Where I learned about the psychology of finance and investing, and how to apply it to real world problems.",
     responsibility: [
       "Responsible for project delivery and land surveying coordination.",
       "Screening and hiring of new employees.",
       "Sourced effective and efficient technology and planning methods for city gentrification and urban renewal.",
-    ]
+    ],
+    tags: ["Behavioural Finance", "Energy Finance", "Psychology for Finance and Investing", "Security, Futures and Options", "Python for Finance", "Coporate Finance and Investment Banking"]
   },
   {
     name: "Knight Frank LLP",
     type: "Real Estate Consultancy",
     time: "2018.12 - 2019.09",
     location: "Shenzhen, China",
+    slug: "https://www.knightfrank.co.uk/",
     title: "Management Trainee - Intern",
-    description: "Knight Frank LLP is a global real estate consultancy firm that provides services in residential and commercial property markets, valuation, property management, research and consultancy.",
-    context: "I was part of the management trainee program that rotated across different departments to gain a holistic understanding of the business. Clients includes TOSHIBA, Lenovo, Ebay, EPAM system, DJI and Kerry Holdings.",
+    description: "Global real estate consultancy.",
+    context: "Researched in real estate capital market valuation and analysis. Established a training scheme for new coming management trainees. Assisted, developed and responsible for clients includes TOSHIBA, Lenovo, Ebay, EPAM system, DJI and Kerry Holdings.",
     responsibility: [
       "Obtaining new clients by cold calling and networking.",
       "Assisted on key account management to increase client retainment and revenue.",
       "Conducting market research, market valuation and analysis.",
       "Recruited, trained and managed new recruits.",
-    ]
+    ],
+    tags: ["Real Estate", "Valuation", "Feasibility Research", "Bidding", "Investment Consulting", "Market Research"]
   },
   {
     name: "HVS",
@@ -88,7 +113,8 @@ export const Companies: CompanyType[] = [
     time: "2018.06 - 2018.12",
     location: "Shenzhen, China",
     title: "Research Intern",
-    description: "HVS is a global hospitality consultancy firm that provides services in valuation, feasibility, operator search, investment consulting, asset management, property tax appeal and market research.",
+    slug: "https://www.hvs.com/",
+    description: "Boutique hospitality consultancy firm.",
     context: "Published and co-authored 'White Paper of Rental Apartment Industry in China' and 'Overview of Rental Apartments in the US'.",
     responsibility: [
       "Conducted market research and analysis.",
@@ -97,13 +123,33 @@ export const Companies: CompanyType[] = [
     ]
   },
   {
+    name: "Page Group",
+    type: "Recruitment Agency",
+    time: "2018.04 - 2018.06",
+    location: "Shenzhen, China",
+    title: "Intern",
+    slug: "https://www.pagepersonnel.com.hk/",
+    description: "Global recruitment agency.",
+    context: "Assisted in the recruitment process for clients in the technology and finance sectors.",
+  }
+  , {
+    name: "Macau University of Science and Technology",
+    type: "University",
+    time: "2014.09 - 2019.06",
+    location: "Macau SAR, China",
+    title: "BHM. Hospitality Management",
+    slug: "https://www.must.edu.mo/en/",
+    description: "Leading research institution in hospitality management in Asia.",
+    tags: ["Casino Mathematics", "Microeconomics", "Advance Calculus", "Statistics", "Accounting", "Consumer Behaviours", "Food and Beverage Management", "Cost Control"],
+  },
+  {
     name: "Las Vegas Sands Corp.",
     type: "Integrated Resort and Casion",
     time: "2017.12 - 2018.06",
     location: "Macau SAR, China",
     title: "Intern",
     description: "Las Vegas Sands Corp. is an American casino and resort company based in Paradise, Nevada, United States.",
-    context: "I was working in the Macau office as a part of the internship program.",
+    context: "Assisted data scientists converting high value customers by Tensorflow in smart casino project. Managed, translate and proof read multiple social media platforms with 3 languages. Liaised with branding department, F&B department and external vendors to ensure smooth operation of media management. Increased cross-department communication efficiency on workflow design and task scheduling.",
     responsibility: [
       "Assisted data scientists converting high value customers by Tensorflow in smart casino project.",
       "Managed, translate and proof read multiple social media platforms with 3 languages.",
@@ -117,6 +163,7 @@ export const Companies: CompanyType[] = [
     time: "2015.01 - 2015.06",
     location: "Shantou, China",
     title: "Room Service Intern",
+    context: "Cleaning rooms."
 
   }
 ]
@@ -143,7 +190,67 @@ export interface LinkType {
   title?: string;
 }
 
+export const Projects = [
+  {
+    name: "NormalPeople.js",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://github.com/zmzlois/NormalPeopleJs",
+    time: "2023.09",
+    description: "NormalPeople.js is a backend framework built to support Bun but using interfaces similar to tRPC",
+    tags: ["Bun", "Typescript"]
+  },
+  {
+    name: "The Random Times",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://randomtimes.vercel.app/",
+    time: "2023.09",
+    description: "The Random Times is a news website that gathering news from multiple sources and display them in a random order.",
+    tags: ["Vite", "TailwindCSS"]
+  },
+  {
+    name: "http-server",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://github.com/zmzlois/http-server",
+    time: "2023.09",
+    description: "A web server with zero dependencies. Built in Golang.",
+    tags: ["Golang", "HTTP"]
+  },
+  {
+    name: "DDNSed",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://github.com/zmzlois/DDNSed",
+    time: "2023.09",
+    description: "A DNS server built in Rust.",
+    tags: ["Rust", "DNS"],
+  },
+  {
+    name: "Reading React source code",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4", // placeholde
+    time: "2023.12 - Present",
+    location: "Everywhere",
+    title: "Author | Translator",
+    slug: "https://reading-react.vercel.app/",
+    description: "A project aims to provide a comprehensive understanding the frontend framework React.js and how a frontend framework was designed and developed.",
+    tags: ["React", "Typescript"],
+  },
+  {
+    name: "Modern.js",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://modernjs.dev/en",
+    time: "2023.05 - Present",
+    location: "Remote",
+    title: "Contributor",
+    description: "Modern.js is a web framework developed by ByteDance Infrastructure Team, offering a comprehensive solution of npm packages, frontend and documentation. It solves the problem of big corporates by integrating great technologies in one tech stack to empower development, decrease mental overhead for developers across thousands of apps and codebase in a global team.",
+  },
+  {
+    name: "Docksible",
+    image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
+    slug: "https://github.com/zmzlois/Docksible",
+    time: "2024.01",
+    description: "Docksible is a templating tool to help developers to test Ansible playbooks and roles in Docker container, with SSH and mimicking real world scenario.",
+  },
 
+]
 
 export const Volunteer: VolunteerType[] = [
   {
