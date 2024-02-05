@@ -3,7 +3,7 @@ import { format, parseISO } from "date-fns";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Mdx } from "@components/mdx";
+import { Mdx } from "../../../components/mdx";
 import { title } from "process";
 
 type Props = {
