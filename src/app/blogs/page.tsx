@@ -10,8 +10,12 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-xl py-8">
       <div className="mb-8">
-        <h1 className=" text-center text-2xl font-black">MindStorming</h1>
-        <p className="text-md font-sm text-center">with writing</p>
+        <h1 className=" text-center text-2xl font-black text-slate-100">
+          MindStorming
+        </h1>
+        <p className="text-md font-sm text-center text-slate-200">
+          with writing
+        </p>
       </div>
       {posts.map((post, idx) => (
         <BlogCards key={idx} {...post} />
