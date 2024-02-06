@@ -35,6 +35,10 @@
         @apply font-light text-slate-200 hover:text-cyan-400 focus-visible:text-sky-400 decoration-slate-200 decoration-1 underline underline-offset-4 leading-4 hover:decoration-cyan-400 focus-visible:decoration-cyan-400 transition-all duration-300;
     }
 
+    span > a {
+      @apply text-slate-300/90 hover:text-cyan-200 tracking-wide focus-visible:text-cyan-300/70 decoration-slate-200/90 decoration-1 underline underline-offset-4 leading-4 hover:decoration-cyan-200/90 focus-visible:decoration-cyan-400 transition-all duration-300;
+    }
+
     h2 {
       @apply text-sm sm:hidden uppercase block py-4 font-black tracking-widest text-cyan-300;
     }
