@@ -17,14 +17,14 @@ import { Nav } from "./nav";
 function Head() {
   return (
     <>
-      <div className="flex flex-col lg:sticky lg:max-h-screen top-0  items-start content-center py-20 sm:col-span-1 sm:pl-20 sm:ml-10">
-        <div className="flex flex-col container justify-between mx-auto h-full px-20">
-          <div className="flex flex-col">
+      <div className="flex flex-col lg:sticky lg:max-h-screen top-0   py-20 sm:col-span-1 sm:pl-20 sm:ml-10">
+        <div className="flex flex-col container justify-between mx-auto h-full px-20 content-start md:items-start">
+          <div className="flex flex-col  ">
             <div className="text-start">
               <h1 className=" text-5xl flex font-bold tracking-tight text-slate-200 ">
                 <EnglishAnimate />
               </h1>
-              <h3 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+              <h3 className="mt-3 text-lg font-normal text-slate-200 sm:text-xl">
                 {config.occupation}
               </h3>
               {/* <p className="text-md font-medium tracking-tight sm:text-md text-slate-200">
