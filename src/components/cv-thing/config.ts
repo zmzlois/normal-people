@@ -43,7 +43,7 @@ export const Companies: ContentType[] = [
     slug: "https://projectwaitless.io/",
     title: "Founder",
     description: "Improving operation efficiency for companies.",
-    context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration. We soon pivoted to develop ComCord https://comcord.vision to help companies to manage their sales and customer support in one place.",
+    context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration. We soon pivoted to develop product to help companies to manage their sales and customer support directly in Chat apps like Discord and Slack.",
     responsibility: [
       // "Business development and outreach.",
       "Designed and implemented product frontend and database schema using Next.js v3 with server actions, TailwindCSS, tRPC and DrizzleORM",
