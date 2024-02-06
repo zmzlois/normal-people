@@ -12,7 +12,7 @@ type Content = NavigationType["content"][number];
 function Left() {
   return (
     <div>
-      <div className="flex flex-col col-span-2 gap-8 mt-8 sm:mt-0 sm:col-span-1 ">
+      <div className="flex flex-col col-span-2 gap-8 py-8 sm:mt-0 sm:col-span-1 ">
         <h1 className="flex  text-xl font-bold sm:hidden text-sky-400 sm:text-2xl">
           Miscellaneous
         </h1>
