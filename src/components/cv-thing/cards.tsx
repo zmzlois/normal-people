@@ -45,7 +45,7 @@ export const Cards = ({
                     href={item.slug}
                     className="z-10  sm:col-span-6 sm:col-start-3"
                   >
-                    <h3 className="sm:font-medium font-normal leading-snug  hover:text-cyan-300 group-hover:!text-cyan-300 group-hover/list:text-cyan-300 focus-visible:text-cyan-300  text-slate-200 text-base tracking-wide  pt-4 lg:pt-0 pb-4 lg:pb-0">
+                    <h3 className="sm:font-medium font-normal leading-snug  hover:text-cyan-300 group-hover:!text-cyan-300 group-hover/lnk:text-cyan-300 focus-visible:text-cyan-300  text-slate-200 text-base tracking-wide  pt-4 lg:pt-0 pb-4 lg:pb-0">
                       <div className="inline-flex items-baseline group/link ">
                         {/* <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-5 md:-inset-y-4 lg:block" /> */}
                         <span>
