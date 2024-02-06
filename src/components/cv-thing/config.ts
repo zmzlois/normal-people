@@ -200,7 +200,7 @@ export const Projects: ContentType[] = [
     image: "https://repository-images.githubusercontent.com/735431409/0a8ef239-4d29-4a69-935d-44d574b8fdef",
     slug: "https://github.com/zmzlois/NormalPeopleJs",
     // time: "2023.09",
-    context: "NormalPeople.js is a backend framework built to support Bun but using interfaces similar to tRPC.",
+    context: "NormalPeople.js is a backend framework built to support Bun but with user experience similar to tRPC.",
     tags: ["Bun", "Typescript"]
   },
   {
