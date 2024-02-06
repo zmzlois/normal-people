@@ -9,12 +9,13 @@ import { Balancer } from "react-wrap-balancer";
 import { About } from "./about";
 import { TopRightArrow } from "../assets/icon";
 import { Cards } from "./cards";
+import { BottomContent } from "./bottom";
 
 function Right() {
   return (
-    <div className="flex flex-col lg:col-span-1 mx-5  py-4 lg:pr-20">
+    <div className="flex flex-col lg:col-span-1  px-10  py-20 lg:pr-20">
       <About />
-      <div id="body" className="space-y-4 py-12">
+      <div id="body" className="space-y-4">
         <div className="" id="experience">
           <Cards items={Companies} title="experience" />
         </div>
@@ -27,6 +28,9 @@ function Right() {
         </a>
         <div className="py-16" id="projects">
           <Cards items={Projects} title="projects" />
+        </div>
+        <div>
+          <BottomContent />
         </div>
       </div>
     </div>
