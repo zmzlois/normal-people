@@ -6,7 +6,7 @@ export const Companies: ContentType[] = [
     location: "Remote | Contract",
     slug: "https://daytona.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
     // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". But a general person knows everything. 
-    title: "Community Manager", // show ansible, terraform, kubernetes, docker, linux: what you know. 
+    title: "Community Manager (contract)", // show ansible, terraform, kubernetes, docker, linux: what you know. 
     description: "Self-hostable Github Codespaces alternative for enterprises.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
     // be more intentional with your words. less shit. 
@@ -407,3 +407,14 @@ export interface EducationType {
   activity?: string[];
 }
 
+export const Writing = [
+  {
+    name: "How to animate any custom SVG with framer motion",
+    time: "2024",
+    slug: "https://dev.to/zmzlois/how-to-animate-any-custom-svg-with-framer-motion-3jg4",
+    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
+  },
+  {
+    name: ""
+  }
+]
