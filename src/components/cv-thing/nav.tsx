@@ -28,24 +28,18 @@ export const Nav = () => {
     };
   });
 
-  function handleClick(item: Nav) {
-    console.log("item", item);
-    setActiveLink(item.href);
-  }
-
   return (
     <nav className="nav hidden lg:block" aria-label="In-page jump links">
       <ul className="mt-16 w-max">
         {nav.map((item, index) => (
           <li key={index}>
             <a
-              href={item.href}
-              onClick={() => handleClick(item)}
+              href={`#${item.href}`}
               className="group flex items-center py-3 active"
             >
               <span
                 className={cn(
-                  "nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:bg-slate-300  motion-reduce:transition-none",
+                  "nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:bg-slate-300  group-focus-visible:bg-cyan-300 group-focus-visible:w-16 motion-reduce:transition-none",
                   {
                     "bg-cyan-300 w-16 group-hover:bg-cyan-300":
                       activeLink === item.href,
@@ -62,7 +56,7 @@ export const Nav = () => {
               </span>
               <span
                 className={cn(
-                  "nav-indicator ml-4 h-px w-8 bg-slate-600 transition-all group-hover:bg-slate-300  motion-reduce:transition-none",
+                  "nav-indicator ml-4 group-focus-visible:bg-cyan-300 group-focus-visible:w-16  h-px w-8 bg-slate-600 transition-all group-hover:bg-slate-300  motion-reduce:transition-none",
                   {
                     "bg-cyan-300 w-16 group-hover:bg-cyan-300":
                       activeLink === item.href,
