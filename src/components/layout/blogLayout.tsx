@@ -27,8 +27,8 @@ export default function BlogHeader() {
       id={"navi"}
     >
       <div>
-        <Link href={path === "/blogs" ? "/" : "/blogs"}>
-          <LeftIcon />
+        <Link href={path === "/blogs" ? "/" : "/blogs"} className=" group ">
+          <LeftIcon className="text-slate-300 hover:text-slate-100 hover:skew-x-2 hover:scale-125 hover:-translate-x-2 transition-all w-6 h-6" />
         </Link>
       </div>
       {/* Include shared UI here e.g. a header or sidebar */}
