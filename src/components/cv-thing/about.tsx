@@ -2,7 +2,7 @@ import Balancer from "react-wrap-balancer";
 
 export const About = () => {
   return (
-    <div className="sm:py-14" id="about">
+    <div id="about">
       <h2>ABOUT</h2>
       <Balancer className="text-slate-300 font-light tracking-wide leading-relaxed">
         How it all started? I had the courage to tackle a Python course offered
