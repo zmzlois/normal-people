@@ -3,9 +3,9 @@ export const Companies: ContentType[] = [
     name: "Daytona.io (Open Source)",
     type: "DevTool Start Up",
     time: "2023.11 - Present",
-    //location: "Remote | Contract",
+
     slug: "https://daytona.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
-    // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". But a general person knows everything. 
+    // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". 
     title: "Developer Relation", // show ansible, terraform, kubernetes, docker, linux: what you know. 
     description: "Self-hostable Github Codespaces alternative for enterprises.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
@@ -93,12 +93,12 @@ export const Companies: ContentType[] = [
   {
     name: "Knight Frank LLP",
     type: "Real Estate Consultancy",
-    time: "2018.12 - 2019.09",
+    time: "2018.12 - 2020.01",
     location: "Shenzhen, China",
     slug: "https://www.knightfrank.co.uk/",
     title: "Management Trainee - Intern",
     description: "Global real estate consultancy.",
-    context: "Researched in real estate capital market valuation and analysis. Established a training scheme for new coming management trainees. Assisted, developed and responsible for clients includes TOSHIBA, Lenovo, Ebay, EPAM system, DJI and Kerry Holdings.",
+    context: "Advised commercial clients and researched in real estate valuation, merger and acquisition, and offered market analysis. Directed the training and onboarding process for newly hired personnel, ensuring a smooth integration into the team. Played a pivotal role in expanding client base, securing major accounts such as TOSHIBA, Lenovo, Ebay, EPAM system, DJI, Kerry Holdings and more.",
     responsibility: [
       "Obtaining new clients by cold calling and networking.",
       "Assisted on key account management to increase client retainment and revenue.",
