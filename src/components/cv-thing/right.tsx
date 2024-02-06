@@ -35,9 +35,8 @@ function Right() {
         <div className="py-16" id="projects">
           <Cards items={Projects} title="projects" />
         </div>
-        <div>
-          <BottomContent />
-        </div>
+
+        <BottomContent />
       </div>
     </div>
   );
