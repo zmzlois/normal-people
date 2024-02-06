@@ -1,22 +1,16 @@
-
-
-import LeftIcon from "@/components/icons/left"
-import Link from "next/link"
-import BlogHeader from "@/components/layout/blogLayout"
-
+import LeftIcon from "@/components/assets/icon";
+import Link from "next/link";
+import BlogHeader from "@/components/layout/blogLayout";
 
 export default function Layout({
   children, // will be a page or nested layout
 }: {
-  children: React.ReactNode
-  }) {
-
-
-
+  children: React.ReactNode;
+}) {
   return (
     <div className=" md:px-24 px-8">
       <BlogHeader />
       {children}
     </div>
-  )
+  );
 }
