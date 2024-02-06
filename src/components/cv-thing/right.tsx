@@ -15,18 +15,18 @@ function Right() {
     <div className="flex flex-col lg:col-span-1 mx-5  py-4 lg:pr-20">
       <About />
       <div id="body" className="space-y-4 py-12">
-        <div className="">
-          <Cards title="experience" items={Companies} />
+        <div className="" id="experience">
+          <Cards items={Companies} title="experience" />
         </div>
         <a
           href="#cv"
-          className="text-sky-100 hover:text-cyan-300 hover:transition-all group px-4 py-4 "
+          className="text-sky-100 text-lg w-auto hover:text-cyan-300 hover:transition-all group sm:py-4 py-1 "
         >
           <span className="">View full resume</span>{" "}
-          <TopRightArrow className="inline-block hover:transition-all duration-250 group-hover:skew-x-2 group-hover:scale-[1.12]" />
+          <TopRightArrow className="inline-block transition-all duration-250 group-hover:skew-x-2 group-hover:-translate-y-1 group-hover:scale-[1.12]" />
         </a>
-        <div className="py-36">
-          <Cards title="projects" items={Projects} />
+        <div className="py-16" id="projects">
+          <Cards items={Projects} title="projects" />
         </div>
       </div>
     </div>
