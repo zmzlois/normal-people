@@ -42,7 +42,7 @@ export const Companies: ContentType[] = [
     location: "London, UK",
     slug: "https://projectwaitless.io/",
     title: "Founder",
-    description: "Improving operation efficiency for companies.",
+    description: "Operation efficiency for companies.",
     context: "After building products for hospitality industry to assist on inventory management, we realised there are more problems to solve in the start up landscape for sales, customer support and remote team collaboration. We soon pivoted to develop product to help companies to manage their sales and customer support directly in Chat apps like Discord and Slack.",
     responsibility: [
       // "Business development and outreach.",
@@ -96,7 +96,7 @@ export const Companies: ContentType[] = [
     time: "2018.12 - 2020.01",
     location: "Shenzhen, China",
     slug: "https://www.knightfrank.co.uk/",
-    title: "Management Trainee - Intern",
+    title: "Management Trainee",
     description: "Global real estate consultancy.",
     context: "Advised commercial clients and researched in real estate valuation, merger and acquisition, and offered market analysis. Directed the training and onboarding process for newly hired personnel, ensuring a smooth integration into the team. Played a pivotal role in expanding client base, securing major accounts such as TOSHIBA, Lenovo, Ebay, EPAM system, DJI, Kerry Holdings and more.",
     responsibility: [
@@ -170,6 +170,8 @@ export const Companies: ContentType[] = [
 
   }
 ]
+
+
 export interface ContentType {
 
   name: string;
@@ -411,10 +413,13 @@ export const Writing = [
   {
     name: "How to animate any custom SVG with framer motion",
     time: "2024",
-    slug: "https://dev.to/zmzlois/how-to-animate-any-custom-svg-with-framer-motion-3jg4",
+    slug: "/blogs/how-to-animate-any-custom-svg-with-framer-motion",
     image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
   },
   {
-    name: ""
+    name: "Bits and pieces about classes in Javascript",
+    time: "2024",
+    slug: "/blogs/bits-and-pieces-about-classes-in-javascript",
+    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
   }
 ]
