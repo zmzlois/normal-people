@@ -3,6 +3,8 @@ import type { ContentType, LinkType } from "./config";
 import { Balancer } from "react-wrap-balancer";
 import { DoubleRightArrow, LinkTwo, TopRightArrow } from "../assets/icon";
 import { cn } from "@/utils/cn";
+import { CardLink } from "./card-link";
+import { CardTitle } from "./card-title";
 export const Cards = ({
   title,
   items,
@@ -12,8 +14,10 @@ export const Cards = ({
 }) => {
   return (
     <>
-      <h2>{title.toUpperCase()}</h2>
-      <ol className="group/list">
+      <div className="top-0 sticky z-50 backdrop-blur-md bg-zinc-900/70">
+        <h2>{title.toUpperCase()}</h2>
+      </div>
+      <ol className="group/list flex flex-col space-y-16 lg:space-y-4">
         {items.map((item: any, index: number) => (
           <li className="mb-6 list-none" key={index}>
             <div>
@@ -24,14 +28,14 @@ export const Cards = ({
                 />
                 <div
                   className={cn(
-                    "z-10 lg:px-5 relative lg:hover:ring ring-cyan-950/50 rounded-xl py-6 bg-zinc-900 grid  transition-all sm:grid-cols-8   sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:bg-zinc-800 ",
+                    "z-10 lg:px-5 lg:py-4 relative lg:hover:ring ring-cyan-950/50 rounded-xl  bg-zinc-900 grid  transition-all sm:grid-cols-8   sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:bg-zinc-800 ",
                     { "md:gap-1": !item.description }
                   )}
                 >
                   {item.time && (
-                    <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                    <div className="z-10 text-xs lg:py-1 py-0 font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
                       {item.time}
-                    </header>
+                    </div>
                   )}
                   {item.image && (
                     <header className="hidden z-10 col-span-1  mr-4 sm:col-span-2 sm:row-start-2 sm:row-end-3 sm:flex ">
@@ -41,41 +45,16 @@ export const Cards = ({
                       ></img>
                     </header>
                   )}
-                  <a
-                    href={item.slug}
-                    className="z-10  sm:col-span-6 sm:col-start-3"
-                  >
-                    <h3 className="sm:font-medium font-normal leading-snug  hover:text-cyan-300 group-hover:!text-cyan-300 group-hover/lnk:text-cyan-300 focus-visible:text-cyan-300  text-slate-200 text-base tracking-wide  pt-4 lg:pt-0 pb-4 lg:pb-0">
-                      <div className="inline-flex items-baseline group/link ">
-                        {/* <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-5 md:-inset-y-4 lg:block" /> */}
-                        <span>
-                          {item.title}
-                          {item.title ? " · " : ""}
-                          <span className="inline-block">
-                            {item.name}
-                            <DoubleRightArrow
-                              className="
-    ml-2 lg:ml-4 lg:mb-[0.16rem] inline-block text-slate-200 sm:h-4 sm:w-4 h-3 w-3
-    lg:group-hover/link:-rotate-45 lg:group-hover/link:scale-125 lg:group-hover/link:translate-x-1 lg:group-hover/link:skew-y-1
-    lg:group-hover/list:transform-all lg:group-hover/list:transition-all lg:group-hover/link:text-sky-300
-    transition-all hover:-rotate-45 hover:scale-125 hover:translate-x-1 hover:skew-y-1
-    hover:transform-all hover:transition-all hover:text-sky-300 group-hover/list:text-sky-300
-  "
-                            />
-                          </span>
-                        </span>
-                      </div>
-                    </h3>
-                  </a>
+                  <CardTitle item={item} />
                   {item.description && (
-                    <Balancer className="text-sm italic tracking-wide text-slate-400 sm:col-start-3 sm:col-end-10 ">
+                    <Balancer className="text-sm italic tracking-wide text-slate-400 py-2 lg:py-0 sm:col-start-3 sm:col-end-10 ">
                       {item.description}
                     </Balancer>
                   )}
                   {item.context && (
                     <Balancer
                       className={cn(
-                        "z-0 sm:py-1   py-3 leading-normal font-light  text-md tracking-wide group-hover/list:text-slate-200 text-slate-400 sm:col-span-2 sm:col-start-3 sm:col-end-10",
+                        "z-0 sm:py-1 py-2 leading-normal font-light  text-md tracking-wide group-hover/list:text-slate-200 text-slate-300 sm:col-span-2 sm:col-start-3 sm:col-end-10",
                         { "sm:row-start-2": !item.description }
                       )}
                     >
@@ -83,28 +62,10 @@ export const Cards = ({
                     </Balancer>
                   )}
                   {item.links && (
-                    <ul className="z-10 sm:pt-1 pt-3 flex gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-10">
-                      {item.links &&
-                        item.links.map((res: LinkType, index: number) => (
-                          <li
-                            key={index}
-                            className="text-slate-200  px-3 rounded-full py-1"
-                          >
-                            <a
-                              href={res.url}
-                              aria-label={`${res.aria ?? ""} (Open in new tab)`}
-                              title={res.title}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-sky-200 duration-300 transition-color flex items-center space-x-1"
-                            >
-                              <LinkTwo className="inline-block" />
-                              <Balancer className="text-sm">
-                                {res.name}
-                              </Balancer>
-                            </a>
-                          </li>
-                        ))}
+                    <ul className="z-10 sm:pt-1 py-2 flex flex-wrap gap-1 lg:gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-10">
+                      {item.links.map((res: LinkType, index: number) => (
+                        <CardLink item={res} key={index} />
+                      ))}
                     </ul>
                   )}
                   {item.image && (
