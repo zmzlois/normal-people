@@ -37,12 +37,14 @@ const BlogLayout = ({ params }: Props) => {
 
   return (
     <article className="max-w-xl py-8 mx-auto">
-      <div className="my-4 mb-8 text-center">
-        <h1 className="my-3 text-4xl font-black">{blog.title}</h1>
+      <div className="my-4 lg:mb-8 mb-4 text-center">
+        <h1 className="md:my-3 my-1 lg:text-4xl text-2xl text-slate-200 font-black">
+          {blog.title}
+        </h1>
         <time dateTime={blog.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(blog.date), "LLLL d, yyyy")}
         </time>
-        <h3 className="my-3 font-normal text-md text-zinc-400">
+        <h3 className="lg:my-3 my-2 font-normal text-base  text-zinc-400">
           Author:{" "}
           <Link
             href="/"
@@ -59,7 +61,7 @@ const BlogLayout = ({ params }: Props) => {
             className="w-16 h-16 mx-auto rounded-full"
           />
         </Link>
-        <h3 className="mt-4 mb-2 italic font-light tracking-wide text-md text-start">
+        <h3 className="mt-4 mb-2 text-slate-300 italic font-light tracking-wide text-md text-start">
           {" "}
           {blog.description}
         </h3>
