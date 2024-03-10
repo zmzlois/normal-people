@@ -1,0 +1,46 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+:root {
+  --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+     --tw-bg-opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+     --tw-blur: blur(12px);
+
+  }
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+
+@layer base {
+    :root {
+        background-color: #030303;
+    }
+    h1 {
+        @apply text-xl text-zinc-100 font-light py-2;
+    }
+
+    h3 {
+        @apply text-base text-zinc-200 font-light tracking-[0.02rem];
+    }
+    .cloud  {
+        @apply underline-offset-4 decoration-slate-300 underline italic z-0 blur-[2px] hover:blur-none transition-all duration-300;
+    }
+    
+}
