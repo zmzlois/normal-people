@@ -1,7 +1,6 @@
 "use client";
 import { Toaster, toast } from "sonner";
 import { allBlogs } from "contentlayer/generated";
-import { Description, Mdx } from "@/components/mdx";
 
 export default function Sonner() {
   toast.message("I made you click!");
