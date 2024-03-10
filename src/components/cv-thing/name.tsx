@@ -22,7 +22,7 @@ function Head() {
           <div className="flex flex-col  ">
             <div className="text-start">
               <h1 className=" text-5xl flex font-bold tracking-tight text-slate-200 ">
-                <EnglishAnimate />
+                <EnglishAnimate size="big" />
               </h1>
               <h3 className="mt-3 text-lg font-normal text-slate-200 sm:text-xl">
                 {config.occupation}
