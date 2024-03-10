@@ -5,16 +5,15 @@ import React from "react";
 import { useStore } from "./store";
 import clsx from "clsx";
 const navigation = [
-  //{ name: "Projects", href: "/projects" },
+  { name: "Project", href: "/project" },
   { name: "Blog", href: "/blogs" },
-  { name: "Contact", href: "/contact" },
+  { name: "CV", href: "/intro" },
 ];
 
 export default function Home() {
-  const { visited } = useStore();
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen px-6 overflow-hidden bg-zinc-900 md:px-24">
-      <nav className={clsx("my-16", !visited && "animated-fade-in")}>
+      <nav className="py-6">
         <ul className="flex items-center justify-center gap-4">
           {navigation.map((item) => (
             <Link
@@ -32,11 +31,7 @@ export default function Home() {
           " w-screen   md:block bg-gradient-to-r  from-zinc-300/0 via-zinc-300/50 to-zinc-300/0"
         )}
       />
-      {/* <Particles
-        className="absolute inset-0 -z-10 animate-fade-in"
-        quantity={100}
-      /> */}
-      {/* bg-gradient-to-tr from-yellow-200 via-orange-100 to-red-200 cursor-default text-edge-outline animate-title bg-clip-text */}
+
       <h1
         className={clsx(
           "z-10 text-4xl font-extrabold tracking-tighter cursor-default duration-800 sm:text-6xl md:text-9xl  text-zinc-50 whitespace-nowrap text-edge-outline  bg-clip-text "
@@ -44,49 +39,6 @@ export default function Home() {
       >
         zmzlois
       </h1>
-
-      {/* <div
-        className={clsx(
-          "hidden w-screen md:block bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 ",
-          !visited && "animate-glow animate-fade-right h-px"
-        )}
-      /> */}
-      <div className={clsx("my-16 text-center ")}>
-        <h2 className="text-sm font-light text-zinc-300">
-          <b className="text-zinc-200">Also called Lois. </b>
-          <br /> Stumbling on building SaaS .<br className="block md:hidden" />{" "}
-          Tinker with{" "}
-          <a
-            target="_blank"
-            href="https://modernjs.dev/en"
-            className="underline duration-500 hover:text-zinc-300"
-          >
-            Bytedance Infra
-          </a>{" "}
-          and{" "}
-          <a
-            target="_blank"
-            href="https://zenstack.dev/"
-            className="underline duration-500 hover:text-zinc-300"
-          >
-            ZenStack
-          </a>{" "}
-          at night.
-          <br className="block" />
-          Occasionally detangle <span className="rotate-180">
-            businesses
-          </span>{" "}
-          in my head for fun and turn them into{" "}
-          <Link
-            target="_blank"
-            href="/blogs"
-            className="underline duration-500 hover:text-zinc-300"
-          >
-            blogs
-          </Link>
-          .
-        </h2>
-      </div>
     </div>
   );
 }
