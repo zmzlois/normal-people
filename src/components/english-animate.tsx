@@ -39,9 +39,11 @@ const engPaths = {
 const figmaPaths = {
   firstPath:
     "M26.2431 1L24 5L23 8L22 10.5L21.5 12L21 13.5L20.5 15L20 16.5L19 19L17.5 22L16 25L14 27.5L12.5 29L11 30L10 30.5H8.5L7 30L5 29L4 28L2.5 26L1 23.5L0.5 22V20V18.5L2 21.5L3.5 23L5 24L7 25L9 26L11.5 27L15.5 28L20.5 29L23.5 29.5H27H30L31.5 29L38 27L42 24.5L44.8811 21L46 18V15.5L45 14L43 12.5H42L40.5 14L39 15.5L37.5 17.5L36.5 19.5L35.5 21L35 23V24.5V26L36 27L39.5 27.5L43.5 26.5L47 24L50.5 20L52.5 17L54 14.5L55.5 12.5L54 15L53 17L52.5 18.5L51.5 20.5L50.5 23L50 24.5V26L51 26.5H52L55 25.5L69.5 15.5L70.5 14.5L71 13.5L70.5 12.5L70 12L69 11.5H67.5L65.5 12.5L64.5 14V15L65 17L65.5 18L66 19L66.8128 21L67.5 23V24L66.5 25L65.5 26L64.5 26.5L63 27H61.5L60.5 26.5L60 26L59.5 25.5L59 24.6926L58.5 23.5",
-  secondPath: "M55.5 0.5 h2.5",
+  secondPath: "M55.5 0.5 L56 0.8 h2",
 };
-export default function EnglishAnimate() {
+
+type Size = "big" | "small";
+export default function EnglishAnimate({ size }: { size: Size }) {
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: any) => {
@@ -70,8 +72,8 @@ export default function EnglishAnimate() {
   return (
     <>
       <motion.svg
-        width="140"
-        height="140"
+        width={size === "big" ? "140" : "50"}
+        height={size === "big" ? "140" : "50"}
         viewBox="0 0 100 100"
         initial="hidden"
         animate="visible"
