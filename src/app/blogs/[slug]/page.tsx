@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Mdx } from "../../../components/mdx";
 import { title } from "process";
+import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
   params: {
@@ -12,20 +13,38 @@ type Props = {
   };
 };
 
-const blog = allBlogs.find((blog) => blog.slug);
-
 export const generateStaticParams = async () =>
   allBlogs
     .filter((blog) => blog.published)
     .map((blog) => ({ slug: blog.slug }));
 
-export const generateMetadata = ({ params }: Props) => {
-  const blog = allBlogs.find((blog) => `${blog.slug}` === params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const blog = allBlogs.find((blog) => blog.slug === params.slug);
 
-  if (!blog)
-    throw new Error(`Post not found for slug (metadata): ${params.slug}`);
-  return { title: blog.title };
-};
+  const queryParams = new URLSearchParams({
+    title: blog!.title,
+    date: blog!.date,
+    author: blog!.author,
+    description: blog!.description,
+  });
+
+  return {
+    title: blog!.title,
+    description: blog!.description,
+    openGraph: {
+      images: [{ url: `/api/og?${queryParams}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [{ url: `/api/og?${queryParams}` }],
+    },
+    metadataBase: new URL("https://loiszhao.com"),
+  };
+}
 
 const BlogLayout = ({ params }: Props) => {
   const slug = params.slug;
@@ -38,17 +57,17 @@ const BlogLayout = ({ params }: Props) => {
   return (
     <article className="max-w-xl py-8 mx-auto">
       <div className="my-4 lg:mb-8 mb-4 text-center">
-        <h1 className="md:my-3 my-1 lg:text-4xl text-2xl text-slate-200 font-black">
+        <h1 className="md:my-3 my-1 lg:text-4xl text-2xl text-slate-50 font-black">
           {blog.title}
         </h1>
-        <time dateTime={blog.date} className="mb-1 text-xs text-gray-600">
+        <time dateTime={blog.date} className="mb-1 text-sm text-gray-600">
           {format(parseISO(blog.date), "LLLL d, yyyy")}
         </time>
-        <h3 className="lg:my-3 my-2 font-normal text-base  text-zinc-400">
+        <h3 className="lg:my-3 my-2 font-normal text-base  text-slate-200">
           Author:{" "}
           <Link
             href="/"
-            className="font-normal transition transform text-md text-zinc-400 hover:text-zinc-200"
+            className="font-normal transition transform text-md text-slate-200 hover:text-zinc-200"
           >
             {blog.author}
           </Link>
@@ -61,7 +80,7 @@ const BlogLayout = ({ params }: Props) => {
             className="w-16 h-16 mx-auto rounded-full"
           />
         </Link>
-        <h3 className="mt-4 mb-2 text-slate-300 italic font-light tracking-wide text-md text-start">
+        <h3 className="mt-4 mb-2 text-slate-100 italic font-light tracking-wide text-md text-start">
           {" "}
           {blog.description}
         </h3>

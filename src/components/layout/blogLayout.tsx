@@ -39,11 +39,11 @@ export default function BlogHeader() {
               Home
             </span>
           </Link>
-          <Link href={path === "/contact" ? "/blogs" : "/contact"}>
+          {/* <Link href={path === "/contact" ? "/blogs" : "/contact"}>
             <span className="text-sm font-light text-zinc-400 hover:text-zinc-200 transition transform">
               {path === "/contact" ? "Blogs" : "Contact"}
             </span>
-          </Link>
+          </Link> */}
         </nav>
       </div>
     </div>

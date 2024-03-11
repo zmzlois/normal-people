@@ -13,14 +13,14 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen px-6 overflow-hidden bg-zinc-900 md:px-24">
+    <div className="flex flex-col items-center justify-center w-screen h-screen px-6 overflow-hidden bg-[#0e0e0e] md:px-24">
       <nav className="py-6">
         <ul className="flex items-center justify-center gap-4">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="mx-3 text-sm font-light duration-500 text-zinc-300 hover:text-zinc-100"
+              className="mx-3 text-base blur-sm hover:blur-none transform-all font-light duration-500 underline underline-offset-4 decoration-slate-50 text-zinc-300 hover:text-zinc-100"
             >
               {item.name}
             </Link>

@@ -29,7 +29,7 @@ html, body {
 
 @layer base {
   :root {
-  @apply bg-zinc-900;
+  @apply bg-black;
 }
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
