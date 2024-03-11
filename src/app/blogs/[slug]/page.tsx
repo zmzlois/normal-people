@@ -41,9 +41,14 @@ export async function generateMetadata({
       url: "https://x.com/zmzlois",
     },
     openGraph: {
+      title: blog!.title,
+      description: blog!.description,
+      url: `https://loiszhao.com/blogs/${blog!.slug}`,
       images: [{ url: `/api/og?${queryParams}` }],
     },
     twitter: {
+      title: blog!.title,
+      description: blog!.description,
       card: "summary_large_image",
       images: [{ url: `/api/og?${queryParams}` }],
     },
