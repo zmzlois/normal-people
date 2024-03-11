@@ -7,7 +7,7 @@ import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "Zhao",
-  description: "It's Lois btw",
+  description: "Personal website",
   applicationName: "zmzlois",
   keywords: [
     "zmzlois",

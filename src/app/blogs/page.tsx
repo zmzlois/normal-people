@@ -3,9 +3,11 @@ import { allBlogs } from "contentlayer/generated";
 import { compareDesc, format, parseISO } from "date-fns";
 
 export default function Home() {
-  const posts = allBlogs.sort((a, b) =>
+  const allPosts = allBlogs.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
+
+  const posts = allPosts.filter((post) => post.published === true);
 
   return (
     <div className="mx-auto max-w-xl py-8">

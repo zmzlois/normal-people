@@ -4,6 +4,7 @@ import React from "react";
 // import Particles from '../components/particles'
 import { useStore } from "./store";
 import clsx from "clsx";
+
 const navigation = [
   { name: "Project", href: "/project" },
   { name: "Blog", href: "/blogs" },
