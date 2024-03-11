@@ -32,9 +32,15 @@ export async function generateMetadata({
     description: blog!.description,
   });
 
+  console.log("queryParams", queryParams);
+
   return {
     title: blog!.title,
     description: blog!.description,
+    authors: {
+      name: blog!.author,
+      url: "https://x.com/zmzlois",
+    },
     openGraph: {
       images: [{ url: `/api/og?${queryParams}` }],
     },
