@@ -26,7 +26,7 @@ export async function GET(request: Request) {
 
     return new ImageResponse(
       (
-        <div tw="bg-black h-full w-full text-white bg-cover justify-center flex flex-col  pt-10 pb-10 px-16">
+        <div tw="bg-black h-full w-full text-white justify-center flex flex-col  pt-10 pb-10 px-16">
           <Grid />
           <div tw="flex flex-col items-center gap-2 py-8 px-10">
             {" "}

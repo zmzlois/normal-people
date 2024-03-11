@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Mdx } from "../../../components/mdx";
 import { title } from "process";
 import { Metadata, ResolvingMetadata } from "next";
+import { baseUrl } from "@/utils/fetchFont";
 
 type Props = {
   params: {
@@ -32,8 +33,6 @@ export async function generateMetadata({
     description: blog!.description,
   });
 
-  console.log("queryParams", queryParams);
-
   return {
     title: blog!.title,
     description: blog!.description,
@@ -48,7 +47,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       images: [{ url: `/api/og?${queryParams}` }],
     },
-    metadataBase: new URL("https://loiszhao.com"),
+    metadataBase: new URL(baseUrl),
   };
 }
 
