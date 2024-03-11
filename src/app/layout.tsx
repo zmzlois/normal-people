@@ -1,11 +1,9 @@
 import "../styles/globals.css";
 import React from "react";
-import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Store from "./store";
 import { Metadata } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "Zhao",
@@ -37,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <Store>{children}</Store>
         <Analytics />
       </body>
