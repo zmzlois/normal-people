@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Store from "./store";
 import { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Zhao",
@@ -35,6 +36,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        {" "}
+        <meta name="darkreader-lock" />
+      </Head>
       <body className={GeistSans.className}>
         <Store>{children}</Store>
         <Analytics />

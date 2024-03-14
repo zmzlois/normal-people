@@ -10,8 +10,8 @@ export default function Sonner() {
     throw new Error(`Post not found for slug: remake-sonner`);
   }
   return (
-    <div className=" relative z-0 inset-0  group transition-colors drop-shadow-sm shadow-slate-400 rounded-none my-4 grid grid-cols-5 gap-2 h-[calc(100vh-80vh)]">
-      <div className="flex  flex-col col-span-2 z-10 items-center gap-2 py-8 px-10">
+    <div className=" relative z-0 inset-0 group transition-colors drop-shadow-sm shadow-slate-400 rounded-none my-4 md:grid md:grid-cols-5 md:flex-none flex flex-col gap-2 h-[calc(100vh-80vh)]">
+      <div className="flex  flex-col col-span-2 z-10 items-center md:gap-2 gap-4 md:py-8 py-2 md:px-10 px-0">
         <a
           href="/blogs/remake-sonner"
           rel="noopener noreferrer"
@@ -19,26 +19,26 @@ export default function Sonner() {
           target="_blank"
           className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
         >
-          <h2 className="text-zinc-200 text-2xl font-thin">
-            Remake Sonner by Emil Kowalski
+          <h2 className="text-zinc-200 md:text-2xl text-xl font-thin">
+            Remake Sonner by Emil Kowalski (TBC)
           </h2>
         </a>
-        <div className="absolute z-50 top-1/2">
+        <div className="">
           <button
             className="text-zinc-200 font-light border border-zinc-700 rounded-lg px-4 py-2 hover:text-zinc-200 hover:border-zinc-400 transition-colors"
-            onClick={() => toast("success")}
+            onClick={() => toast("I made ya click!")}
           >
             Click for a toast
           </button>
         </div>
       </div>
-      <div className="col-span-1 flex text-center items-start py-14 leading-5 text-zinc-200">
-        <p className="w-full text-start text-zinc-200 font-thin tracking-wider italic leading-snug">
+      <div className="md:col-span-1  flex text-center md:items-start items-center md:py-14 px-6 md:px-0 py-2 leading-5 text-zinc-200">
+        <p className="w-full text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
           {" "}
           {blog?.description}
         </p>
       </div>
-      <div className="col-span-1 px-4">
+      <div className="col-span-1 md:block hidden px-4">
         <img src="sonner.png" alt="sonner" className="col-span-1" />
       </div>
     </div>

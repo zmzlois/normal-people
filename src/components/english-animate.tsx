@@ -96,13 +96,15 @@ export default function EnglishAnimate({ size }: { size: Size }) {
           );
         })}
       </motion.svg>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-      >
-        Zhao
-      </motion.div>
+      {size === "big" && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          Zhao
+        </motion.div>
+      )}
     </>
   );
 }
