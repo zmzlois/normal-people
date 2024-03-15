@@ -39,7 +39,7 @@ function Right() {
           <Cards items={Projects} title="projects" />
         </div>
         <div className="py-16" id="writing">
-          <Cards items={Writing} title="writing" />
+          {Writing.length >= 0 && <Cards items={Writing} title="writing" />}
         </div>
 
         <BottomContent />

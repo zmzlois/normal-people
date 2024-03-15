@@ -197,30 +197,30 @@ export interface LinkType {
 }
 
 export const Projects: ContentType[] = [
-  {
-    name: "NormalPeople.js",
-    image: "https://repository-images.githubusercontent.com/735431409/0a8ef239-4d29-4a69-935d-44d574b8fdef",
-    slug: "https://github.com/zmzlois/NormalPeopleJs",
-    // time: "2023.09",
-    context: "NormalPeople.js is a backend framework built to support Bun but with user experience similar to tRPC.",
-    tags: ["Bun", "Typescript"]
-  },
-  {
-    name: "The Random Times",
-    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
-    slug: "https://random-times.vercel.app/",
-    // time: "2023.09",
-    context: "The Random Times is a democratised news website that gathering news from multiple sources and display them in a random order.",
-    tags: ["Vite", "TailwindCSS"]
-  },
-  {
-    name: "http-server",
-    image: "https://repository-images.githubusercontent.com/744997611/f5e0ed56-f5fe-4627-ab00-a549f106731e",
-    slug: "https://github.com/zmzlois/http-server",
-    // time: "2023.09",
-    context: "A web server with zero dependencies. Built in Golang.",
-    tags: ["Golang", "HTTP"]
-  },
+  // {
+  //   name: "NormalPeople.js",
+  //   image: "https://repository-images.githubusercontent.com/735431409/0a8ef239-4d29-4a69-935d-44d574b8fdef",
+  //   slug: "https://github.com/zmzlois/NormalPeopleJs",
+  //   // time: "2023.09",
+  //   context: "NormalPeople.js is a backend framework built to support Bun but with user experience similar to tRPC.",
+  //   tags: ["Bun", "Typescript"]
+  // },
+  // {
+  //   name: "The Random Times",
+  //   image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
+  //   slug: "https://random-times.vercel.app/",
+  //   // time: "2023.09",
+  //   context: "The Random Times is a democratised news website that gathering news from multiple sources and display them in a random order.",
+  //   tags: ["Vite", "TailwindCSS"]
+  // },
+  // {
+  //   name: "http-server",
+  //   image: "https://repository-images.githubusercontent.com/744997611/f5e0ed56-f5fe-4627-ab00-a549f106731e",
+  //   slug: "https://github.com/zmzlois/http-server",
+  //   // time: "2023.09",
+  //   context: "A web server with zero dependencies. Built in Golang.",
+  //   tags: ["Golang", "HTTP"]
+  // },
   // {
   //   name: "DDNSed",
   //   image: "https://avatars.githubusercontent.com/u/10251060?s=200&v=4",
@@ -237,6 +237,13 @@ export const Projects: ContentType[] = [
   //   context: "Custom configuration for Nvim using Lazy and Lua",
   //   tags: ["Neovim", "Lua", "Lazy"],
   // },
+  {
+    name: "LinkGoGo",
+    image: "https://repository-images.githubusercontent.com/761121589/8c6aaa06-4817-4de8-b5c2-b79e42b1f327",
+    slug: "https://github.com/zmzlois/LinkGoGo",
+    context: "Open source LinkTree alternative built in Golang.",
+    tags: ["Golang", "HTTP"]
+  },
   {
     name: "Reading React source code",
     image: "https://repository-images.githubusercontent.com/720122724/9a5671a9-c923-4dd6-ad4d-0cc62550809f", // placeholde
@@ -255,6 +262,7 @@ export const Projects: ContentType[] = [
     location: "Remote",
     title: "Contributor",
     context: "Modern.js is a web framework developed by ByteDance Infrastructure Team, offering an one-for-all solution for npm packages, frontend and documentation. ",
+    tags: ["React"],
   },
   {
     name: "Docksible",
@@ -410,16 +418,16 @@ export interface EducationType {
 }
 
 export const Writing = [
-  {
-    name: "How to animate any custom SVG with framer motion",
-    time: "2024",
-    slug: "/blogs/how-to-animate-any-custom-svg-with-framer-motion",
-    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
-  },
-  {
-    name: "Bits and pieces about classes in Javascript",
-    time: "2024",
-    slug: "/blogs/bits-and-pieces-about-classes-in-javascript",
-    image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
-  }
+  // {
+  //   name: "How to animate any custom SVG with framer motion",
+  //   time: "2024",
+  //   slug: "/blogs/how-to-animate-any-custom-svg-with-framer-motion",
+  //   image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
+  // },
+  // {
+  //   name: "Bits and pieces about classes in Javascript",
+  //   time: "2024",
+  //   slug: "/blogs/bits-and-pieces-about-classes-in-javascript",
+  //   image: "https://repository-images.githubusercontent.com/742846865/74dbdd96-ceb3-4183-8530-e08509459ced",
+  // }
 ]
