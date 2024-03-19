@@ -8,6 +8,7 @@ import EnglishAnimate from "../english-animate";
 import Balancer from "react-wrap-balancer";
 import {
   GithubIcon,
+  GlobeIcon,
   LinkedinIcon,
   MailIcon,
   TwitterIcon,
@@ -80,6 +81,13 @@ const socials = [
     href: "https://www.linkedin.com/in/loiszhao/",
     icon: (
       <LinkedinIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
+    ),
+  },
+  {
+    name: "Portfolio",
+    href: "https://loiszhao.com/intro",
+    icon: (
+      <GlobeIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
   },
   {
