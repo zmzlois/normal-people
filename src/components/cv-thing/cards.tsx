@@ -28,12 +28,12 @@ export const Cards = ({
                 />
                 <div
                   className={cn(
-                    "z-10 lg:px-5 lg:py-4 relative lg:hover:ring ring-cyan-950/50 rounded-xl  bg-zinc-900 grid  transition-all sm:grid-cols-8   sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:bg-zinc-800 ",
+                    "z-10 lg:px-5 lg:py-4 relative lg:hover:ring ring-cyan-950/50 rounded-xl  bg-zinc-900 grid  transition-all sm:grid-cols-8   sm:gap-8 lg:gap-4 md:gap-2 lg:hover:!opacity-100 lg:hover:bg-zinc-800 ",
                     { "md:gap-1": !item.description }
                   )}
                 >
                   {item.time && (
-                    <div className="z-10 text-xs lg:py-1 py-0 font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                    <div className="z-10 text-xs md:py-1 py-0 font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
                       {item.time}
                     </div>
                   )}
@@ -47,7 +47,7 @@ export const Cards = ({
                   )}
                   <CardTitle item={item} />
                   {item.description && (
-                    <Balancer className="text-sm italic tracking-wide text-slate-400 py-2 lg:py-0 sm:col-start-3 sm:col-end-10 ">
+                    <Balancer className="text-sm italic tracking-wide text-slate-400 py-2 md:py-0 lg:py-0 sm:col-start-3 sm:col-end-10 ">
                       {item.description}
                     </Balancer>
                   )}
@@ -62,7 +62,7 @@ export const Cards = ({
                     </Balancer>
                   )}
                   {item.links && (
-                    <ul className="z-10 sm:pt-1 py-2 flex flex-wrap gap-1 lg:gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-10">
+                    <ul className="z-10 sm:pt-1 underline underline-offset-4 decoration-cyan-400/60 lg:no-underline py-2 flex flex-wrap gap-1 lg:gap-2 text-sm tracking-wide text-slate-500 sm:col-span-2 sm:col-start-3 sm:col-end-10">
                       {item.links.map((res: LinkType, index: number) => (
                         <CardLink item={res} key={index} />
                       ))}
