@@ -1,62 +1,50 @@
 "use client";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 export const Background = () => {
-  const v0 = useRef<HTMLVideoElement>(null);
-  const v2 = useRef<HTMLVideoElement>(null);
-  const m0 = useRef<HTMLImageElement>(null);
+  const v0 = useRef<HTMLVideoElement>();
+  const v2 = useRef<HTMLVideoElement>();
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    v0.current && v0.current.pause();
+    v2.current && v2.current.pause();
 
-  let width = 0;
-  let height = 0;
-  let scrollY = 0;
+    const handleScroll = () => {
+      console.log("handling scroll");
+      setScrollY(window.scrollY);
+      console.log("scrollY", scrollY);
+      console.log("v0.current", v0.current && v0.current.scrollTop);
 
-  if (typeof window !== "undefined") {
-    width = window.innerWidth;
-    height = window.innerHeight;
+      v0.current && v0.current.pause();
+      v2.current && v2.current.pause();
+    };
 
-    useEffect(() => {
-      const handleScroll = () => {
-        v0.current && v0.current.pause();
-        v2.current && v2.current.pause();
-      };
+    window.addEventListener("scroll", handleScroll);
 
-      window.addEventListener("scroll", handleScroll);
+    console.log("window.scrollY", scrollY);
+    const interval = setInterval(function () {
+      v0.current && (v0.current.currentTime = window.scrollY / 400 + 5000);
+      v2.current && (v2.current.currentTime = window.scrollY / 400 + 5000);
+    }, 100);
 
-      const interval = setInterval(function () {
-        scrollY = window.scrollY;
-        v0.current && (v0.current.currentTime = window.scrollY / 400 + 10000);
-        v2.current && (v2.current.currentTime = window.scrollY / 400 + 10000);
-      }, 100);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearInterval(interval);
+    };
+  }, [v0, v2]);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        clearInterval(interval);
-      };
-    }, []);
-  }
   return (
     <div className="relative items-center ">
-      <Image
-        src="/glass-background.png"
-        className={cn(
-          "z-50 w-screen md:h-screen h-auto inset-0",
-          scrollY > 0 ? "hidden" : "fixed"
-        )}
-        ref={m0}
-        width={width}
-        height={height}
-        alt="glass background"
-      />
       <video
         muted
-        ref={v0}
         id="v0"
+        ref={v0}
         preload="preload"
         className="w-screen fixed z-20 opacity-80 -translate-y-8 md:translate-y-0 inset-0 h-screen blur-2xl"
       >
         <source
-          src="https://utfs.io/f/f00f010b-3d1a-48be-afd3-ff18d7361b66-q0w3cs.mp4"
+          src="https://utfs.io/f/f610a361-7ef1-45e8-844d-e0c693f3a9de-wj5bq7.mp4"
           type="video/mp4"
         />
       </video>
@@ -69,7 +57,7 @@ export const Background = () => {
       >
         <source
           className="rounded-2xl"
-          src="https://utfs.io/f/f00f010b-3d1a-48be-afd3-ff18d7361b66-q0w3cs.mp4"
+          src="https://utfs.io/f/f610a361-7ef1-45e8-844d-e0c693f3a9de-wj5bq7.mp4"
           type="video/mp4"
         />
       </video>

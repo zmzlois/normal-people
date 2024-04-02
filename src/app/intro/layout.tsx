@@ -3,6 +3,7 @@ import "../../styles/cv.css";
 import type { Metadata } from "next";
 const date = new Date();
 export const metadata: Metadata = {
+  metadataBase: new URL("https://loiszhao.com"),
   title: "Lois Zhao - Portfolio",
   description: `Updated on ${date}`,
   openGraph: {

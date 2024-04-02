@@ -2,7 +2,6 @@ import React from "react";
 
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
-import Head from "next/head";
 import { Metadata } from "next";
 
 function layout({
