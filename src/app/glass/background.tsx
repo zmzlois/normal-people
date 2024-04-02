@@ -7,34 +7,41 @@ export const Background = () => {
   const v2 = useRef<HTMLVideoElement>(null);
   const m0 = useRef<HTMLImageElement>(null);
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+  let width = 0;
+  let height = 0;
+  let scrollY = 0;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      v0.current && v0.current.pause();
-      v2.current && v2.current.pause();
-    };
+  if (typeof window !== "undefined") {
+    width = window.innerWidth;
+    height = window.innerHeight;
 
-    window.addEventListener("scroll", handleScroll);
+    useEffect(() => {
+      const handleScroll = () => {
+        v0.current && v0.current.pause();
+        v2.current && v2.current.pause();
+      };
 
-    const interval = setInterval(function () {
-      v0.current && (v0.current.currentTime = window.scrollY / 400 + 10000);
-      v2.current && (v2.current.currentTime = window.scrollY / 400 + 10000);
-    }, 100);
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearInterval(interval);
-    };
-  }, []);
+      const interval = setInterval(function () {
+        scrollY = window.scrollY;
+        v0.current && (v0.current.currentTime = window.scrollY / 400 + 10000);
+        v2.current && (v2.current.currentTime = window.scrollY / 400 + 10000);
+      }, 100);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        clearInterval(interval);
+      };
+    }, []);
+  }
   return (
     <div className="relative items-center ">
       <Image
         src="/glass-background.png"
         className={cn(
           "z-50 w-screen md:h-screen h-auto inset-0",
-          window.scrollY >= 0 ? "hidden" : "fixed"
+          scrollY > 0 ? "hidden" : "fixed"
         )}
         ref={m0}
         width={width}
