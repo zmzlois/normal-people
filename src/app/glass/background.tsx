@@ -32,7 +32,7 @@ export const Background = () => {
         className="w-screen fixed z-20 opacity-80 -translate-y-8 md:translate-y-0 inset-0 h-screen blur-2xl"
       >
         <source
-          src="https://utfs.io/f/f610a361-7ef1-45e8-844d-e0c693f3a9de-wj5bq7.mp4"
+          src="https://utfs.io/f/905520c7-1079-4733-a9f5-a5d543c7750d-breaaf.mp4"
           type="video/mp4"
         />
       </video>
@@ -44,7 +44,7 @@ export const Background = () => {
       >
         <source
           className="rounded-2xl"
-          src="https://utfs.io/f/f610a361-7ef1-45e8-844d-e0c693f3a9de-wj5bq7.mp4"
+          src="https://utfs.io/f/905520c7-1079-4733-a9f5-a5d543c7750d-breaaf.mp4"
           type="video/mp4"
         />
       </video>
