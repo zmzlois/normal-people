@@ -9,7 +9,8 @@ export const Audio = () => {
   if (typeof document === "undefined") return null;
   const a0 = document.getElementById("audio") as HTMLAudioElement;
 
-  if (!a0) null;
+  if (!a0) {
+  }
   function onClick() {
     setIsPlaying(!isPlaying);
 

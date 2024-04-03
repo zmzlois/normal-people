@@ -14,26 +14,26 @@
 @property --rotateX {
     syntax: '<angle>';
     inherits: true;
-    initial-value: 0deg;
+    initial-value: 8deg; /* 8deg */
 }
 
 @property --rotateY {
     syntax: '<angle>';
     inherits: true;
-    initial-value: 0deg;
+    initial-value: -18deg; /* 18deg */
 
 }
 
 @property --translateX {
     syntax: '<length>';
     inherits: true;
-    initial-value: 0px;
+    initial-value: -50px; /* 50px */
 }
 
 @property --translateY {
     syntax: '<length>';
     inherits: true;
-    initial-value: 0px;
+    initial-value: -50px; /* 50px */
 }
 
 
@@ -42,8 +42,12 @@
     box-shadow: 0 20px 40px 1px rgba(0,0,0,.12), inset 0 -10px 20px -5px rgba(221, 226, 226, 0.3), 0 150px 100px -80px rgba(0,0,0,.4), inset 0 1px 4px hsla(0,0%,100%,.6), inset 0 -1px 1px 1px rgba(0,0,0,.2)
 }
 
-.glass-mainframe {
-    transform: translateX(var(--translateX)) translateY(var(--translateY)) translateZ(100px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+.glass-mainframe { 
+    position: fixed;
+    width: 50vw;
+    z-index: 50;
+    background-color: rgb(228 228 231 / 0.1);
+    transform: translateX(var(--translateX)) translateY(var(--translateY)) translateZ(100px) rotateX(var(--rotateX)) scale(100) rotateY(var(--rotateY));
 }
 
 .glass-layer {
