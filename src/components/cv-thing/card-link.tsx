@@ -1,6 +1,6 @@
 import type { LinkType } from "./config";
 import { Balancer } from "react-wrap-balancer";
-import { LinkTwo } from "../assets/icon";
+import { LinkTwo } from "../assets/icons";
 export const CardLink = ({ item }: { item: LinkType }) => {
   return (
     <>

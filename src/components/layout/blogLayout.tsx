@@ -1,7 +1,7 @@
 "use client";
 
 import React, { PropsWithRef } from "react";
-import LeftIcon from "@/components/assets/icon";
+import LeftIcon from "@/components/assets/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import cn from "classnames";

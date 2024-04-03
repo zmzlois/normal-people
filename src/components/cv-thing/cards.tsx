@@ -1,7 +1,7 @@
 "use client";
 import type { ContentType, LinkType } from "./config";
 import { Balancer } from "react-wrap-balancer";
-import { DoubleRightArrow, LinkTwo, TopRightArrow } from "../assets/icon";
+import { DoubleRightArrow, LinkTwo, TopRightArrow } from "../assets/icons";
 import { cn } from "@/utils/cn";
 import { CardLink } from "./card-link";
 import { CardTitle } from "./card-title";

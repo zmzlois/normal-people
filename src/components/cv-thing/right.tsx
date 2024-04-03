@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { Balancer } from "react-wrap-balancer";
 
 import { About } from "./about";
-import { TopRightArrow } from "../assets/icon";
+import { TopRightArrow } from "../assets/icons";
 import { Cards } from "./cards";
 import { BottomContent } from "./bottom";
 import Link from "next/link";

@@ -12,7 +12,7 @@ import {
   LinkedinIcon,
   MailIcon,
   TwitterIcon,
-} from "../assets/icon";
+} from "../assets/icons";
 import { Nav } from "./nav";
 
 function Head() {

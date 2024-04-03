@@ -1,4 +1,4 @@
-import LeftIcon from "@/components/assets/icon";
+import LeftIcon from "@/components/assets/icons";
 import Link from "next/link";
 import BlogHeader from "@/components/layout/blogLayout";
 

@@ -1,5 +1,5 @@
 import Balancer from "react-wrap-balancer";
-import { DoubleRightArrow } from "../assets/icon";
+import { DoubleRightArrow } from "../assets/icons";
 
 export const CardTitle = ({ item }: { item: any }) => {
   return (
