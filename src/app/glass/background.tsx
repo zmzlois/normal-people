@@ -43,6 +43,7 @@ export const Background = () => {
       <video
         id="v2"
         preload="preload"
+        poster="/glass-background.png"
         className=" md:w-screen md:object-scale-down md:scale-100 scale-150 rounded-2xl inset-0 translate-y-[4vh] h-screen md:h-[calc(100vh-10vh)] fixed z-30"
       >
         <source
