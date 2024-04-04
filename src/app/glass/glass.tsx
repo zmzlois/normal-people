@@ -31,8 +31,6 @@ export const Glass = () => {
       // calculate the blur effect
       layerBlur = x * i * 0.1;
 
-      console.log("layerBlur", layerBlur);
-
       if (i < 4) blurString = x < 0 ? "1px" : `${layerBlur * 0.04}px`;
       if (i >= 4) blurString = x < 0 ? `${-layerBlur * 0.01}px` : "1px";
 
