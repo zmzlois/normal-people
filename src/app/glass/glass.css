@@ -14,7 +14,7 @@
 @property --rotateX {
     syntax: '<angle>';
     inherits: true;
-    initial-value: 8deg; /* 8deg */
+    initial-value: 8deg; /* -8deg */
 }
 
 @property --rotateY {
@@ -39,7 +39,7 @@
 
 
 .glass-box-shadow {
-    box-shadow: 0 20px 40px 1px rgba(0,0,0,.12), inset 0 -10px 20px -5px rgba(221, 226, 226, 0.3), 0 150px 100px -80px rgba(0,0,0,.4), inset 0 1px 4px hsla(0,0%,100%,.6), inset 0 -1px 1px 1px rgba(0,0,0,.2)
+    box-shadow: 0 20px 40px 1px rgba(0,0,0,.12), inset 0 -10px 20px -5px rgba(221, 226, 226, 0.3), 0 150px 100px -80px rgba(0,0,0,.4), inset 0 1px 4px hsla(0,0%,100%,.06), inset 0 -1px 1px 1px rgba(0,0,0,.2)
 }
 
 .glass-mainframe { 
@@ -50,8 +50,11 @@
     transform: translateX(var(--translateX)) translateY(var(--translateY)) translateZ(100px) rotateX(var(--rotateX)) scale(100) rotateY(var(--rotateY));
 }
 
+
+
 .glass-layer {
-    --off-set: 50%;
+    --offset: 50%;
+    backdrop-filter: blur(var(--blur));
     -webkit-mask-image: linear-gradient(to right,transparent calc(var(--x) - var(--offset)),#000 calc(var(--x) - var(--offset) / 2),#000 calc(var(--x) + var(--offset) / 2),transparent calc(var(--x) + var(--offset))),linear-gradient(to bottom,transparent 40px,#000 44px,#000 calc(100% - 44px),transparent calc(100% - 40px)),linear-gradient(to right,transparent 40px,#000 44px,#000 calc(100% - 44px),transparent calc(100% - 40px));
     -webkit-backdrop-filter: blur(var(--blur));
     -webkit-mask-composite: destination-in;

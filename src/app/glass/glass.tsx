@@ -2,54 +2,48 @@
 import { useRef, useEffect } from "react";
 import "./glass.css";
 import { useMousePosition } from "@/utils/mouse";
-import { motion } from "framer-motion";
+import cn from "classnames";
+import { useFollowPointer } from "./use-follow-pointer";
 
-const layers = 8;
+const layers = 9;
+let layerBlur = 1;
+let blurString = "11.11px";
+let translateX = 0;
+let translateY = 0;
+let rotateX = 0;
+let rotateY = 0;
+
 export const Glass = () => {
-  const { x, y } = useMousePosition();
-
   const l1 = useRef<HTMLSpanElement | null>(null);
-  const mainRef = useRef<HTMLDivElement | null>(null);
 
-  const innerWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-  const innerHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+  const mainRef = useRef<HTMLDivElement | null>(null);
+  const { x, y } = useFollowPointer(mainRef);
 
   useEffect(() => {
-    console.log(
-      "x",
-      x,
-      "y",
-      y,
-      "innerWidth",
-      innerWidth,
-      "innerHeight",
-      innerHeight
-    );
+    for (let i = 1; i < layers; i++) {
+      const layer = document.getElementById(`layer-${i}`) as HTMLSpanElement;
 
-    let translateX = 0;
-    let translateY = 0;
-    let rotateX = 0;
-    let rotateY = 0;
+      if (!layer) void 0;
 
-    if (x < innerWidth / 2) {
-      translateX = (x * 50) / (innerWidth / 2) - 50;
-      // rotateX = (8 / (innerWidth / 2)) * x + 8;
+      // calculate the number of layers to give it depth
+      const index = i * 11.11;
+
+      // calculate the blur effect
+      layerBlur = x * i;
+
+      console.log("layerBlur", layerBlur);
+
+      if (i < 4) blurString = x < 0 ? "1px" : `${layerBlur * 0.04}px`;
+      if (i >= 4) blurString = x < 0 ? `${-layerBlur * 0.01}px` : "1px";
+
+      layer.style.setProperty("--blur", blurString);
+      layer.style.setProperty("--x", `${index}%`);
     }
 
-    if (x > innerWidth / 2) {
-      translateX = (50 / (innerWidth / 2)) * x + (50 / (innerWidth / 2) - 50);
-      // rotateX = (8 / innerWidth) * x - 8;
-    }
-
-    if (y < innerHeight / 2) {
-      translateY = (y * 50) / (innerHeight / 2) - 50;
-      // rotateY = (18 / (innerHeight / 2)) * y - 18;
-    }
-
-    if (y > innerHeight / 2) {
-      translateY = (50 / (innerHeight / 2)) * y + (50 / (innerHeight / 2) - 50);
-      //rotateY = (18 / innerHeight) * y + 18;
-    }
+    translateX = x * 0.11;
+    translateY = y * 0.11;
+    rotateX = y * -0.02;
+    rotateY = x * 0.06;
 
     if (mainRef.current) {
       mainRef.current.style.setProperty("--translateX", `${translateX}px`);
@@ -61,16 +55,21 @@ export const Glass = () => {
 
   return (
     <>
-      <motion.div
+      <div
+        id="glass"
         ref={mainRef}
-        transition={{ duration: 0.3 }}
-        className="fixed w-[60vw] [transform:_translateX(var(--translateX))_translateY(var(--translateY))_translateZ(100px)_scale(1)_rotateX(var(--rotateX))_rotateY(var(--rotateY))] [rotateY(var(--rotateY))]  z-50 border-zinc-200 aspect-[2/1] max-w-[80vw] max-h-[60vw] inset-0 m-auto rounded-lg bg-zinc-200/10 glass-box-shadow "
+        className="fixed w-[60vw] [transform:_translateX(var(--translateX))_translateY(var(--translateY))_translateZ(100px)_scale(1)_rotateX(var(--rotateX))_rotateY(var(--rotateY))]   z-50 border-zinc-200 aspect-[2/1] max-w-[80vw] max-h-[60vw] skew-x-[--skewX] skew-y-[--skewY] inset-0 m-auto rounded-lg bg-zinc-200/10 glass-box-shadow duration-500 ease-out transition-transform"
       >
-        <span
-          ref={l1}
-          className="glass-layer aboslute block z-[60] inset-[-40px] backdrop-[--blur]"
-        ></span>
-      </motion.div>
+        {[...Array(layers)].map((_, i) => (
+          <span
+            key={i}
+            id={`layer-${i}`}
+            className={
+              "absolute glass-layer block backdrop-blur-[--blur] z-60 [var(--x)] inset-[-40px] [var(--blur)]"
+            }
+          ></span>
+        ))}
+      </div>
     </>
   );
 };
