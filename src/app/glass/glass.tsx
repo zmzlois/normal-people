@@ -29,7 +29,7 @@ export const Glass = () => {
       const index = i * 11.11;
 
       // calculate the blur effect
-      layerBlur = x * i;
+      layerBlur = x * i * 0.1;
 
       console.log("layerBlur", layerBlur);
 
@@ -43,7 +43,7 @@ export const Glass = () => {
     translateX = x * 0.11;
     translateY = y * 0.11;
     rotateX = y * -0.02;
-    rotateY = x * 0.06;
+    rotateY = x * 0.04;
 
     if (mainRef.current) {
       mainRef.current.style.setProperty("--translateX", `${translateX}px`);

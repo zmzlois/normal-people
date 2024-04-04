@@ -419,6 +419,7 @@ export const siteConfig = {
   name: "Lois Zhao",
   occupation: "Software Engineer",
   location: "London, UK",
+  baseURL: "https://loiszhao.com",
   avatar:
     "https://pbs.twimg.com/profile_images/1751005853900005376/nGX46ucY_400x400.png",
   intro:
