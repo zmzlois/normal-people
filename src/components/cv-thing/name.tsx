@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { siteConfig as config } from "./side";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ChineseAnimate from "../chinese-animate";
@@ -26,7 +25,7 @@ function Head() {
                 <EnglishAnimate size="big" />
               </h1>
               <h3 className="mt-3 text-lg font-normal text-slate-200 sm:text-xl">
-                {config.occupation}
+                Software Engineer
               </h3>
               {/* <p className="text-md font-medium tracking-tight sm:text-md text-slate-200">
                 {config.location}
@@ -43,9 +42,8 @@ function Head() {
           </div>
           <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
             {socials.map((item) => (
-              <li className="ml-1 mt-8 flex items-center">
+              <li className="ml-1 mt-8 flex items-center" key={item.name}>
                 <a
-                  key={item.name}
                   href={item.href}
                   aria-label={item.aria}
                   title={item.name}
