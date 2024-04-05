@@ -35,7 +35,7 @@ export default function Home() {
 
         <h1
           className={cn(
-            "z-10 text-4xl font-extrabold tracking-tighter blur-none transform-all duration-500  text-center cursor-default duration-800 sm:text-6xl md:text-9xl  text-zinc-50 whitespace-nowrap text-edge-outline  bg-clip-text ",
+            "z-10 text-4xl font-extrabold tracking-tighter blur-none transform-all duration-500  text-center cursor-default duration-800 sm:text-6xl md:text-9xl  text-zinc-50  ",
             blur ? "blur-sm duration-500" : "blur-none"
           )}
         >

@@ -13,7 +13,7 @@ let translateY = 0;
 let rotateX = 0;
 let rotateY = 0;
 
-export const Glass = () => {
+export const Glass = ({ width }: { width: string }) => {
   const l1 = useRef<HTMLSpanElement | null>(null);
 
   const mainRef = useRef<HTMLDivElement | null>(null);
@@ -56,7 +56,10 @@ export const Glass = () => {
       <div
         id="glass"
         ref={mainRef}
-        className="fixed w-[60vw] [transform:_translateX(var(--translateX))_translateY(var(--translateY))_translateZ(100px)_scale(1)_rotateX(var(--rotateX))_rotateY(var(--rotateY))]   z-50 border-zinc-200 aspect-[2/1] max-w-[80vw] max-h-[60vw] skew-x-[--skewX] skew-y-[--skewY] inset-0 m-auto rounded-lg bg-zinc-200/10 glass-box-shadow duration-500 ease-out transition-transform"
+        className={cn(
+          "fixed  [transform:_translateX(var(--translateX))_translateY(var(--translateY))_translateZ(100px)_scale(1)_rotateX(var(--rotateX))_rotateY(var(--rotateY))]   z-50 border-zinc-200 aspect-[2/1] max-w-[80vw] max-h-[60vw] skew-x-[--skewX] skew-y-[--skewY] inset-0 m-auto rounded-lg bg-zinc-200/10 glass-box-shadow duration-500 ease-out transition-transform",
+          `${width}`
+        )}
       >
         {[...Array(layers)].map((_, i) => (
           <span

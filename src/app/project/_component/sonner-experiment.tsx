@@ -1,6 +1,7 @@
 "use client";
 import { Toaster, toast } from "sonner";
 import { allBlogs } from "contentlayer/generated";
+import { ProjectCard } from "./card";
 
 export default function Sonner() {
   toast.message("I made you click!");
@@ -10,7 +11,7 @@ export default function Sonner() {
     throw new Error(`Post not found for slug: remake-sonner`);
   }
   return (
-    <div className=" relative z-0 inset-0 group transition-colors drop-shadow-sm shadow-slate-400 rounded-none my-4 md:grid md:grid-cols-5 md:flex-none flex flex-col gap-2 h-[calc(100vh-80vh)]">
+    <ProjectCard>
       <div className="flex  flex-col col-span-2 z-10 items-center md:gap-2 gap-4 md:py-8 py-2 md:px-10 px-0">
         <a
           href="/blogs/remake-sonner"
@@ -41,6 +42,6 @@ export default function Sonner() {
       <div className="col-span-1 md:block hidden px-4">
         <img src="sonner.png" alt="sonner" className="col-span-1" />
       </div>
-    </div>
+    </ProjectCard>
   );
 }

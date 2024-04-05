@@ -36,7 +36,7 @@ export default function GlassPage() {
   return (
     <div className="w-screen h-[14000px] block">
       <Background />
-      <Glass />
+      <Glass width="w-[60vw]" />
       <Audio />
     </div>
   );
