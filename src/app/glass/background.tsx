@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 export const Background = () => {
   useEffect(() => {
-    // const v0 = document.getElementById("v0") as HTMLVideoElement;
     let speed = 500;
 
     let paused = false;
@@ -18,14 +17,7 @@ export const Background = () => {
       container.style.height = Math.floor(v2.duration) * speed + "px";
     });
 
-    // v0.pause();
     v2.pause();
-
-    // const interval = setInterval(function () {
-    //  v0.currentTime = window.scrollY / 500;
-    //   v2.currentTime = window.scrollY / 500;
-    //   console.log("currentTime", v2.currentTime);
-    // }, 40);
 
     function animate() {
       if (paused) return;
@@ -42,17 +34,6 @@ export const Background = () => {
 
   return (
     <div id="container" className="relative items-center">
-      {/* <video
-        muted
-        id="v0"
-        preload="auto"
-        className="md:w-screen w-auto h-screen scale-[x_2] md:scale-100 fixed z-20 opacity-80 translate-y-20 md:translate-y-0 inset-0 md:h-screen blur-2xl"
-      >
-        <source
-          src="https://d3v5naxe3z2qca.cloudfront.net/forest-vid-v3.mp4"
-          type="video/mp4"
-        />
-      </video> */}
       <video
         id="v2"
         preload="auto"
