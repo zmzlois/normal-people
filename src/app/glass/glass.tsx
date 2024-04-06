@@ -2,7 +2,7 @@
 import { useRef, useEffect } from "react";
 import "./glass.css";
 import { useMousePosition } from "@/utils/mouse";
-import cn from "classnames";
+import { cn } from "@/utils/cn";
 import { useFollowPointer } from "./use-follow-pointer";
 
 const layers = 9;
