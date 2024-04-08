@@ -28,7 +28,10 @@ export const NpmForMonorepo = () => {
             Zustand
           </a>{" "}
           as session storage to store the selected package manager, flag and
-          labels for custom installation commands.
+          labels for custom installation commands. It changes every npm
+          packages' installation commands from <code>npm install package</code>{" "}
+          to <code>pnpm add package --filter web</code> to help with monorepo's
+          package based installation.{" "}
         </p>
       </div>
       <Image

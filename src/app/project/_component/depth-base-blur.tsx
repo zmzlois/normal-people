@@ -29,7 +29,26 @@ export const DepthBaseBlur = () => {
           {" "}
           An experiment to create a frosted glass effect using CSS properties,
           backdrop-filter, mask and blur filter with video playback control on
-          scroll.
+          scroll. The glass would transform and rotate on X axis and Y axis
+          based on mouse position. Same as the 8 layers of masks -- it changes
+          the linear gradient transparency based on mouse position. Video is
+          hosted on Object Storage via{" "}
+          <a
+            href="https://aws.amazon.com/s3/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            AWS S3
+          </a>{" "}
+          and served via AWS' global CDN{" "}
+          <a
+            href="https://aws.amazon.com/cloudfront/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Cloudfront
+          </a>
+          .{" "}
         </p>
       </div>
     </div>

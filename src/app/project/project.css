@@ -42,5 +42,9 @@ html, body {
     .cloud  {
         @apply underline-offset-4 decoration-slate-300 underline italic z-0 blur-[2px] hover:blur-none transition-all duration-300;
     }
+
+    a {
+      @apply underline underline-offset-4 italic transition-all duration-300;
+    }
     
 }
