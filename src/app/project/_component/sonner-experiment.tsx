@@ -12,7 +12,7 @@ export default function Sonner() {
   }
   return (
     <ProjectCard>
-      <div className="flex  flex-col col-span-2 z-10 items-center md:gap-2 gap-4 md:py-8 py-2 md:px-10 px-0">
+      <div className="flex  flex-col col-span-2 z-10 items-center md:gap-2 gap-4 md:py-8 py-10 px-4 md:px-10">
         <a
           href="/blogs/remake-sonner"
           rel="noopener noreferrer"
