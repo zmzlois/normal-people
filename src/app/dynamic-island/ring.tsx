@@ -41,15 +41,25 @@ const ringVariant: Variants = {
 
 const textVariant = {
   ring: {
-    opacity: 1,
+    opacity: [0, 0.3, 0.5, 0.8, 1],
+    rotate: [0, 2, -2, 2, 0],
     transition: {
-      duration: 0.2,
+      duration: 0.3,
+      times: [0, 0.3, 0.6, 0.8, 1],
+      transitionLeft: {
+        opacity: 0,
+      },
     },
   },
   silent: {
-    opacity: 1,
+    opacity: [0, 0.3, 0.5, 0.8, 1],
+    rotate: [0, 2, -2, 2, 0],
     transition: {
-      duration: 0.2,
+      duration: 0.3,
+      times: [0, 0.3, 0.6, 0.8, 1],
+      transitionLeft: {
+        opacity: 0,
+      },
     },
   },
   idle: {
@@ -63,17 +73,20 @@ export const Ring = () => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [text, setText] = useState("ring");
 
-  useEffect(() => {
-    const silent = setTimeout(() => {
-      setText("silent");
-    }, 3000);
+  const silent = setInterval(() => {
+    setText("silent");
+
     setTimeout(() => {
       setText("ring");
-    }, 8000);
+    }, 5000);
+  }, 8000);
+
+  useEffect(() => {
+    silent;
     return () => {
       clearTimeout(silent);
     };
-  }, []);
+  }, [silent]);
 
   return (
     <motion.div
@@ -98,7 +111,7 @@ export const Ring = () => {
         variants={textVariant}
         className={cn(
           "text-center font-light text-xs tracking-wide",
-          text === "ring" ? "text-zinc-100" : "text-red-500"
+          text === "ring" ? "text-zinc-100" : "text-red-500 brightness-110"
         )}
       >
         {text.slice(0, 1).toUpperCase() + text.slice(1)}

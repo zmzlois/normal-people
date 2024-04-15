@@ -9,17 +9,7 @@ export const Timer = ({
 }: {
   setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
 }) => {
-  const {
-    totalSeconds,
-    seconds,
-    minutes,
-    hours,
-    days,
-    isRunning,
-    start,
-    pause,
-    reset,
-  } = useStopwatch({ autoStart: true });
+  const { seconds, minutes, pause } = useStopwatch({ autoStart: true });
 
   return (
     <div className=" flex items-center w-full justify-between text-zinc-100 ">
