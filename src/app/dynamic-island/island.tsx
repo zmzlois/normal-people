@@ -11,6 +11,8 @@ const islandVariant: Variants = {
     height: 20,
     transition: {
       duration: 0.2,
+      type: "spring",
+      stiffness: 80,
     },
   },
   ring: {
@@ -19,14 +21,11 @@ const islandVariant: Variants = {
     height: 30,
     transition: {
       duration: 0.2,
+      type: "spring",
+      stiffness: 100,
     },
   },
-  silent: {
-    width: 168,
-    transition: {
-      duration: 0.2,
-    },
-  },
+
   timer: {
     scale: 2,
     opacity: 1,
@@ -35,6 +34,8 @@ const islandVariant: Variants = {
     borderRadius: 100,
     transition: {
       duration: 0.2,
+      type: "spring",
+      stiffness: 130,
     },
   },
 };
