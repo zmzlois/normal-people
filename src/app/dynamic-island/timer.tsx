@@ -18,7 +18,7 @@ export const Timer = () => {
         <button onClick={pause} className="bg-yellow-400/40 rounded-full p-1">
           <Pause className="w-3 h-3 opacity-70" />
         </button>
-        <button onClick={reset} className="bg-gray-400/40 rounded-full p-1">
+        <button className="bg-gray-400/40 rounded-full p-1">
           <Multiply className="w-3 h-3 opacity-70" />
         </button>
       </div>
