@@ -48,7 +48,7 @@ export const DepthBaseBlur = () => {
           >
             Cloudfront
           </a>
-          .{" "}
+          . Built with Next.js, TailwindCSS, TypeScript, and deployed Vercel.
         </p>
       </div>
     </div>
