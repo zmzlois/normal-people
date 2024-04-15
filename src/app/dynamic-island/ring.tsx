@@ -78,7 +78,7 @@ export const Ring = () => {
 
     setTimeout(() => {
       setText("ring");
-    }, 5000);
+    }, 4000);
   }, 8000);
 
   useEffect(() => {
