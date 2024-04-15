@@ -42,7 +42,7 @@ export default function Page() {
         className="py-10 px-4 text-sm flex items-center justify-center"
         id="island"
       >
-        <Island state={island} />
+        <Island state={island} setState={setIsland} />
       </div>
       <div className="flex gap-4 justify-evenly">
         <Button text="Idle" toggle={() => setIsland("idle")} />

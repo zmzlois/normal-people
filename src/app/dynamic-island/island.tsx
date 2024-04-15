@@ -1,6 +1,7 @@
 import { Variants, motion } from "framer-motion";
 import { Ring } from "./ring";
 import { Timer } from "./timer";
+import { Dispatch, SetStateAction } from "react";
 
 const islandVariant: Variants = {
   idle: {
@@ -39,7 +40,13 @@ const islandVariant: Variants = {
     },
   },
 };
-export const Island = ({ state }: { state: string }) => {
+export const Island = ({
+  state,
+  setState,
+}: {
+  state: string;
+  setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
+}) => {
   return (
     <motion.div
       className="bg-black flex justify-center min-w-[3rem] items-center px-2 text-zinc-100 "
@@ -47,7 +54,7 @@ export const Island = ({ state }: { state: string }) => {
     >
       {state === "idle" && ""}
       {state === "ring" && <Ring />}
-      {state === "timer" && <Timer />}
+      {state === "timer" && <Timer setState={setState} />}
     </motion.div>
   );
 };
