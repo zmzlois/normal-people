@@ -36,7 +36,7 @@ export default function Page() {
       animate={island}
       custom={aspect}
       ref={containerRef}
-      className="bg-zinc-900  border border-zinc-800 rounded-lg drop-shadow-sm p-8 w-[400px] aspect-square flex flex-col justify-between"
+      className="bg-zinc-900  border border-zinc-800 rounded-lg drop-shadow-sm lg:p-8 p-4 lg:w-[400px] max-w-screen w-[90vw] aspect-square flex flex-col justify-between"
     >
       <div
         className="py-10 px-4 text-sm flex items-center justify-center"
