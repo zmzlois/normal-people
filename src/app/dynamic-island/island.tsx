@@ -36,7 +36,7 @@ const islandVariant: Variants = {
     height: 40,
     borderRadius: 100,
     transition: {
-      duration: 0.3,
+      duration: 0.2,
     },
   },
 };
