@@ -2,38 +2,29 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Dispatch, SetStateAction } from "react";
+import { useStopwatch } from "react-timer-hook";
 
 export const Timer = ({
   setState,
 }: {
   setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
 }) => {
-  const time = useRef({ minutes: 0, seconds: 0 });
-
-  const [pause, setPause] = useState(false);
-
-  useEffect(() => {
-    if (!pause) {
-      const interval = setInterval(() => {
-        if (time.current.seconds === 59) {
-          time.current.minutes += 1;
-          time.current.seconds = 0;
-        } else {
-          time.current.seconds += 1;
-        }
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [time, pause]);
+  const {
+    totalSeconds,
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: true });
 
   return (
     <div className=" flex items-center w-full justify-between text-zinc-100 ">
       <div className="flex gap-1">
-        <button
-          onClick={() => setPause(true)}
-          className="bg-yellow-400/40 rounded-full p-1"
-        >
+        <button onClick={pause} className="bg-yellow-400/40 rounded-full p-1">
           <Pause className="w-3 h-3 opacity-70" />
         </button>
         <button
@@ -48,12 +39,8 @@ export const Timer = ({
           Timer
         </p>
         <span className="text-2xl font-thin text-yellow-500">
-          <span>{time.current.minutes}</span>:
-          <span>
-            {time.current.seconds < 10
-              ? `0${time.current.seconds}`
-              : time.current.seconds}
-          </span>
+          <span>{minutes}</span>:
+          <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
         </span>
       </div>
     </div>
