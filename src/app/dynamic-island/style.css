@@ -1,0 +1,13 @@
+
+@property --width {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --padding-y {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 0;
+}
+
