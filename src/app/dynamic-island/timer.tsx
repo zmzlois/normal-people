@@ -22,7 +22,7 @@ export const Timer = () => {
           <Multiply className="w-3 h-3 opacity-70" />
         </button>
       </div>
-      <div className="flex items-end ">
+      <div className="flex items-end gap-[1px]">
         <p className="font-light text-end text-[0.4rem] tracking-wide">Timer</p>
         <span className="text-2xl font-light">
           <span>{minutes}</span>:

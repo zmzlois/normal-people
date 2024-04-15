@@ -4,7 +4,7 @@ import { Button } from "./button";
 import { useCycle, motion } from "framer-motion";
 import { Island } from "./island";
 
-export const useDimensions = (ref: React.RefObject<HTMLDivElement>) => {
+const useDimensions = (ref: React.RefObject<HTMLDivElement>) => {
   const dimensions = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
