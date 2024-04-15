@@ -4,37 +4,15 @@ import { Button } from "./button";
 import { useCycle, motion } from "framer-motion";
 import { Island } from "./island";
 
-const useDimensions = (ref: React.RefObject<HTMLDivElement>) => {
-  const dimensions = useRef({ width: 0, height: 0 });
-
-  useEffect(() => {
-    dimensions.current.width = ref.current!.offsetWidth;
-    dimensions.current.height = ref.current!.offsetHeight;
-  }, []);
-
-  return dimensions.current;
-};
-
 export default function Page() {
-  const [island, setIsland] = useState<"idle" | "ring" | "silent" | "timer">(
-    "idle"
-  );
+  const [island, setIsland] = useState<"idle" | "ring" | "timer">("idle");
 
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const aspect = useDimensions(containerRef);
-  const textEle = [
-    "New notification",
-    "New message",
-    "New follower",
-    "New task",
-  ];
 
   return (
     <motion.div
       initial={"idle"}
       animate={island}
-      custom={aspect}
       ref={containerRef}
       className="bg-zinc-900  border border-zinc-800 rounded-lg drop-shadow-sm lg:p-8 p-4 lg:w-[400px] max-w-screen w-[90vw] aspect-square flex flex-col justify-between"
     >

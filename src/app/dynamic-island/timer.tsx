@@ -7,7 +7,7 @@ import { useStopwatch } from "react-timer-hook";
 export const Timer = ({
   setState,
 }: {
-  setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
+  setState: Dispatch<SetStateAction<"idle" | "ring" | "timer">>;
 }) => {
   const { seconds, minutes, pause, start } = useStopwatch({ autoStart: true });
 

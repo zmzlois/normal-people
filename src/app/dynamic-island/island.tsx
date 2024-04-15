@@ -7,7 +7,6 @@ const islandVariant: Variants = {
   idle: {
     scale: 1,
     borderRadius: 100,
-    content: "",
     width: 100,
     height: 20,
     transition: {
@@ -18,7 +17,6 @@ const islandVariant: Variants = {
     opacity: 1,
     width: 150,
     height: 30,
-    content: "Mom is calling",
     transition: {
       duration: 0.2,
     },
@@ -45,7 +43,7 @@ export const Island = ({
   setState,
 }: {
   state: string;
-  setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
+  setState: Dispatch<SetStateAction<"idle" | "ring" | "timer">>;
 }) => {
   return (
     <motion.div
