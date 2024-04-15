@@ -9,17 +9,20 @@ export const Timer = ({
 }: {
   setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
 }) => {
-  const { seconds, minutes, pause } = useStopwatch({ autoStart: true });
+  const { seconds, minutes, pause, start } = useStopwatch({ autoStart: true });
 
   return (
     <div className=" flex items-center w-full justify-between text-zinc-100 ">
       <div className="flex gap-1">
-        <button onClick={pause} className="bg-yellow-400/40 rounded-full p-1">
+        <button
+          onClick={pause}
+          className="bg-yellow-400/40 hover:bg-yellow-400/70 focus:brightness-110 transition-all rounded-full p-1"
+        >
           <Pause className="w-3 h-3 opacity-70" />
         </button>
         <button
           onClick={() => setState("idle")}
-          className="bg-gray-400/40 rounded-full p-1"
+          className="bg-gray-400/40 hover:bg-gray-400/70 transition-all focus:brightness-110 rounded-full p-1"
         >
           <Multiply className="w-3 h-3 opacity-70" />
         </button>
