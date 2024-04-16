@@ -78,8 +78,8 @@ export const Ring = () => {
 
     setTimeout(() => {
       setText("ring");
-    }, 4000);
-  }, 8000);
+    }, 3000);
+  }, 5000);
 
   useEffect(() => {
     silent;

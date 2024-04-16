@@ -25,7 +25,16 @@ const islandVariant: Variants = {
       stiffness: 100,
     },
   },
-
+  silent: {
+    opacity: 1,
+    width: 170,
+    height: 30,
+    transition: {
+      duration: 0.2,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
   timer: {
     scale: 2,
     opacity: 1,
@@ -34,8 +43,6 @@ const islandVariant: Variants = {
     borderRadius: 100,
     transition: {
       duration: 0.2,
-      type: "spring",
-      stiffness: 130,
     },
   },
 };
@@ -44,7 +51,7 @@ export const Island = ({
   setState,
 }: {
   state: string;
-  setState: Dispatch<SetStateAction<"idle" | "ring" | "timer">>;
+  setState: Dispatch<SetStateAction<"idle" | "ring" | "silent" | "timer">>;
 }) => {
   return (
     <motion.div

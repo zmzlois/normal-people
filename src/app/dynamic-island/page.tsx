@@ -5,7 +5,9 @@ import { useCycle, motion } from "framer-motion";
 import { Island } from "./island";
 
 export default function Page() {
-  const [island, setIsland] = useState<"idle" | "ring" | "timer">("idle");
+  const [island, setIsland] = useState<"idle" | "ring" | "silent" | "timer">(
+    "idle"
+  );
 
   const containerRef = useRef<HTMLDivElement>(null);
 
