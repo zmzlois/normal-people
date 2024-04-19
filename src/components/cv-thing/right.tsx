@@ -35,9 +35,24 @@ function Right() {
           </Link>
         </div>
 
-        <div className="py-16" id="projects">
+        <div className="pt-16" id="projects">
           <Cards items={Projects} title="projects" />
         </div>
+        <div>
+          {" "}
+          <Link
+            href="/project"
+            target="_blank"
+            locale={false}
+            download={false}
+            rel="noopener noreferrer"
+            className="text-sky-100 text-lg relative w-auto hover:text-cyan-300 hover:transition-all group sm:py-4 py-2 "
+          >
+            <span className="">See more projects</span>{" "}
+            <TopRightArrow className="inline-block transition-all duration-250 group-hover:skew-x-2 group-hover:-translate-y-1 group-hover:scale-[1.12]" />
+          </Link>
+        </div>
+
         <div className="py-16" id="writing">
           {Writing.length > 0 && <Cards items={Writing} title="writing" />}
         </div>
