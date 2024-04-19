@@ -24,31 +24,31 @@ export const Project = () => {
   }, []);
   return (
     <ul>
-      <li ref={(el) => (itemsRef.current[0] = el)}>
+      <li ref={(el) => (itemsRef.current[0] = el!)}>
         {" "}
         <ComCord />
       </li>
-      <li ref={(el) => (itemsRef.current[1] = el)}>
+      <li ref={(el) => (itemsRef.current[1] = el!)}>
         <LinkGoGo />
       </li>
 
       <div className="grid grid-cols-1 md:grid-cols-2 md:pt-10 pt-2 items-start">
         {" "}
-        <li ref={(el) => (itemsRef.current[2] = el)}>
+        <li ref={(el) => (itemsRef.current[2] = el!)}>
           {" "}
           <K3sTheSaneWay />
         </li>
-        <li ref={(el) => (itemsRef.current[3] = el)}>
+        <li ref={(el) => (itemsRef.current[3] = el!)}>
           <Docksible />
         </li>
       </div>
-      <li ref={(el) => (itemsRef.current[4] = el)}>
+      <li ref={(el) => (itemsRef.current[4] = el!)}>
         <NpmForMonorepo />
       </li>
-      <li ref={(el) => (itemsRef.current[5] = el)}>
+      <li ref={(el) => (itemsRef.current[5] = el!)}>
         <DepthBaseBlur />
       </li>
-      <li ref={(el) => (itemsRef.current[6] = el)}>
+      <li ref={(el) => (itemsRef.current[6] = el!)}>
         <Sonner />
       </li>
     </ul>
