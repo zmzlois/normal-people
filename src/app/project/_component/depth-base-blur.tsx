@@ -5,7 +5,7 @@ import { Background } from "@/app/glass/background";
 
 export const DepthBaseBlur = () => {
   return (
-    <div className="flex md:flex-row flex-col w-full px-4 md:px-10 md:gap-20 gap-2 border-b border-zinc-200/20 md:border-none content-center items-center justify-center">
+    <div className="flex md:flex-row flex-col-reverse w-full px-4 py-10 md:px-10 md:gap-20 gap-2 border-b border-zinc-200/20 md:border-none content-center items-center justify-center">
       <Image
         src="/glass-background.png"
         className=""

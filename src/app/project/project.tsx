@@ -32,7 +32,7 @@ export const Project = () => {
         <LinkGoGo />
       </li>
 
-      <div className="grid grid-cols-2 md:pt-10 pt-2 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:pt-10 pt-2 items-start">
         {" "}
         <li ref={(el) => (itemsRef.current[2] = el)}>
           {" "}
