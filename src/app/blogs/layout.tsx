@@ -1,6 +1,7 @@
 import LeftIcon from "@/components/assets/icons";
 import Link from "next/link";
 import BlogHeader from "@/components/layout/blogLayout";
+import { BlogFooter } from "./[slug]/footer";
 
 export default function Layout({
   children, // will be a page or nested layout

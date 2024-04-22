@@ -3,7 +3,7 @@ import React from "react";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-
+import { BlogFooter } from "./footer";
 function layout({
   children,
   params,
@@ -25,6 +25,7 @@ function layout({
     <>
       <div className="container mx-auto prose dark:prose-invert">
         {children}
+        <BlogFooter />
       </div>
     </>
   );
