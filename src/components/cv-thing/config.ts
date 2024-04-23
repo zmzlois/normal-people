@@ -96,7 +96,7 @@ export const Companies: ContentType[] = [
     time: "2018.12 - 2020.01",
     location: "Shenzhen, China",
     slug: "https://www.knightfrank.co.uk/",
-    title: "Management Trainee",
+    title: "Merger&Acquisition Consultant",
     description: "Global real estate consultancy.",
     context: "Advised commercial clients and researched in real estate valuation, merger and acquisition, and offered market analysis. Directed the training and onboarding process for newly hired personnel, ensuring a smooth integration into the team. Played a pivotal role in expanding client base, securing major accounts such as TOSHIBA, Lenovo, Ebay, EPAM system, DJI, Kerry Holdings and more.",
     responsibility: [
