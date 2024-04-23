@@ -51,9 +51,9 @@ export const About = () => {
         </a>
         , where I advanced my skill from frontend, database to documentation,
         vitual machines, CI/CD and DevOps. <br /> <br />
-        At the moment, I am looking for a new opportunity to work with a team in
-        London, where I can share my knowledge and learn from others in a
-        preferrably hybrid setting.
+        At the moment, I am looking for a new opportunity where I can share my
+        knowledge, enhance my development skill and learn from others in a fast
+        paced environment.
       </Balancer>
     </div>
   );
