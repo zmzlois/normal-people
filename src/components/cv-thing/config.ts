@@ -22,7 +22,7 @@ export const Companies: ContentType[] = [
     links: [
       {
         name: "Documentation",
-        url: "https://github.com/daytonaio/docs",
+        url: "https://www.daytona.io/docs/",
         aria: "Technical documentation for Daytona.io, client facing",
         title: "Daytona.io documentation"
       },
