@@ -43,7 +43,7 @@ ul li:nth-child(3) { transition-delay: 0.2s; }
 ul li:nth-child(4) { transition-delay: 0.3s; }
 ul li:nth-child(5) { transition-delay: 0.4s; }
 ul li:nth-child(6) { transition-delay: 0.5s; }
-
+ul li:nth-child(7) { transition-delay: 0.5s; }
 /* Make items visible */
 ul li.animate {
   filter: blur(0px);

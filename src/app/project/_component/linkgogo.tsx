@@ -30,7 +30,7 @@ export const LinkGoGo = () => {
           site (it has gotten much slower over the years) and the project itself
           its a 1 person product can be built in 3 days (I meant about 72
           hours). This is one of my <b>speed build challenges</b> to see how
-          fast I can build.
+          fast I can build with Golang - a new languages I learnt in one month.
         </p>
       </div>
     </div>

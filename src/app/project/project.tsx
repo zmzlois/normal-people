@@ -8,6 +8,7 @@ import { ComCord } from "./_component/comcord";
 import { Docksible } from "./_component/docksible";
 import { K3sTheSaneWay } from "./_component/k3-the-sane-way";
 import { useAnimate, stagger, inView, motion } from "framer-motion";
+import { Gbita } from "./_component/gbita";
 
 export const Project = () => {
   const itemsRef = useRef<HTMLLIElement[]>([]);
@@ -31,7 +32,6 @@ export const Project = () => {
       <li ref={(el) => (itemsRef.current[1] = el!)}>
         <LinkGoGo />
       </li>
-
       <div className="grid grid-cols-1 md:grid-cols-2 md:pt-10 pt-2 items-start">
         {" "}
         <li ref={(el) => (itemsRef.current[2] = el!)}>
@@ -41,14 +41,17 @@ export const Project = () => {
         <li ref={(el) => (itemsRef.current[3] = el!)}>
           <Docksible />
         </li>
-      </div>
+      </div>{" "}
       <li ref={(el) => (itemsRef.current[4] = el!)}>
-        <NpmForMonorepo />
+        <Gbita />
       </li>
       <li ref={(el) => (itemsRef.current[5] = el!)}>
-        <DepthBaseBlur />
+        <NpmForMonorepo />
       </li>
       <li ref={(el) => (itemsRef.current[6] = el!)}>
+        <DepthBaseBlur />
+      </li>
+      <li ref={(el) => (itemsRef.current[7] = el!)}>
         <Sonner />
       </li>
     </ul>
