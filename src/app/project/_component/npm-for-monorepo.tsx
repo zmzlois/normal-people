@@ -7,7 +7,7 @@ export const NpmForMonorepo = () => {
         <a
           href="https://monorepo.loiszhao.com"
           rel="noopener noreferrer"
-          aria-label="Glass in the forest by Emil Kowalski - zmzlois"
+          aria-label="npm for monorepo - zmzlois"
           target="_blank"
           className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
         >

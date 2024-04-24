@@ -6,7 +6,7 @@ export const ComCord = () => {
         <a
           href="https://comcord.vision"
           rel="noopener noreferrer"
-          aria-label="Glass in the forest by Emil Kowalski - zmzlois"
+          aria-label="ComCord, a discord bot with web application - zmzlois"
           target="_blank"
           className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
         >

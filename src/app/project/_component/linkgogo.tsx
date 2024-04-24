@@ -5,7 +5,7 @@ export const LinkGoGo = () => {
       <Image
         src="/linkgogo.png"
         className=""
-        alt="Depth based blur image"
+        alt="Open source LinkTree alternative - zmzlois"
         width={300}
         height={300}
       />
@@ -31,6 +31,7 @@ export const LinkGoGo = () => {
           its a 1 person product can be built in 3 days (I meant about 72
           hours). This is one of my <b>speed build challenges</b> to see how
           fast I can build with Golang - a new languages I learnt in one month.
+          WIP (sorry Go I have Rust to do).
         </p>
       </div>
     </div>

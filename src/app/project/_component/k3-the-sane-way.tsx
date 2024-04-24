@@ -5,7 +5,7 @@ export const K3sTheSaneWay = () => {
       <Image
         src="https://repository-images.githubusercontent.com/773121062/5e9260bf-6b9a-4d62-8c69-6cd90454a9f1"
         className="max-w-screen w-full rounded-2xl drop-shadow-sm"
-        alt="Depth based blur image"
+        alt="K3s the sane way"
         width={300}
         height={300}
       />

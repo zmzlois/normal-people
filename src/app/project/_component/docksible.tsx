@@ -6,7 +6,7 @@ export const Docksible = () => {
       <Image
         src="https://repository-images.githubusercontent.com/742522711/ab095e7a-fef3-44e4-909b-1096e255d118"
         className=" rounded-2xl w-full drop-shadow-sm"
-        alt="Depth based blur image"
+        alt="Docksible, a clean docker template to test ansible playbook - zmzlois"
         width={300}
         height={300}
       />
@@ -14,7 +14,7 @@ export const Docksible = () => {
         <a
           href="https://github.com/zmzlois/Docksible"
           rel="noopener noreferrer"
-          aria-label="Glass in the forest by Emil Kowalski - zmzlois"
+          aria-label="Docksible - zmzlois"
           target="_blank"
           className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
         >

@@ -9,7 +9,7 @@ export const DepthBaseBlur = () => {
       <Image
         src="/glass-background.png"
         className=""
-        alt="Depth based blur image"
+        alt="Depth based blur glass with scroll control video - zmzlois"
         width={300}
         height={300}
       />
