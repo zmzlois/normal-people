@@ -84,7 +84,7 @@ export const Ring = () => {
   useEffect(() => {
     silent;
     return () => {
-      clearTimeout(silent);
+      clearInterval(silent);
     };
   }, [silent]);
 

@@ -21,7 +21,7 @@ export const LinkGoGo = () => {
             LinkGoGo
           </h2>
         </a>
-        <p className="text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
+        <p className="text-start text-zinc-200 font-thin tracking-wider text-sm md:text-base leading-snug">
           {" "}
           Written in Golang. I was curious about how overengineered a Todo list
           (everyone's loved and hated) can be? I guess it's something similar to

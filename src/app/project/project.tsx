@@ -9,6 +9,8 @@ import { Docksible } from "./_component/docksible";
 import { K3sTheSaneWay } from "./_component/k3-the-sane-way";
 import { useAnimate, stagger, inView, motion } from "framer-motion";
 import { Gbita } from "./_component/gbita";
+import { DynamicIsland } from "./_component/dynamic-island";
+import { Ball } from "./_component/ball";
 
 export const Project = () => {
   const itemsRef = useRef<HTMLLIElement[]>([]);
@@ -52,6 +54,12 @@ export const Project = () => {
         <DepthBaseBlur />
       </li>
       <li ref={(el) => (itemsRef.current[7] = el!)}>
+        <DynamicIsland />
+      </li>
+      <li ref={(el) => (itemsRef.current[8] = el!)}>
+        <Ball />
+      </li>
+      <li ref={(el) => (itemsRef.current[9] = el!)}>
         <Sonner />
       </li>
     </ul>

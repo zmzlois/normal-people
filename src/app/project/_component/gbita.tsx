@@ -18,13 +18,13 @@ export const Gbita = () => {
           className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
         >
           <h2 className="text-zinc-200 md:text-2xl text-xl font-thin">
-            7-hour speed build challenge- GBITA
+            7-hour speed build challenge - GBITA
           </h2>
         </a>
-        <p className="text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
+        <p className="text-start text-zinc-200 font-thin tracking-wider text-sm md:text-base leading-snug">
           {" "}
-          This is one my speed building challenges. Done for one of my clients.
-          Email functionality provided by{" "}
+          <b>This is one my speed building challenges. </b> Done for one of my
+          clients. Email functionality provided by{" "}
           <a
             href="https://resend.com/home"
             rel="noopener noreferrer"

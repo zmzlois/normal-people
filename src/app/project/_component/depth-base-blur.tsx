@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ProjectCard } from "./card";
+
 import { Glass } from "@/app/glass/glass";
 import { Background } from "@/app/glass/background";
 
@@ -25,14 +25,15 @@ export const DepthBaseBlur = () => {
             Frosting glass in the forest
           </h2>
         </a>
-        <p className="text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
+        <p className="text-start text-zinc-200 font-thin tracking-wider text-sm md:text-base leading-snug">
           {" "}
-          An experiment to create a frosted glass effect using CSS properties,
-          backdrop-filter, mask and blur filter with video playback control on
-          scroll. The glass would transform and rotate on X axis and Y axis
-          based on mouse position. Same as the 8 layers of masks -- it changes
-          the linear gradient transparency based on mouse position. Video is
-          hosted on Object Storage via{" "}
+          <b> Make sure you scroll and hover mouse around!</b> An experiment to
+          create a frosted glass effect using CSS properties, backdrop-filter,
+          mask and blur filter with video playback control on scroll. The glass
+          would transform and rotate on X axis and Y axis based on mouse
+          position. Same as the 8 layers of masks -- it changes the linear
+          gradient transparency based on mouse position. Video is hosted on
+          Object Storage via{" "}
           <a
             href="https://aws.amazon.com/s3/"
             rel="noopener noreferrer"

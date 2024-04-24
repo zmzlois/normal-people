@@ -11,8 +11,13 @@ export default function ProjectLayout({ children }: { children: ReactNode }) {
         {" "}
         <EnglishAnimate size="small" />
       </div>
-      <div className={cn(GeistSans.className, " container mx-auto p-4")}>
+      <div className={cn(GeistSans.className, " container mx-auto p-4 pb-16")}>
         {children}
+        <div className="p-8 opacity-80  items-center flex justify-center">
+          <a href="/" className="text-zinc-300 font-light">
+            Back to home page
+          </a>
+        </div>
       </div>
     </div>
   );

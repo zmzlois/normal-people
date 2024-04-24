@@ -44,6 +44,8 @@ ul li:nth-child(4) { transition-delay: 0.3s; }
 ul li:nth-child(5) { transition-delay: 0.4s; }
 ul li:nth-child(6) { transition-delay: 0.5s; }
 ul li:nth-child(7) { transition-delay: 0.5s; }
+ul li:nth-child(8) { transition-delay: 0.5s; }
+ul li:nth-child(9) { transition-delay: 0.5s; }
 /* Make items visible */
 ul li.animate {
   filter: blur(0px);
@@ -68,7 +70,7 @@ ul li.animate {
     }
 
     a {
-      @apply underline underline-offset-4 italic transition-all duration-300;
+      @apply underline underline-offset-4 transition-all duration-300;
     }
     
 }

@@ -15,10 +15,11 @@ export const NpmForMonorepo = () => {
             Find any npm package for monorepo
           </h2>
         </a>
-        <p className="text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
+        <p className="text-start text-zinc-200 font-thin tracking-wider text-sm md:text-base leading-snug">
           {" "}
-          I was tired of typing out hundreds of commands to install packages I
-          always know in a monorepo. This project uses{" "}
+          <b>One of the speed building challenges - done in 8 hours.</b> I was
+          tired of typing out hundreds of commands to install packages I always
+          know in a monorepo. This project uses{" "}
           <a
             href="https://zustand-demo.pmnd.rs/"
             target="_blank"
@@ -31,7 +32,18 @@ export const NpmForMonorepo = () => {
           labels for custom installation commands. It changes every npm
           packages' installation commands from <code>npm install package</code>{" "}
           to <code>pnpm add package --filter web</code> to help with monorepo's
-          package based installation.{" "}
+          package based installation. Later on I also added a{" "}
+          <a
+            href="https://gist.github.com/zmzlois/b875cef441dece6942445124559f2544"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-1 decoration-slate-500 underline-offset-4 hover:decoration-slate-200 transition-all duration-300"
+          >
+            {" "}
+            small shell script
+          </a>{" "}
+          to accomplish the same functionality (I might to turn it into a CLI
+          project as Starship plugin (maybe)).
         </p>
       </div>
       <Image

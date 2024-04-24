@@ -16,7 +16,7 @@ export default function Page() {
       initial={"idle"}
       animate={island}
       ref={containerRef}
-      className="bg-zinc-800  border border-zinc-800 rounded-lg drop-shadow-sm lg:p-8 p-4 lg:w-[400px] max-w-screen w-[90vw] aspect-square flex flex-col justify-between"
+      className="bg-zinc-600  border border-zinc-800 rounded-lg drop-shadow-sm lg:p-8 p-4 lg:w-[400px] max-w-screen w-[94vw] aspect-square flex flex-col justify-between"
     >
       <div
         className="py-10 px-4 text-sm flex items-center justify-center"

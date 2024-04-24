@@ -1,7 +1,7 @@
 "use client";
 import { Toaster, toast } from "sonner";
 import { allBlogs } from "contentlayer/generated";
-import { ProjectCard } from "./card";
+import Image from "next/image";
 
 export default function Sonner() {
   toast.message("I made you click!");
@@ -11,8 +11,24 @@ export default function Sonner() {
     throw new Error(`Post not found for slug: remake-sonner`);
   }
   return (
-    <ProjectCard>
-      <div className="flex  flex-col col-span-2 z-10 items-center md:gap-2 gap-4 md:py-8 py-10 px-4 md:px-10">
+    <div className="flex flex-col-reverse md:flex-row">
+      <div className=" md:block hidden px-4">
+        <Image
+          src="/sonner.png"
+          width={300}
+          height={300}
+          alt="sonner"
+          className="col-span-1"
+        />
+      </div>{" "}
+      <div className="md:col-span-1  flex text-center md:items-start items-center md:py-14 px-6 md:px-0 py-2 leading-5 text-zinc-200">
+        <p className="w-full text-start text-zinc-200 font-thin tracking-wider  text-sm md:text-base leading-snug">
+          {" "}
+          Tap into the world of Emil -- Your toast component will never be the
+          same again.
+        </p>
+      </div>
+      <div className="flex  flex-col z-10 items-center md:gap-2 gap-4 md:py-8 py-10 px-4 md:px-10">
         <a
           href="/blogs/remake-sonner"
           rel="noopener noreferrer"
@@ -33,15 +49,6 @@ export default function Sonner() {
           </button>
         </div>
       </div>
-      <div className="md:col-span-1  flex text-center md:items-start items-center md:py-14 px-6 md:px-0 py-2 leading-5 text-zinc-200">
-        <p className="w-full text-start text-zinc-200 font-thin tracking-wider italic text-sm md:text-base leading-snug">
-          {" "}
-          {blog?.description}
-        </p>
-      </div>
-      <div className="col-span-1 md:block hidden px-4">
-        <img src="sonner.png" alt="sonner" className="col-span-1" />
-      </div>
-    </ProjectCard>
+    </div>
   );
 }
