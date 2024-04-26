@@ -3,10 +3,14 @@ import { GeistSans } from "geist/font/sans";
 import "./project.css";
 import { cn } from "@/utils/cn";
 import EnglishAnimate from "@/components/english-animate";
+import { Cover } from "./cover";
+import Link from "next/link";
 
 export default function ProjectLayout({ children }: { children: ReactNode }) {
   return (
     <div>
+      {" "}
+      <Cover />
       <div className="p-8 opacity-80">
         {" "}
         <EnglishAnimate size="small" />
