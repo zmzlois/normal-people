@@ -10,7 +10,6 @@ export default function ProjectLayout({ children }: { children: ReactNode }) {
   return (
     <div>
       {" "}
-      <Cover />
       <div className="p-8 opacity-80">
         {" "}
         <EnglishAnimate size="small" />
