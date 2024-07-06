@@ -1,18 +1,18 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import ChineseAnimate from "../chinese-animate";
-import EnglishAnimate from "../english-animate";
-import Balancer from "react-wrap-balancer";
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import ChineseAnimate from '../chinese-animate';
+import EnglishAnimate from '../english-animate';
+import Balancer from 'react-wrap-balancer';
 import {
   GithubIcon,
   GlobeIcon,
   LinkedinIcon,
   MailIcon,
   TwitterIcon,
-} from "../assets/icons";
-import { Nav } from "./nav";
+} from '../assets/icons';
+import { Nav } from './nav';
 
 function Head() {
   return (
@@ -31,7 +31,7 @@ function Head() {
                 {config.location}
               </p> */}
               <Balancer className="mt-4 tracking-wide text-slate-400 max-w-xs leading-normal">
-                I don't exist to use a framework. I exist to solve problems.{" "}
+                I don't exist to use a framework. I exist to solve problems.{' '}
                 <i className="underline underline-offset-2 decoration-red-400 decoration-3 decoration-wavy">
                   Girl in T3.
                 </i>
@@ -41,7 +41,7 @@ function Head() {
             </div>
           </div>
           <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
-            {socials.map((item) => (
+            {socials.map(item => (
               <li className="ml-1 mt-8 flex items-center" key={item.name}>
                 <a
                   href={item.href}
@@ -67,37 +67,37 @@ export default Head;
 
 const socials = [
   {
-    name: "Github",
-    href: "https://github.com/zmzlois",
+    name: 'Github',
+    href: 'https://github.com/zmzlois',
     icon: (
       <GithubIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
-    aria: "GitHub (opens in a new tab)",
+    aria: 'GitHub (opens in a new tab)',
   },
   {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/loiszhao/",
+    name: 'Linkedin',
+    href: 'https://www.linkedin.com/in/loiszhao/',
     icon: (
       <LinkedinIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
   },
   {
-    name: "Portfolio",
-    href: "https://loiszhao.com/intro",
+    name: 'Portfolio',
+    href: 'https://loiszhao.com/intro',
     icon: (
       <GlobeIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
   },
   {
-    name: "Mail",
-    href: "mailto:loisisar@outlook.com",
+    name: 'Mail',
+    href: 'mailto:loisisar@outlook.com',
     icon: (
       <MailIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com/zmzlois",
+    name: 'Twitter',
+    href: 'https://twitter.com/zmzlois',
     icon: (
       <TwitterIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),

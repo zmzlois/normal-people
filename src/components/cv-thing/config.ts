@@ -1,5 +1,26 @@
 export const Companies: ContentType[] = [
   {
+    name: "PaaS Startup (Release soon)",
+    type: "DevTool Start Up",
+    time: "2024.06 - Present",
+
+    slug: "#", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
+    // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". 
+    title: "Founding Engineer", // show ansible, terraform, kubernetes, docker, linux: what you know. 
+    description: "Sub-seconds edge deployment platform with fine-grain support for federated applications.",
+    // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
+    // be more intentional with your words. less shit. 
+    context: "I wear many hats here.",
+    tags: [],
+    responsibility: [
+
+    ],
+    links: [
+
+
+    ]
+  },
+  {
     name: "Daytona.io (Open Source)",
     type: "DevTool Start Up",
     time: "2023.11 - Present",
@@ -13,7 +34,7 @@ export const Companies: ContentType[] = [
     context: "Responsible for the frontend and content of technical documentation. Worked closely with engineers and founder to test alpha product before launch, include but not limited in JetBrains' Gateway Plugin, VS Code Extension, installer and CLI tool. Responsibility also include growing and managing community. ",
     tags: ["Astro", "Alpine.js", "CSS", "Shell script", "Terraform", "Docker", "Google Cloud Platform", "Virtual Machine", "Kubernetes"],
     responsibility: [
-      "Identify the strength and ",
+      "Onboarding customer to setup Daytona with K3s cluster on their infrastructure",
       "Documentation: https://github.com/daytonaio/docs",
       "Installer testing and rewrite: https://github.com/daytonaio/installer ",
       "Tooling: https://github.com/zmzlois/Docksible",

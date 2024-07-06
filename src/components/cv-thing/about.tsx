@@ -1,4 +1,4 @@
-import Balancer from "react-wrap-balancer";
+import Balancer from 'react-wrap-balancer';
 
 export const About = () => {
   return (
@@ -6,7 +6,7 @@ export const About = () => {
       <h2>ABOUT</h2>
       <Balancer className="text-slate-300 font-light tracking-wide leading-relaxed">
         How it all started? I had the courage to tackle a Python course offered
-        by{" "}
+        by{' '}
         <a
           aria-label="ICMA Center at Henley Business School (Open in new tab)"
           title="ICMA Center at Henley Business School"
@@ -15,8 +15,8 @@ export const About = () => {
           href="https://www.icmacentre.ac.uk/study/masters/msc-behavioural-finance"
         >
           school
-        </a>{" "}
-        -- from mass scraping data from{" "}
+        </a>{' '}
+        -- from mass scraping data from{' '}
         <a
           aria-label="U.S. Securities and Exchange Commission Search and Access Database (Open in new tab)"
           title="EDGAR"
@@ -25,11 +25,11 @@ export const About = () => {
           href="https://www.sec.gov/edgar/search-and-access"
         >
           EDGAR
-        </a>{" "}
+        </a>{' '}
         for text-analysis to building machine learning models to predict oil
         prices. After thousands of documents ran through my fingers in a blink
         of an eye, I started to dive into web development. <br /> <br />
-        Fast forward to today, I've helped build{" "}
+        Fast forward to today, I've helped and built{' '}
         <a
           href="https://comcord.vision"
           target="_blank"
@@ -38,8 +38,8 @@ export const About = () => {
           aria-label="Comcord Vision | The most ridiculous team collab tool ever created (Open in new tab)"
         >
           products for myself
-        </a>{" "}
-        and a{" "}
+        </a>{' '}
+        and a{' '}
         <a
           href="https://daytona.io"
           aria-label="Self-hostable Github Codespaces alternative | Daytona (Open in new tab)"
@@ -49,11 +49,31 @@ export const About = () => {
         >
           devtool startup
         </a>
-        , where I advanced my skill from frontend, database to documentation,
-        vitual machines, CI/CD and DevOps. <br /> <br />
-        At the moment, I am looking for a new opportunity where I can share my
-        knowledge, enhance my development skill and learn from others in a fast
-        paced environment.
+        . Currently working in a PaaS. <br /> <br />I also sign small angel
+        checks to early-stage startups focusing on Infra and AI. You can email
+        me at{' '}
+        <a
+          href="mailto:loisisar@outlook.com"
+          aria-label="zmzlois email"
+          target="_blank"
+          title="email"
+          rel="noopener noreferrer"
+        >
+          loisisar_outlook_com
+        </a>
+        . If I didn't respond to you, chances are I missed it or your email went
+        into spam box as I try to get back to everyone. You can send it again
+        but I guess the fastest way to reach me is on{' '}
+        <a
+          href="https://x.com/zmzlois"
+          aria-label="zmzlois Twitter"
+          target="_blank"
+          title="Twitter"
+          rel="noopener noreferrer"
+        >
+          twitter
+        </a>
+        .
       </Balancer>
     </div>
   );
