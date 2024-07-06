@@ -23,7 +23,7 @@ export const Companies: ContentType[] = [
   {
     name: "Daytona.io (Open Source)",
     type: "DevTool Start Up",
-    time: "2023.11 - Present",
+    time: "2023.11 - 2024.04",
 
     slug: "https://daytona.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
     // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". 
