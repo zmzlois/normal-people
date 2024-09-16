@@ -1,0 +1,19 @@
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities; 
+
+
+h1 {
+    @apply text-[8rem] font-extrabold;
+}
+
+h2 {
+    @apply text-8xl font-extrabold;
+}
+
+ol {
+    @apply flex flex-col gap-8;
+}
+li {
+    @apply list-item list-disc list-inside text-6xl font-semibold;
+}
