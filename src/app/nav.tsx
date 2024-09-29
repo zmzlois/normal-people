@@ -4,10 +4,10 @@ import { cn } from '@/utils/cn';
 
 const navigation = [
   { name: 'Project', href: '/project' },
-  {
-    name: 'Speeches',
-    href: '/pre',
-  },
+  //{
+  //  name: 'Speeches',
+  //  href: '/pre',
+  //},
   { name: 'Blog', href: '/blogs' },
   { name: 'CV', href: '/intro' },
 ];
