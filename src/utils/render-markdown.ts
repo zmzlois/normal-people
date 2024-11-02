@@ -17,7 +17,6 @@ export async function renderMarkdown(markdown: string): Promise<string> {
         .use(remarkRehype)
         .use(rehypeHighlight, { languages: { ...common, proto: protobuf } })
         .use(rehypeSlug)
-        // @ts-expect-error can work?
         .use(rehypeStringify)
         .process(markdown)
         .then((res) => res.toString());
