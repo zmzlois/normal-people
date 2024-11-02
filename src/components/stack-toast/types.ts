@@ -1,6 +1,6 @@
 import { info } from "console";
 import React from "react"
-import type { Response } from "node-fetch";
+
 
 // define the basic type of a toast
 export type ToastTypes = "normal" | "action" | "success" | "info" | "warning" | "error" | "loading" | "default"
@@ -66,7 +66,7 @@ export interface ToastClassnames {
     description?: string;
     loader?: string;
     closeButton?: string;
-    canelButton?: string;
+    cancelButton?: string;
     actionButton?: string;
     success?: string;
     error?: string;

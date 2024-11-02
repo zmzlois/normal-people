@@ -4,7 +4,7 @@ export const About = () => {
   return (
     <div id="about">
       <h2>ABOUT</h2>
-      <Balancer className="text-slate-300 font-light tracking-wide leading-relaxed">
+      <Balancer className="font-light leading-relaxed tracking-wide text-slate-300">
         How it all started? I had the courage to tackle a Python course offered
         by{' '}
         <a
@@ -50,8 +50,8 @@ export const About = () => {
           devtool startup
         </a>
         . Currently working in a PaaS. <br /> <br />I also sign small angel
-        checks to early-stage startups focusing on Infra and AI. You can email
-        me at{' '}
+        checks to early-stage startups focusing on Infra, AI and on-chain
+        technologies. You can email me at{' '}
         <a
           href="mailto:loisisar@outlook.com"
           aria-label="zmzlois email"
