@@ -23,7 +23,7 @@ function Right() {
         <div>
           {" "}
           <Link
-            href="/cv_lois_zhao_29032924_cje.pdf"
+            href="/cv_lois_zhao_12032025.pdf"
             target="_blank"
             locale={false}
             download={false}

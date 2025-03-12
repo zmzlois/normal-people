@@ -1,23 +1,44 @@
 export const Companies: ContentType[] = [
   {
-    name: "PaaS Startup (Release soon)",
-    type: "DevTool Start Up",
+    name: "Zephyr Cloud Inc.",
+    type: "DevTool Start Up (Seed Round)",
     time: "2024.06 - Present",
 
-    slug: "#", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
+    slug: "https://zephyr-cloud.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
     // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". 
     title: "Founding Engineer", // show ansible, terraform, kubernetes, docker, linux: what you know. 
-    description: "Sub-seconds edge deployment platform with fine-grain support for federated applications.",
+    description: "The only sane way to do Micro-frontends.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
     // be more intentional with your words. less shit. 
-    context: "I wear many hats here.",
-    tags: [],
+    context: "Develop and maintain npm libraries, backend and frontend for cross-platform deployment (React Native, Web, etc.). Review and support open source projects. Collaborate with key stakeholders and designers to design the next generation of the platform to improve user experience. Maintain public documentation and community engagement.",
+    tags: ['Micro-frontends', 'React Native', 'Webpack', 'Rspack', 'Vite', 'Metro Bundler', 'Cross-platform', 'Node.js', 'Cloudflare', 'Fastly', 'Netlify', 'Nestjs'],
     responsibility: [
-
+      "Overview cross-platform deployment for React Native, Web and more from npm libraries, micro-services, backend and frontend."
     ],
     links: [
+      {
+        name: "Github",
+        url: "https://github.com/ZephyrCloudIO",
+        aria: "Zephyr Cloud is a platform for building and deploying micro-frontends.",
+        title: "Zephyr Cloud"
+      },
+      {
+        name: "React Native Plugin",
+        url: "https://github.com/ZephyrCloudIO/zephyr-packages/tree/master/libs/zephyr-repack-plugin",
+        aria: "React Native Plugin for Zephyr Cloud",
+        title: "React Native Plugin"
+      },
+      {
+        name: "create-zephyr-apps@latest",
+        url: "https://www.npmjs.com/package/create-zephyr-apps",
+        aria: "Create Zephyr Apps",
+        title: "Create Zephyr Apps"
+      },
+      {
+        name: "Documentation",
+        url: "https://docs.zephyr-cloud.io/",
 
-
+      }
     ]
   },
   {
