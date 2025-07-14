@@ -83,7 +83,7 @@ const socials = [
   },
   {
     name: 'Portfolio',
-    href: 'https://loiszhao.com/intro',
+    href: 'https://normal-people.com/intro',
     icon: (
       <GlobeIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
@@ -97,7 +97,7 @@ const socials = [
   },
   {
     name: 'Twitter',
-    href: 'https://twitter.com/zmzlois',
+    href: 'https://x.com/zmzlois',
     icon: (
       <TwitterIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),

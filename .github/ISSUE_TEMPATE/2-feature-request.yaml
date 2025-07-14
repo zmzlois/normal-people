@@ -1,0 +1,65 @@
+name: Feature Proposal
+description: Propose a feature with details
+title: '[Feature]: replace_with_a_clear_understandable_name'
+labels: ['feature', 'proposal']
+area: [
+  'authentication', 
+  'intialisation'
+]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature proposal!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What's the current behavior?
+      description: Or what's the problem statement? Why do you think it's necessary to implement this feature?
+      placeholder: What do you see or experience? Please describe the problem in detail.
+      value: |
+        "Description:
+        Screenshots:
+        Terminal outputs:
+        Steps to reproduce:
+        Environment:
+        "
+    validations:
+      required: true
+  - type: textarea
+    id: what-expected
+    attributes:
+      label: What's the expected behavior?
+      description: Or what's the goal of this proposal?
+      value: |
+        "What do you want to achieve with this feature? What's the goal?
+        Design sketch (if applicable):
+        Example:
+        Environment:
+        "
+    validations:
+      required: true
+  - type: textarea
+    id: further-research
+    attributes:
+      label: Further research
+      description: What other further research did you do? Whats the implementation from others? Be as detailed as possible with code snippet or example terminal output.
+  - type: textarea
+    id: feature-usage
+    attributes:
+      label: Feature usage
+      description: How will developers and customers use this feature? How will engineer and customers interact, use this feature once it is completed?
+      placeholder: ex. email@example.com
+      value: |
+        "On user end: Every terminal return, if it is failed, it should attached with a trace ID where they can send it back to us to inspect the stack trace.
+        On developer end: We should be able to use the Trace ID to see the full stack trace and understand which part of the system is causing failure."
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional information (Optional)
+      description: Is there any additional information or reference the team should know?
+      placeholder: 'Example: TheMonitoringCompany is also a good product to use.'
+    validations:
+      required: false
