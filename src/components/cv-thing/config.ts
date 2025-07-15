@@ -10,7 +10,7 @@ export const Companies: ContentType[] = [
     description: "The only sane way to do Micro-frontends.",
     // trash: I don't care about the context, I just want to know your responsibility. shrink the container, bigger text/font-xl, increase readability. 
     // be more intentional with your words. less shit. 
-    context: "Develop and maintain npm libraries, backend and frontend for cross-platform deployment (React Native, Web, etc.). Review and support open source projects. Collaborate with key stakeholders and designers to design the next generation of the platform to improve user experience. Maintain public documentation and community engagement.",
+    context: "Shipped `react-native-zephyr-sdk` to enable runtime over-the-air updates for react native apps built with Re.Pack and Metro and `zephyr-repack-plugin` to deploy federated mobile applications. Develop and maintain npm libraries, backend and frontend for cross-platform deployment (React Native, Web, etc.). Review and support open source projects. Collaborate with key stakeholders and designers to design the next generation of the platform to improve user experience. Maintain public documentation and community engagement.",
     tags: ['Micro-frontends', 'React Native', 'Webpack', 'Rspack', 'Vite', 'Metro Bundler', 'Cross-platform', 'Node.js', 'Cloudflare', 'Fastly', 'Netlify', 'Nestjs'],
     responsibility: [
       "Overview cross-platform deployment for React Native, Web and more from npm libraries, micro-services, backend and frontend."
@@ -23,10 +23,16 @@ export const Companies: ContentType[] = [
         title: "Zephyr Cloud"
       },
       {
-        name: "React Native Plugin",
-        url: "https://github.com/ZephyrCloudIO/zephyr-packages/tree/master/libs/zephyr-repack-plugin",
-        aria: "React Native Plugin for Zephyr Cloud",
-        title: "React Native Plugin"
+        name: "zephyr-repack-plugin",
+        url: "https://www.npmjs.com/package/zephyr-repack-plugin",
+        aria: "Zephyr Repack Plugin for Zephyr Cloud",
+        title: "zephyr-repack-plugin"
+      },
+      {
+        name: "react-native-zephyr-sdk",
+        url: "https://www.npmjs.com/package/react-native-zephyr-sdk",
+        aria: "React Native SDK for Zephyr Cloud",
+        title: "react-native-zephyr-sdk to enable runtime over-the-air updates for react native apps built with Re.Pack and Metro."
       },
       {
         name: "create-zephyr-apps@latest",
@@ -37,8 +43,16 @@ export const Companies: ContentType[] = [
       {
         name: "Documentation",
         url: "https://docs.zephyr-cloud.io/",
-
+        aria: "Documentation for Zephyr Cloud",
+        title: "Documentation"
+      }, 
+      {
+        name: "Blog: My Neck, My Back, My Updates and My App", 
+        url: "https://zephyr-cloud.io/blog/week-3-runtime-ota", 
+        aria: "Blog: My Neck, My Back, My Updates and My App",
+        title: "Blog: My Neck, My Back, My Updates and My App"
       }
+     
     ]
   },
   {
