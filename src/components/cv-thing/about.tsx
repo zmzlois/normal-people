@@ -39,7 +39,7 @@ export const About = () => {
         >
           products for myself
         </a>{' '}
-        and a{' '}
+        and {' '}
         <a
           href="https://daytona.io"
           aria-label="Self-hostable Github Codespaces alternative | Daytona (Open in new tab)"
@@ -47,9 +47,26 @@ export const About = () => {
           title="Daytona"
           rel="noopener noreferrer"
         >
-          devtool startup
+          devtool startups like{' '}
+          <a
+            href="https://daytona.io"
+            aria-label="Self-hostable Github Codespaces alternative | Daytona (Open in new tab)"
+            target="_blank"
+            title="Daytona"
+            rel="noopener noreferrer"
+          >
+            Daytona
+          </a> and <a
+            href="https://zephyr-cloud.io"
+            aria-label="Orchestration platform for micro-frontend deployment."
+            target="_blank"
+            title="Zephyr Cloud"
+            rel="noopener noreferrer"
+          >
+            Zephyr
+          </a>
         </a>
-        . Currently working in a PaaS. <br /> <br />I also sign small angel
+        . <br />I also sign small angel
         checks to early-stage startups focusing on Infra and AI. You can email
         me at{' '}
         <a
