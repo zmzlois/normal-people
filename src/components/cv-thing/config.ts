@@ -2,7 +2,7 @@ export const Companies: ContentType[] = [
   {
     name: "Zephyr Cloud Inc.",
     type: "DevTool Start Up (Seed Round)",
-    time: "2024.06 - 2025.07",
+    time: "2024.06 - Present",
 
     slug: "https://zephyr-cloud.io/", // find a way to put it. show you know how to learn to code. Primeagen: if you are an expert of a framework, you are not a good engineer. 
     // The job is to solve problems, regardless what tool you are using. Tech companies are very into details. Smaller companies/start ups are more into problem solving. Not someone who is "frontend", "backend", "cloud". 
