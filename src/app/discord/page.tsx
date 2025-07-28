@@ -1,15 +1,9 @@
 "use client";
 
-import navigation from "next/navigation";
-import { useEffect } from "react";
+import { redirect } from "next/navigation";
 
 export default function DiscordPage() {
-  const { redirect } = navigation;
-
-  useEffect(() => {
-    redirect("https://discord.gg/SY43FJGfuk");
-  }, []);
-
+  redirect("https://discord.gg/SY43FJGfuk");
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <meta
