@@ -3,7 +3,7 @@
 import navigation from "next/navigation";
 import { useEffect } from "react";
 
-export function DiscordPage() {
+export default function DiscordPage() {
   const { redirect } = navigation;
 
   useEffect(() => {
