@@ -6,6 +6,9 @@ const navigation = [
   { name: "Project", href: "/project" },
   { name: "Blog", href: "/blogs" },
   { name: "CV", href: "/intro" },
+  { name: "Twitch", href: "https://www.twitch.tv/zmzlois" },
+  { name: "Youtube", href: "https://www.youtube.com/@zmzlois" },
+  { name: "X/Twitter", href: "https://x.com/zmzlois" },
 ];
 
 export const Nav = () => {
