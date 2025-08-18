@@ -67,7 +67,7 @@ const BlogLayout = ({ params }: Props) => {
   return (
     <article className="max-w-xl py-8 mx-auto">
       <div className="my-4 lg:mb-8 mb-4 text-center">
-        <h1 className="md:my-3 my-1 lg:text-4xl text-2xl text-slate-50 font-black">
+        <h1 className="md:my-3 my-1  lg:text-4xl text-2xl text-slate-50 font-black">
           {blog.title}
         </h1>
         <time dateTime={blog.date} className="mb-1 text-sm text-gray-600">

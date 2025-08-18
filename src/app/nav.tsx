@@ -1,17 +1,20 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const navigation = {
   main: [
-    { name: "Project", href: "/project" },
-    { name: "Blog", href: "/blogs" },
-    { name: "CV", href: "/intro" },
+    { name: "Project", href: "/project", tooltip: "An incomplete, random dump of projects I wrote. " },
+    { name: "Blog", href: "/blogs", tooltip: "Sometimes translating songs, sometimes write about businesses. " },
+    { name: "CV", href: "/intro", tooltip: "Zero guarantee that this is accurate." },
   ],
   social: [
-    { name: "Twitch", href: "https://www.twitch.tv/zmzlois" },
-    { name: "Youtube", href: "https://www.youtube.com/@zmzlois" },
-    { name: "X/Twitter", href: "https://x.com/zmzlois" },
+    { name: "Twitch", href: "https://www.twitch.tv/zmzlois", tooltip: "I stream about esoteric knowledge and dive into rabbit holes with friends." },
+    { name: "Youtube", href: "https://www.youtube.com/@zmzlois", tooltip: "Not ready yet. " },
+    { name: "X/Twitter", href: "https://x.com/zmzlois", tooltip: "Sometimes stupid bait, sometimes rage bait, occasionally useful and serious. " },
   ],
 };
 
@@ -26,35 +29,53 @@ export const Nav = () => {
       >
         <ul className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:hidden">
           {navigation.main.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
-            >
-              {item.name}
-            </Link>
+            <Tooltip key={item.href}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
+                >
+                  {item.name}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{item.tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </ul>
         <ul className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:hidden mt-2">
           {navigation.social.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
-            >
-              {item.name}
-            </Link>
+            <Tooltip key={item.href}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
+                >
+                  {item.name}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{item.tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </ul>
         <ul className="hidden lg:flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
           {[...navigation.main, ...navigation.social].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
-            >
-              {item.name}
-            </Link>
+            <Tooltip key={item.href}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className="relative mx-1 sm:mx-2 md:mx-3 text-sm sm:text-base font-light md:group-hover/link:scale-95 transition-all duration-500 text-zinc-300 md:after:absolute md:after:w-0 md:after:h-[1px] md:after:left-0 md:after:bottom-0 md:after:bg-zinc-300 md:after:transition-all md:after:duration-500 md:after:hover:w-full hover:text-zinc-100 md:hover:scale-125 px-2 py-1 rounded-md hover:bg-zinc-800/50 md:hover:bg-transparent"
+                >
+                  {item.name}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{item.tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </ul>
       </div>
