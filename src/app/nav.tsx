@@ -9,7 +9,7 @@ const navigation = {
   main: [
     { name: "Project", href: "/project", tooltip: "An incomplete, random dump of projects I wrote. " },
     { name: "Blog", href: "/blogs", tooltip: "Sometimes translating songs, sometimes write about businesses. " },
-    { name: "CV", href: "/intro", tooltip: "Zero guarantee that this is accurate." },
+    { name: "CV", href: "/intro", tooltip: "Zero accuracy guarantee." },
   ],
   social: [
     { name: "Twitch", href: "https://www.twitch.tv/zmzlois", tooltip: "I stream about esoteric knowledge and dive into rabbit holes with friends." },
@@ -39,7 +39,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-sm text-zinc-300">{item.tooltip}</p>
+                <p className="text-sm text-zinc-400">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
@@ -56,7 +56,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-sm text-zinc-300">{item.tooltip}</p>
+                <p className="text-sm text-zinc-400">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
@@ -73,7 +73,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-sm text-zinc-300">{item.tooltip}</p>
+                <p className="text-sm text-zinc-400">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
