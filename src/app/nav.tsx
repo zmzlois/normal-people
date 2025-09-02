@@ -14,7 +14,7 @@ const navigation = {
   social: [
     { name: "Twitch", href: "https://www.twitch.tv/zmzlois", tooltip: "I stream about esoteric knowledge and dive into rabbit holes with friends." },
     { name: "Youtube", href: "https://www.youtube.com/@zmzlois", tooltip: "Not ready yet. " },
-    { name: "X/Twitter", href: "https://x.com/zmzlois", tooltip: "Sometimes stupid bait, sometimes rage bait, occasionally useful and serious. " },
+    { name: "X/Twitter", href: "https://x.com/zmzlois", tooltip: "Sometimes stupid, sometimes rage bait, occasionally useful and serious. " },
   ],
 };
 
@@ -39,7 +39,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{item.tooltip}</p>
+                <p className="text-sm text-zinc-300">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
@@ -56,7 +56,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{item.tooltip}</p>
+                <p className="text-sm text-zinc-300">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
@@ -73,7 +73,7 @@ export const Nav = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{item.tooltip}</p>
+                <p className="text-sm text-zinc-300">{item.tooltip}</p>
               </TooltipContent>
             </Tooltip>
           ))}
