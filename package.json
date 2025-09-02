@@ -60,5 +60,11 @@
   "devDependencies": {
     "prettier": "^2.8.8",
     "prettier-plugin-prisma": "^4.13.0"
+  }, 
+  "engines": {
+    "node": "24.4.0"
+  }, 
+  "overrides": {
+    "node": "24.4.0"
   }
 }
