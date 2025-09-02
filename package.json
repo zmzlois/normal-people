@@ -62,9 +62,9 @@
     "prettier-plugin-prisma": "^4.13.0"
   }, 
   "engines": {
-    "node": "18.19.0"
+    "node": "22.10.0"
   }, 
   "overrides": {
-    "node": "18.19.0"
+    "node": "22.10.0"
   }
 }
