@@ -70,13 +70,13 @@ export const About = () => {
         checks to early-stage startups focusing on Infra and AI. You can email
         me at{' '}
         <a
-          href="mailto:loisisar@outlook.com"
+          href="mailto:lois@normal-people.com"
           aria-label="zmzlois email"
           target="_blank"
           title="email"
           rel="noopener noreferrer"
         >
-          loisisar_outlook_com
+          lois@normal-people.com
         </a>
         . If I didn't respond to you, chances are I missed it or your email went
         into spam box as I try to get back to everyone. You can send it again

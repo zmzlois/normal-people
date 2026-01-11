@@ -90,7 +90,7 @@ const socials = [
   },
   {
     name: 'Mail',
-    href: 'mailto:loisisar@outlook.com',
+    href: 'mailto:lois@normal-people.com',
     icon: (
       <MailIcon className="w-6 h-6 text-slate-400 hover:text-slate-100 transition-colors duration-400" />
     ),
