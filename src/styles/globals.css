@@ -42,6 +42,17 @@ html, body {
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
+  
+  /* invert colors on selection */
+  ::selection {
+    background-color: white;
+    color: black;
+  }
+  
+  ::-moz-selection {
+    background-color: white;
+    color: black;
+  }
 } 
 
 @layer utilities {
