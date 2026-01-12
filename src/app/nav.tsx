@@ -15,6 +15,7 @@ const navigation = {
     { name: "Twitch", href: "https://www.twitch.tv/zmzlois", tooltip: "I stream about esoteric knowledge and dive into rabbit holes with friends." },
     { name: "Youtube", href: "https://www.youtube.com/@zmzlois", tooltip: "Not ready yet. " },
     { name: "X/Twitter", href: "https://x.com/zmzlois", tooltip: "Sometimes stupid, sometimes rage bait, occasionally useful and serious. " },
+    { name: "Discord", href: "https://normal-people.com/discord", tooltip: "A group of CTOs, engineers and friends who are terminally online. " },
   ],
 };
 
