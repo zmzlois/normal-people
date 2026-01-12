@@ -7,6 +7,8 @@ import { Mdx } from "../../../components/mdx";
 import { title } from "process";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseUrl } from "@/utils/fetchFont";
+import { extractHeadings } from "@/utils/extract-headings";
+import { TableOfContents } from "@/components/blog-table-of-contents";
 
 type Props = {
   params: {
@@ -64,42 +66,49 @@ const BlogLayout = ({ params }: Props) => {
     throw new Error(`Post not found for slug: ${params.slug}`, notFound());
   }
 
+  // extract headings from the blog content
+  // try to get raw content from _raw.source.body or fallback to empty string
+  const rawContent = (blog as any)._raw?.source?.body || blog.body?.raw || "";
+  const headings = extractHeadings(rawContent);
+
   return (
-    <article className="max-w-xl py-8 mx-auto">
-      <div className="my-4 lg:mb-8 mb-4 text-center">
-        <h1 className="md:my-3 my-1  lg:text-4xl text-2xl text-slate-50 font-black">
-          {blog.title}
-        </h1>
-        <time dateTime={blog.date} className="mb-1 text-sm text-gray-600">
-          {format(parseISO(blog.date), "LLLL d, yyyy")}
-        </time>
-        <h3 className="lg:my-3 my-2 font-normal text-base  text-slate-200">
-          Author:{" "}
-          <Link
-            href="/"
-            className="font-normal transition transform text-md text-slate-200 hover:text-zinc-200"
-          >
-            {blog.author}
-          </Link>
-        </h3>
-        <Link href="/" className="mb-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg"
-            alt="author"
-            className="w-16 h-16 mx-auto rounded-full"
-          />
-        </Link>
-        <h3 className="mt-4 mb-2 text-slate-100 italic font-light tracking-wide text-md text-start">
-          {" "}
-          {blog.description}
-        </h3>
-      </div>
-      <hr className="border-gray-200/30" />
-      <div className="my-8">
-        <Mdx code={blog.body.code} />
-      </div>
-    </article>
+    <div className="relative">
+      <article className="max-w-xl py-8 mx-auto">
+        <header className="my-4 lg:mb-12 mb-8">
+          <div className="text-center mb-6">
+            <h1 className="md:my-3 my-1 lg:text-5xl text-3xl text-slate-50 font-black leading-tight">
+              {blog.title}
+            </h1>
+            <time
+              dateTime={blog.date}
+              className="block mt-4 mb-3 text-sm text-gray-500 font-light"
+            >
+              {format(parseISO(blog.date), "LLLL d, yyyy")}
+            </time>
+            <p className="mt-4 mb-6 text-slate-300 italic font-light tracking-wide text-base max-w-lg mx-auto">
+              {blog.description}
+            </p>
+          </div>
+          <div className="flex items-center justify-center gap-4 pt-4 border-t border-gray-200/20">
+            <Link href="/" className="flex items-center gap-3 group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://miro.medium.com/v2/resize:fill:88:88/1*mNpyQjptIh3VCarIzRwkUA.jpeg"
+                alt={blog.author}
+                className="w-10 h-10 rounded-full transition-transform group-hover:scale-105"
+              />
+              <span className="text-sm font-light text-zinc-400 group-hover:text-zinc-200 transition-colors">
+                {blog.author}
+              </span>
+            </Link>
+          </div>
+        </header>
+        <div className="my-8 prose prose-invert max-w-none">
+          <Mdx code={blog.body.code} />
+        </div>
+      </article>
+      {headings.length > 0 && <TableOfContents headings={headings} />}
+    </div>
   );
 };
 

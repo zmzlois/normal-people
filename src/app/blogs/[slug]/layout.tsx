@@ -4,6 +4,7 @@ import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { BlogFooter } from "./footer";
+
 function layout({
   children,
   params,
@@ -22,12 +23,10 @@ function layout({
     throw new Error(`Post not found for slug: ${params.slug}`, notFound());
   }
   return (
-    <>
-      <div className="container mx-auto prose dark:prose-invert">
-        {children}
-        <BlogFooter />
-      </div>
-    </>
+    <div className="min-h-screen bg-black">
+      {children}
+      <BlogFooter />
+    </div>
   );
 }
 
