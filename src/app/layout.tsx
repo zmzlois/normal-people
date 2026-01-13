@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+// highlight.js theme for code block syntax highlighting
+import "highlight.js/styles/github-dark.css";
 import React from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Store from "./store";

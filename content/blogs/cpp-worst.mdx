@@ -1,0 +1,310 @@
+---
+author: zmzlois
+date: 2026-01-12
+title: 'Why C++ is the worst language '
+type: Blog
+featured: true
+published: true
+description: "Some notes"
+---
+C++ is absolutely atrocious. First of all there are like 20 different ways to initialise a variable. 
+
+```cpp
+int x;      // default initialisation: uninitialised (garbage value) 
+int x{};       // Value initialisation: 0 
+int x = {};       // Value initialisation (with equals 0)
+int x = int();       // value initialisation (creates temporary, then copy): 0 
+int x = 10;          // copy initialisation: 10 
+int x = int(10);     // copy initialisation (creates temporary, then copy): 10 
+int x = (1, 0);      // copy initialisation (comma operator evaluates to rightmost): 0 
+int x(10);           // direct initialisation: 10 
+int x{10};           // direct list (uniform)initialisation: 10 
+int x = {10};        // copy list initialisation: 10 
+auto x = 10;         // type deduction: int, value 10
+auto x{10};          // type deduction: int, value 10 (since C++17, earlier was std::initializer_list<int>) 
+auto x = {10};       // type deduction: std::initializer_list<int> with one element 10 
+auto x = int{10};    // type deduction: int, value 10 
+auto x = (1, 0);     // type deduction: int, value 0 (comma operator)
+
+Point p = {1, 2};                // aggregate initialisation 
+Point p = {.x = 1, .y = 2};      // designated initialisation  (C++20/23)
+auto [a, b] = std::pair{1, 2};      // structured binding initialisation 
+std::vector<int> v = {1, 2, 3};     // std::initializer_list initialization 
+auto* p = new MyClass{1, 2};        // dynamic allocation with brace init 
+constexpr int x = 42;               // constant expression initialisation 
+auto f = [ x = 42 ]() { return x; };      // lambda init-capture 
+foo({1, 2});                            // braced initialiser as function arg 
+
+```
+
+And think about this: 
+```cpp 
+std::print("finally!"); 
+```
+is only available from C++23 onwards - and the majority of the industry won't be using "cutting edge" stuff like this for a while. 
+
+Even writing a benchmark is insanity: 
+
+In javascript we can just do: 
+```js 
+console.time("lol");
+functionToBenchmark();
+console.timeEnd("lol");
+```
+And it will give you the time taken in milliseconds.
+
+In C++ we have to do: 
+```cpp 
+std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+FunctionToBenchmark();
+std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+std::chrono::high_resolution_clock::time_point::duration diff = t2 - t1;
+std::chrono::microseconds duration = std::chrono::duration_cast<std::chrono::microseconds>(diff);
+std::cout << "Time taken: " << duration.count() << " microseconds" << std::endl;
+```
+And this is just one version of it. 
+
+## Casting in C++ 
+
+Casting in C++ is another thing which is obnoxiously verbose in comparison to other languages. 
+
+In Java we do: 
+```java 
+int i = (int) myFloat; 
+```
+
+In C++ you have to do: 
+```cpp 
+int i = static_cast<int>(myFloat);
+```
+
+It's incredibly annoying and tedious to type this out everytime you want to cast something. And it's a terrible eyesore that bloats up the code. 
+
+Consider any function or formula where you need to perform a cast multiple times. It makes it hard to read. 
+
+```cpp 
+// converting between different numeric types in a physics formula 
+double calculateForce(int8_t mass, uint16_t acceleration, float distance, long coefficient) {
+   return static_cast<double>(mass) * static_cast<double>(acceleration) / 
+   (static_cast<double>(distance) * static_cast<double>(distance)) * static_cast<double>(coefficient) * (1.0 + static_cast<double>(static_cast<int32_t>(acceleration) & 0xFF) / 1000.0);
+}
+```
+
+And `static_cast` doesn't work in all scenarios either. Sometimes you have to use `dynamic_cast`, `reinterpret_cast`, `const_cast`, or `bit_cast`, depending on the context. 
+
+```cpp 
+// static cast: safest general-purpose cast for common conversions. 
+double d = 123.45; 
+int i = static_cast<int>(d);
+
+// dynamic cast: used for polymorphic types (classes with virtual functions). safe downcasting with runtime type checking. 
+Base* base = new Derived();
+Derived* derived = dynamic_cast<Derived*>(base);
+
+// reinterpret cast: low-level, raw bit-wise conversion. raw memory reinterpretation (dangerous)
+uintptr_t address = reinterpret_cast<uintptr_t>(ptr);
+
+// const cast: used to remove constness from a pointer or reference, in another word adds or remove consts qualifier 
+const char* str = "hello";
+char* writeable = const_cast<char*>(str);
+
+// bit cast (C++20): safe bit-pattern reinterpretation. 
+float f = 3.14f; 
+uint32_t bits = std::bit_cast<uint32_t>(f);
+```
+
+The common theme i see with beginners is that they get annoyed with reading and writing `static_cast`. So they created an alia for it (like this).
+```cpp 
+// "technique" to make static_cast more succinct - don't do this 
+template<typename To, typename From>
+To sc(From&& source) {
+   return static_cast<To>(std::forward<From>(source));
+}
+
+// before (recommended): 
+int i = static_cast<int>(3.14);
+
+// after (less verbose but not recommended): 
+int i = sc<int>(3.14);
+```
+
+But creating aliases for language keywords is a really bad practice. Because other developers won't be familiar with your version of the language. So it's best not to do this. 
+
+And that's the thing that's so jarring about C++. **Correct C++ code often just looks wrong, especially for beginners.** 
+
+```cpp 
+// non-idiomatic "Java style" C++ 
+MyClass* obj = new MyClass(); 
+// idiomatic C++ 
+std::unique_ptr<MyClass> obj = std::make_unique<MyClass>();
+```
+
+And it takes a long time to build up an intuition for what good C++ code is supposed to look like. Eventually you endd up accepting the fact that in C++, the terse solution is almost never the correct solution. 
+
+## Keywords 
+
+Another example that's fundamental basic thing in any other languages but complicated in C++ is creating a global variable - watch this [20 mins video on how to do this in C++ which would take 2 seconds to learn in any other languages](https://www.youtube.com/watch?v=rQhBECyA6ew). 
+
+The problem is that you have all these keywords like `extern`, `const`, `inline`, `static` and `constexpr` and they all mean different things in different contexts. And you have different idiomatic combinations of them. They also have their own rules and meanings in different situations. C++ aggressively repurpose existing keywords in inconsistent ways. 
+
+
+```cpp 
+// Makes a constant accessible from other files (exxternal linkage). 
+// Useful for shared constants needed across multiple .cpp files. 
+extern const int BUFFER_SIZE = 1024;
+
+```
+
+## Types 
+
+## Different ways to DO THE SAME THING 
+
+## const 
+
+## Formatting and Style 
+
+## Naming Conventions 
+
+## Header Files 
+
+## Namespaces 
+
+## Compile Times 
+
+## Modern C++ 
+
+## C/C++ 
+
+## C++ Edge Cases 
+
+## Compilers and Build Systems 
+
+## Installing a Library in C++ 
+
+## Package Managers 
+
+
+## The Windows API 
+
+## The Standard Library 
+
+ 
+
+## New Features 
+
+## Deprecated Features 
+
+## The Fatigue Of Starting A New Project 
+
+Overall, there are a lot of issues with the standard library. But one of the key takeaway is that it's so low-level that in order to be productive, you inevitably end up writing your own wrappers and helpers around it to make it useful. But writing good generic wrappers and helpers requires the use of potentially complicated templates which can have daunting errors if you do something wrong. It's not realistic for beginners to know how to do this. 
+
+```cpp 
+// template magic to get std::visit to work like Rust's match. 
+template<typename... Ts>
+struct Overload : Ts... {
+   using Ts::operator()...;
+}; 
+
+template<typename Variant, typename... Handlers>
+auto Match(Variant&& v, Handlers&&... handlers) {
+   return std::visit(
+      base::Overload{ std::forward<Handlers>(handlers)...},
+      std::forward<Variant>(v)
+   );
+}
+
+// wrapper around std::find_if to avoid manually writing .begin() and .end()
+// and return a bool instead of an iterator 
+template<typename T, typename Predicate> 
+concept PredicateConcept = std::invocable<Predicate, T>;
+
+template<typename T, typename Predicate>
+requires PredicateConcept<T, Predicate>
+bool contains_if(const std::vector<T>& vec, Predicate pred) {
+   return std::find_if(vec.begin(), vec.end(), pred) != vec.end();
+}
+```
+The other option is to use third-party libraries, but as we covered earlier, that can be tricky too. 
+
+No matter what you choose, if you are a beginner, you are going to have a hard time. And it all just adds to the fatigue of starting a new project. 
+
+You have to pick which compiler to use, which IDE, which build system, which build system tools, which package manager, which style guide, how do you structure your project? Do you have standard library wrappers that you're going to carry over from your last project? Or are you going to use third party libraries? Which libraries are you going to use? You have to make all these critical infrastructure decisions at the beginning of your project that will haunt you for the rest of its lifetime. 
+
+Starting a new C++ project is incredibly dauting and you just can't hit the ground running. Most beginners seem to get stuck on just picking a UI library. 
+
+## C++ GUIs 
+
+Creating a user interface in C++ is another labyrinth that you have to navigate. On Windows there are like 1- different official ways to make a UI. Each with varying degrees of support for C++. 
+
+## Errors in C++ 
+
+## Templates 
+
+## IDE Problems 
+
+## Quality of Life Problems 
+
+## Serialisation in C++ 
+
+
+## Bad Defaults 
+
+## The Most Ironic Thing About C++
+
+## Implicit Conversions 
+
+## Invisible Behavior in C++ 
+
+## The Real Reason Why C++ Is Verbose 
+
+## Operator Overloading 
+
+## Ownership and Move Semantics 
+
+## Quirks, Tips, Footguns 
+
+## The Real Reason Why C++ Is Difficult 
+
+## Idioms in C++ 
+
+## Domain Difficulty 
+
+## Memory Safety 
+
+## Undefined Behavior 
+
+## Error handling in C++ 
+
+## Writing Tests in C++ 
+
+## The Broken Promise of Zero Cost Abstractions  
+
+## The Lack of Performance Oriented Features in C++ 
+
+## The Biggest Lie of C++ 
+
+## The Harsh Reality of C++ Jobs 
+
+## The Final Verdict 
+
+## "There are only two kinds of languages..."
+
+
+## Who Should Learn C++ 
+
+
+## How Long Does It Take To Learn C++? 
+
+## Pick a Project You're Passionate About 
+
+## Why I Write C++ 
+
+## Terrible Reasons To Learn C++ 
+
+## How To Learn C++ 
+
+## The Final Lesson of C++ 
+
+## Rust 
+
+## Is C++ Dying 

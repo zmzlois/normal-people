@@ -3,14 +3,11 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import hljs from "highlight.js";
-import javascript from "highlight.js/lib/languages/javascript";
+
 // MDX components type
 type MDXComponentsType = {
   [key: string]: React.ComponentType<any>;
 };
-
-hljs.registerLanguage("javascript", javascript);
 
 function clsx(...args: (string | undefined | null | false)[]): string {
   return args.filter(Boolean).join(" ");
