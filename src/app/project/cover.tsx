@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import { cn } from "@/utils/cn";
 import { useState, useEffect } from "react";
-import { useScroll, motion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const coverVariant: Variants = {
   initial: {
@@ -14,7 +13,6 @@ const coverVariant: Variants = {
       ease: "easeInOut",
     },
   },
-
   animate: {
     opacity: 1,
     y: 0,
@@ -47,7 +45,7 @@ export const Cover = () => {
       variants={coverVariant}
       initial="initial"
       animate={initial}
-      className="w-screen  fixed z-30 h-1/2 bg-gradient-to-b from-black transition-all duration-300 ease-in-out via-zinc-900/50 to-zinc-900/0  "
+      className="w-screen fixed z-30 h-1/2 bg-gradient-to-b from-black transition-all duration-300 ease-in-out via-zinc-900/50 to-zinc-900/0"
     />
   );
 };

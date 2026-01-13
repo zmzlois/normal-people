@@ -1,11 +1,8 @@
-import EnglishAnimate from "@/components/english-animate";
-
 export default function ProjectHeader() {
   return (
     <div className="px-8 md:px-14">
-      {" "}
       <span className="flex">
-        <h1>Cabinet of experiments </h1>{" "}
+        <h1>Cabinet of experiments</h1>
       </span>
       <h3>
         Inspired by{" "}
