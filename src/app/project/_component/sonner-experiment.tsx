@@ -1,15 +1,10 @@
 "use client";
 import { Toaster, toast } from "sonner";
-import { allBlogs } from "contentlayer/generated";
 import Image from "next/image";
 
 export default function Sonner() {
   toast.message("I made you click!");
-  const blog = allBlogs.find((blog) => blog.slug === "remake-sonner");
 
-  if (!blog) {
-    throw new Error(`Post not found for slug: remake-sonner`);
-  }
   return (
     <div className="flex flex-col-reverse md:flex-row">
       <div className=" md:block hidden px-4">

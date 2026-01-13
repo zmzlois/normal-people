@@ -2,13 +2,13 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMDXComponent } from "next-contentlayer/hooks";
 
-// MDX components type
+// mdx components type
 type MDXComponentsType = {
   [key: string]: React.ComponentType<any>;
 };
 
+// helper for combining class names
 function clsx(...args: (string | undefined | null | false)[]): string {
   return args.filter(Boolean).join(" ");
 }
@@ -98,7 +98,8 @@ function generateId(children: React.ReactNode): string {
     .trim();
 }
 
-const components: MDXComponentsType = {
+// mdx components for styling rendered markdown content
+export const components: MDXComponentsType = {
   h1: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
     const id = generateId(children);
     return (
@@ -318,14 +319,14 @@ const components: MDXComponentsType = {
     <hr className="my-4 border-zinc-200 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="w-full my-6 overflow-y-auto">
-      <table className={clsx("w-full", className)} {...props} />
+    <div className="w-full my-6 overflow-x-auto">
+      <table className={clsx("w-full border-collapse text-sm", className)} {...props} />
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
     <tr
       className={clsx(
-        "m-0 border-t border-zinc-300 p-0 even:bg-zinc-100",
+        "m-0 border-t border-zinc-700 p-0 even:bg-zinc-800/50",
         className
       )}
       {...props}
@@ -334,7 +335,7 @@ const components: MDXComponentsType = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableHeaderCellElement>) => (
     <th
       className={clsx(
-        "border border-zinc-200 px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border border-zinc-700 px-4 py-2 text-left font-semibold text-zinc-200 bg-zinc-800 [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
@@ -343,7 +344,7 @@ const components: MDXComponentsType = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableDataCellElement>) => (
     <td
       className={clsx(
-        "border border-zinc-200 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border border-zinc-700 px-4 py-2 text-left text-zinc-300 [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
@@ -363,17 +364,3 @@ const components: MDXComponentsType = {
   ),
   Image,
 };
-
-interface MdxProps {
-  code: string;
-}
-
-export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
-
-  return (
-    <div className="mdx">
-      <Component components={components} />
-    </div>
-  );
-}

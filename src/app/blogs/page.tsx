@@ -1,27 +1,21 @@
-import BlogCards from "@/components/blog-card";
-import { allBlogs } from "contentlayer/generated";
-import { compareDesc, format, parseISO } from "date-fns";
+import { BlogList } from "@/components/blog-list";
+import { getPublishedPosts, getAllTags } from "@/lib/mdx";
 
-export default function Home() {
-  const allPosts = allBlogs.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
-
-  const posts = allPosts.filter((post) => post.published === true);
+export default function BlogsPage() {
+  const posts = getPublishedPosts();
+  const tags = getAllTags();
 
   return (
     <div className="mx-auto max-w-xl py-8">
       <div className="mb-8">
-        <h1 className=" text-center text-2xl font-black text-slate-100">
+        <h1 className="text-center text-2xl font-black text-slate-100">
           MindStorming
         </h1>
         <p className="text-md font-sm text-center text-slate-200">
           with writing
         </p>
       </div>
-      {posts.map((post, idx) => (
-        <BlogCards key={idx} {...post} />
-      ))}
+      <BlogList posts={posts} tags={tags} />
     </div>
   );
 }

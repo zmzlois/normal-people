@@ -182,7 +182,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             onClick={onLinkClick}
             className={cn(
               "relative flex items-center gap-[10px] transition-all duration-200 group",
-              "hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 focus:ring-offset-black rounded-sm",
+              "hover:opacity-100  rounded-sm",
               {
                 "opacity-100": isActive,
                 "opacity-70": !isActive,
