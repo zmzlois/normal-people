@@ -41,9 +41,9 @@ And think about this:
 ```cpp 
 std::print("finally!"); 
 ```
-is only available from C++23 onwards - and the majority of the industry won't be using "cutting edge" stuff like this for a while. 
+This is only available from C++23 onwards - and the majority of the industry won't be using "cutting edge" stuff like this for a while. 
 
-Even writing a benchmark is insanity: 
+Even writing a benchmark is insanity.
 
 In javascript we can just do: 
 ```js 
@@ -135,11 +135,12 @@ And that's the thing that's so jarring about C++. **Correct C++ code often just 
 ```cpp 
 // non-idiomatic "Java style" C++ 
 MyClass* obj = new MyClass(); 
+
 // idiomatic C++ 
 std::unique_ptr<MyClass> obj = std::make_unique<MyClass>();
 ```
 
-And it takes a long time to build up an intuition for what good C++ code is supposed to look like. Eventually you endd up accepting the fact that in C++, the terse solution is almost never the correct solution. 
+And it takes a long time to build up an intuition for what good C++ code is supposed to look like. Eventually you ended up accepting the fact that in C++, the terse solution is almost never the correct solution. 
 
 ## Keywords 
 
@@ -153,6 +154,42 @@ The problem is that you have all these keywords like `extern`, `const`, `inline`
 // Useful for shared constants needed across multiple .cpp files. 
 extern const int BUFFER_SIZE = 1024;
 
+// File-private compile-time constant that doesn't generate address references. 
+// Good for optmisation when the constant is only needed in one file. 
+static constexpr double TAX_RATE = 0.05; 
+
+// Function that can be evaluated at compile-time and has a single definition across files. Reduces code duplication while enabling compile-time computation. 
+inline constexpr double kelvinToCelsius(double kelvin) {
+   return kelvin - 273.15;
+}
+
+// Modern way to define compile-time class constants without separate definition. Combines zero runtime overhead with single-instance storage. 
+class Config {
+   inline static constexpr int MAX_CONNECTIONS = 100;
+}
+
+```
+
+#### Static 
+
+The `static` keyword for example, has about three or four use cases depending on how you count it. 
+
+```cpp 
+// 1.  A static variable in a function persists between function calls. 
+void func() {
+   static int counter = 0; 
+   counter++; 
+}
+
+// 2. A static class members exists independently of any instance. 
+class MyClass {
+   static int counter; 
+   static void method();
+}
+
+// 3. The third use case is a complete semantic non sequitur. Static variables and functions can only be accessed from the cpp file which they are defined in. 
+static int value; 
+static void helper();
 ```
 
 ## Types 

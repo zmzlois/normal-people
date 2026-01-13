@@ -84,7 +84,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
         if (element) {
           const elementTop = element.getBoundingClientRect().top + window.scrollY;
-          const distanceFromTop = Math.abs(windowScrollPosition - elementTop);
+          const distanceFromTop = Math.abs(windowScrollPosition - elementTop + 100);
 
           // track the closest heading
           if (!closestHeading || distanceFromTop < closestHeading.distance) {

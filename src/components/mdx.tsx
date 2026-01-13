@@ -13,6 +13,66 @@ function clsx(...args: (string | undefined | null | false)[]): string {
   return args.filter(Boolean).join(" ");
 }
 
+// helper to extract text content from react children (for copy functionality)
+function extractTextFromChildren(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
+  if (Array.isArray(children)) {
+    return children.map(extractTextFromChildren).join("");
+  }
+  if (React.isValidElement(children) && children.props?.children) {
+    return extractTextFromChildren(children.props.children);
+  }
+  return "";
+}
+
+// code block wrapper with copy button
+function CodeBlock({ children, className, ...props }: React.HTMLAttributes<HTMLPreElement>) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    const text = extractTextFromChildren(children);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("failed to copy text:", err);
+    }
+  };
+
+  return (
+    <div className="relative group">
+      <pre
+        className={clsx(
+          "mt-6 mb-4 rounded-lg bg-zinc-800 py-4 px-4 overflow-x-auto",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </pre>
+      <button
+        onClick={handleCopy}
+        className="absolute top-8 right-2 p-2 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-300 hover:text-zinc-100 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        aria-label="Copy code"
+        title="Copy code"
+      >
+        {copied ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}
+
 // helper function to generate id from heading text
 function generateId(children: React.ReactNode): string {
   // extract text from children (handles strings, numbers, and nested elements)
@@ -290,18 +350,12 @@ const components: MDXComponentsType = {
     />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className={clsx(
-        "mt-6 mb-4 overflow-x-auto  rounded-lg bg-zinc-800 py-4",
-        className
-      )}
-      {...props}
-    />
+    <CodeBlock className={className} {...props} />
   ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={clsx(
-        " text-sm bg-zinc-800 p-1 rounded-md font-mono overflow-x-auto",
+        "text-sm bg-zinc-800 p-1 rounded-md font-mono whitespace-pre-wrap break-words",
         className
       )}
       {...props}
