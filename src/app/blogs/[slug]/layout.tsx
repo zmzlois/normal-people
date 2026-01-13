@@ -1,27 +1,8 @@
 import React from "react";
-
-import { allBlogs } from "contentlayer/generated";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import { BlogFooter } from "./footer";
 
-function layout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: any;
-}) {
-  const slug = params.slug;
-  const blog = allBlogs.find((blog) => blog.slug === slug);
-
-  const title = blog ? `${blog.title}` : "Blog";
-
-  const description = blog ? blog.description : "By zmzlois";
-
-  if (!blog) {
-    throw new Error(`Post not found for slug: ${params.slug}`, notFound());
-  }
+// layout for individual blog post pages
+function BlogPostLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-black">
       {children}
@@ -30,4 +11,4 @@ function layout({
   );
 }
 
-export default layout;
+export default BlogPostLayout;

@@ -55,7 +55,7 @@ const components: MDXComponentsType = {
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);
@@ -74,14 +74,14 @@ const components: MDXComponentsType = {
       <h2
         id={id}
         className={clsx(
-          "mt-10 scroll-m-20 border-b border-b-zinc-800 pb-1 text-3xl font-semibold tracking-loose first:mt-0",
+          "mt-10 scroll-m-20 text-3xl font-semibold tracking-loose first:mt-0",
           className
         )}
         {...props}
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);
@@ -107,7 +107,7 @@ const components: MDXComponentsType = {
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);
@@ -133,7 +133,7 @@ const components: MDXComponentsType = {
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);
@@ -159,7 +159,7 @@ const components: MDXComponentsType = {
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);
@@ -185,7 +185,7 @@ const components: MDXComponentsType = {
       >
         <a
           href={`#${id}`}
-          className="no-underline hover:underline text-inherit cursor-pointer transition-colors hover:text-zinc-300 hover:decoration-[0.5px] underline-offset-4"
+          className="relative no-underline text-inherit cursor-pointer transition-all duration-500 hover:text-zinc-300 after:absolute after:w-0 after:h-[1px] after:left-0 after:-bottom-1 after:bg-zinc-300 after:transition-all after:duration-500 hover:after:w-full"
           onClick={(e) => {
             e.preventDefault();
             window.history.pushState(null, '', `#${id}`);

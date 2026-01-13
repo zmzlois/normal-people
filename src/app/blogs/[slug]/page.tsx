@@ -1,11 +1,9 @@
-// app/posts/[slug]/page.tsx
 import { format, parseISO } from "date-fns";
 import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Mdx } from "../../../components/mdx";
-import { title } from "process";
-import { Metadata, ResolvingMetadata } from "next";
+import { Mdx } from "@/components/mdx";
+import { Metadata } from "next";
 import { baseUrl } from "@/utils/fetchFont";
 import { extractHeadings } from "@/utils/extract-headings";
 import { TableOfContents } from "@/components/blog-table-of-contents";
@@ -26,31 +24,35 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const blog = allBlogs.find((blog) => blog.slug === params.slug);
+  const blog = allBlogs.find((b) => b.slug === params.slug);
+
+  if (!blog) {
+    return { title: "Blog not found" };
+  }
 
   const queryParams = new URLSearchParams({
-    title: blog!.title,
-    date: blog!.date,
-    author: blog!.author,
-    description: blog!.description,
+    title: blog.title,
+    date: blog.date,
+    author: blog.author,
+    description: blog.description,
   });
 
   return {
-    title: blog!.title,
-    description: blog!.description,
+    title: blog.title,
+    description: blog.description,
     authors: {
-      name: blog!.author,
+      name: blog.author,
       url: "https://x.com/zmzlois",
     },
     openGraph: {
-      title: blog!.title,
-      description: blog!.description,
-      url: `https://loiszhao.com/blogs/${blog!.slug}`,
+      title: blog.title,
+      description: blog.description,
+      url: `https://loiszhao.com/blogs/${blog.slug}`,
       images: [{ url: `/api/og?${queryParams}` }],
     },
     twitter: {
-      title: blog!.title,
-      description: blog!.description,
+      title: blog.title,
+      description: blog.description,
       card: "summary_large_image",
       images: [{ url: `/api/og?${queryParams}` }],
     },
