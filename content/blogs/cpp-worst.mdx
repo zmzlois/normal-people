@@ -1,6 +1,6 @@
 ---
 author: zmzlois
-date: 2026-01-12
+date: 2026-01-14
 title: 'Why C++ is the worst language '
 type: Blog
 featured: true
@@ -170,7 +170,7 @@ class Config {
 
 ```
 
-#### Static 
+#### `static`
 
 The `static` keyword for example, has about three or four use cases depending on how you count it. 
 
@@ -181,16 +181,33 @@ void func() {
    counter++; 
 }
 
-// 2. A static class members exists independently of any instance. 
+// 2. A static class members exists independently of any instance / share class variables across different instances. 
 class MyClass {
    static int counter; 
    static void method();
 }
 
-// 3. The third use case is a complete semantic non sequitur. Static variables and functions can only be accessed from the cpp file which they are defined in. 
+// 3. The third use case is a complete semantic non sequitur. Static variables and functions can only be accessed from the cpp file which they are defined in. It's used to make functions private.
 static int value; 
 static void helper();
 ```
+
+I really wished they would have used the word `private` or `internal` instead of `static`. This illustrates how C++ keywords often times don't even describe what they do. 
+
+#### `inline`
+The `inline` keyword is also a misnamer. 
+
+In the past, it was used to inline functions - which is an optimisation trick to get the compiler to copy the code from the function definition directly into each call site rather than performing a normal function call. This helps **avoid the overhead of function calls** like settings up the stack, passing the parameters and return value handling. 
+
+But nowadays compilers are smart enough to do this automatically. So using the `inline` keyword for this purpose doesn't have any guarantees. These days, `inline` is used to resolve issues regarding the [One Definition Rule](https://en.wikipedia.org/wiki/One_Definition_Rule). 
+
+The _funny_ thing here is that using inline on a function does the exact opposite of using inline on a variable. In both cases, they resolve One Definition Rule related issues, but an inline function leads to potentially many separate instances of the function across the binary. 
+
+
+| Context | Explanation | 
+| ------- | ----------- | 
+| inline function | leads to multiple copies of the function in the binary. | 
+| inline variable | leads to a single copy of the variable in the binary. | 
 
 ## Types 
 
