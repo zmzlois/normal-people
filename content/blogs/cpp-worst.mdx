@@ -115,6 +115,7 @@ uint32_t bits = std::bit_cast<uint32_t>(f);
 ```
 
 The common theme i see with beginners is that they get annoyed with reading and writing `static_cast`. So they created an alia for it (like this).
+
 ```cpp 
 // "technique" to make static_cast more succinct - don't do this 
 template<typename To, typename From>
@@ -207,10 +208,113 @@ The _funny_ thing here is that using inline on a function does the exact opposit
 
 | Context | Explanation | 
 | ------- | ----------- | 
-| inline function | leads to multiple copies of the function in the binary. | 
-| inline variable | leads to a single copy of the variable in the binary. | 
+| `inline function` | The `inline` keyword suggests to the compiler that the function body should be inserted directly at each call site rather than making a function call. This can result in potentially many copies of the function code throughout the binary, one at each location where it's called. The compiler may ignore the suggestion if it determines inlining would be detrimental (e.g., large functions). Modern compilers often inline functions regardless of the keyword when optimisation is enabled.  | 
+| `inline variable` | An `inline` variable (C++17) tells the compiler and linker that this variable should have exactly one instance across all translation units, even if the definition appears in header included in multiple source files. Before `inline` variables, you had to use workarounds like the Meyers singleton pattern or `extern` declaration to achieve this. Useful for constants or global state defined in headers (like V8 Isolate).| 
+
+
+Additionally you can also make a namespace inline - this is typically used for library versioning. 
+
+```cpp  
+namespace lib {
+   inline namespace v1 {
+      void func() { /* v1 implementation */}
+   }
+
+   namespace v2 {
+      void func() { /* v2 implementation */}
+    }
+}
+
+int main() {
+   lib::v1::func(); // calls v1
+   lib::v2::func(); // calls v2
+   lib::func(); // calls v1 because it's inlined. 
+}
+```
+The list of edge cases and caveats just goes on and on - it never ends. 
+
+#### `constexpr` 
+
+The keyword `constexpr` has its own sets of nuances. 
+
+| Context | Explanation | 
+| ------- | ----------- | 
+| `constexpr function` | `constexpr` functions are implicitly `inline`. This means they can be defined in headers without causing multiple definition errors, and the compiler may insert their code at call sites. The `inline` behavior is automatic; you don't need to explicitly add the `inline` keyword. | 
+| `constexpr variable` | `constexpr` variables are **NOT** implicitly `inline`. If you define a `constexpr` variable in a header and include it in multiple translation units, you'll get multiple definition errors at link time. To fix this, you MUST explicitly mark it as `inline constexpr` (C++17) to ensure only one instance exists across all translation units. | 
+
+Also you can't use `constexpr` on all types - it only works on `constexpr` compatible types. 
+
+```cpp 
+constexpr std:::string wtf = "this doesn't work"; // this is going to error 
+
+constexpr std::string_view nice = "this works"; // this works because string_view is constexpr compatible. 
+```
+
+And every version of C++ has different rules on how you can use `constexpr`. 
+
+Everything in this language feels hacked together - even the inheritance system. 
+
+In Java you can have an explicit interface keyword to create interfaces. 
+
+```java 
+interface MyInterface {
+   public void method();
+   public void method2();
+}
+```
+
+But in C++, you have to use the virtual keyword in every function, and then do this weird thing where you make each function equal to 0. And only then is considered to be an interface. 
+
+```cpp 
+class MyClass {
+   public: 
+      virtual void method() = 0;
+      virtual void method2() = 0;
+      virtual ~MyClass() = {}
+};
+
+class MyDerivedClass : public MyClass {
+   public: 
+      void method() override {
+         std::cout << "MyDerivedClass::method" << std::endl;
+      }
+
+      void method2() override {
+         std::cout << "MyDerivedClass::method2" << std::endl;
+      }
+}
+```
+
+This is a very unusual syntax. And strangely enough, when you overwrite functions in a derived class, the `override` keyword is purely optional. 
+
+```cpp 
+class ConcreteClass : public MyInterface {
+   public: 
+      void func1() override { // override keyword is optional 
+         // implement something here 
+      }
+}
+```
+
+C++ is a crazy language, and learning it can be a daunting task for beginners. 
 
 ## Types 
+
+There is about 50 integer types, and the size of these types varies depending on which compiler you use and the target machine hardware. 
+
+| Type specifier | Equivalent type | Width in bits by data model | 
+| ------- | ----------- | ----------- | 
+| `int` | `int` | at least 16 bits | 
+| `signed` | `int` | at least 16 bits | 
+| `signed int` | `int` | at least 16 bits | 
+
+Notice how it doesn't say that `int` **IS** 16 bits. It says that it's at least 16 bits, but it **COULD** also be 32 bits. And you have to know these rules about how in any given system, the size of a `short` will be less than or equal to an `int`, which will be less than or equal to a `long`. 
+
+```cpp
+short <= int <= long
+```
+
+Even the operating system which you use changes things. On Windows, long is 32 bits, even if it's 64-bit Windows. This is for backwards compatibility reasons. 
 
 ## Different ways to DO THE SAME THING 
 
