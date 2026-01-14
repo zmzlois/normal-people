@@ -87,7 +87,7 @@ export default async function BlogPage({ params }: Props) {
 
   return (
     <div className="relative">
-      <article className="max-w-xl py-8 mx-auto">
+      <article className="max-w-xl lg:max-w-2xl xl:max-w-3xl py-8 mx-auto">
         <header className="my-4 lg:mb-12 mb-8">
           <div className="text-center mb-6">
             <h1 className="md:my-3 my-1 lg:text-5xl text-3xl text-slate-50 font-black leading-tight">
