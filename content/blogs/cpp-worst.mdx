@@ -314,11 +314,76 @@ Notice how it doesn't say that `int` **IS** 16 bits. It says that it's at least 
 short <= int <= long
 ```
 
-Even the operating system which you use changes things. On Windows, long is 32 bits, even if it's 64-bit Windows. This is for backwards compatibility reasons. 
+Even the operating system which you use changes things. On Windows, long is 32 bits, even if it's 64-bit Windows. This is for backwards compatibility reasons. On 64-bit Linux, long is 64 bits. 
+
+The names are also just so verbose and ugly (wdym by `long long`???) I hate typing it - i wish we could all just agree to use something terse like i64 in the case where we want 64 bits. Again you could techinically create your own aliases: 
+
+```cpp 
+using i64 = long long; 
+```
+But it's ill advised. 
+
+And I hate how fixed width integer types have an `_t` suffix. Come on guys we are not in the 90s anymore. 
+```cpp 
+uint8_t; 
+uint16_t; 
+uint32_t; 
+uint64_t; 
+```
+
+And then you have to remember to use the correct one for the job. Beginners also find it weird how getting the size of standard library data structures return a `size_t` instead of an integer, which can also be of various sizes depending on the hardware. At some point you will inevitably run into the seven different character types and wonder what they all mean, and why a character would ever even need to be signed of unsigned like a number? And why an unsinged char is often used to represent bytes and binary data? Also what's a `wchar` ? And what's the difference between a `std::string` and a `std::wstring`? What are all the issues pertaining to that? 
+
+| Type | Size | Why it exists/Why use it | 
+| ------- | ----------- | ----------- | 
+| `char` | 1 byte | Historical default. It's what C used for text, so C++ inherited it. You use it for normal ASCII text and strings (`char*`, `std::string`) because that's the convention everyone follows. Whether it's signed or unsigned is implementation-defined. | 
+| `signed char` | 1 byte | When you need a tiny integer that can be negative. Range: -128 to 127. If you want to store small numbers to save memory, you explicitly use `signed char` to make it clear you're doing math, not storing characters. It's a distinct type from `char`. | 
+| `unsigned char` | 1 byte | For raw byte manipulation because it has no trap representations. Range: 0-255. The C++ standard guarantees that `unsinged char` can hold any bit pattern safely. When reading binary files, network packets, or doing low-level memory operations, you need this guarantee. Also useful when you need small positive-only values. It's a distinct type from `char`. | 
+| `wchar_t` | 2 or 4 bytes | Early attempt at internationalisation before Unicode won. Created when peopel realised ASCII wasn't enough for non-English text, but before UTF-8/16/32 became standard. Size is implementation-defined (2 bytes on Windows, 4 bytes on Linux/MacOS). Now it's stuck around for legacy compatibility, especially for Windows APIs. Used for wide strings (`wchar_t*`, `std::wstring`) because they are required for Unicode text. | 
+| `char8_t` | 1 byte | To explicitly say "this is UTF-8". Regular `char` is ambiguous - is it ASCII? UTF-8? Latin-1? `char8_t` (C++20) removes all doubt and is guaranteed unsigned. Used for UTF-8 strings (`char8_t*`, `std::u8string`) because they are required for UTF-8 text. The compiler can also enforce UTF-8 correctness at compile time. | 
+| `char16_t` | 2 bytes | For UTF-16 encoding. Windows APIs, Javascript, and Java use UTF-16 internally. You need this (C++11) when interfacing with those systems or when you specifcally want UTF-16. Used for UTF-16 strings ( `char16_t*`, `std::u16string`) although UTF-8 is more common now.  | 
+| `char32_t` | 4 bytes | When you want each variable to hold exactly one complete Unicode character. UTF-8 and UTF-16 use multiple bytes for some characters, making string indexing complex. UTF-32 (C++11) is simpler: character 5 is always at position 5. Used for UTF-32 strings (`char32_t*`, `std::u32string`). Trade-off: uses more memory.| 
+
+The stuff might make sense to you if you're an experienced developer, but if you're a beginner, it's incredibly confusing and it raises a million questions. 
+
 
 ## Different ways to DO THE SAME THING 
 
-## const 
+Further more there's so many different ways to do the exact same thing in C++. 
+
+There are two different function syntaxes, the traditional one and the trailing return type syntax. 
+
+| Traditional Syntax | Trailing Return Type Syntax | 
+| ------- | ----------- | 
+| `int func(int x) { return x + 1; }` | `auto func(int x) -> int { return x + 1; }` | 
+| `int doThing() { // implementation }` | `auto doThing() -> int { // implementation }` | 
+
+You can also get function like behavior using a struct. 
+
+```cpp 
+// implementation of struct
+struct { 
+   [[nodiscard]] auto operator()(std::string_view s1, std::string_view s2) const -> std::string { return std::string{ s1 } + ", " + std::string{ s2 } + "!"; }
+} doSomething;;
+
+// usage. 
+std::string result = doSomething("Hello", "World"); // result is "Hello, World!"
+```
+
+And if you don't like parenthesis, you can use square brackets instead 
+
+```cpp 
+struct { 
+   [[nodiscard]] auto operator[](std::string_view s1, std::string_view s2) const -> std::string { return std::string{ s1 } + ", " + std::string{ s2 } + "!"; }
+} doSomething;;
+
+std::string result = doSomething["Hello", "World"]; // result is "Hello, World!"
+```
+
+Above two are both same thing.
+
+
+## `const`
+`const` is another source of confusion. 
 
 ## Formatting and Style 
 

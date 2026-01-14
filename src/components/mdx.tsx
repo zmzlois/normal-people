@@ -54,7 +54,7 @@ function CodeBlock({ children, className, ...props }: React.HTMLAttributes<HTMLP
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-8 right-2 p-2 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-300 hover:text-zinc-100 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        className="absolute top-2 right-2 p-2 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-300 hover:text-zinc-100 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         aria-label="Copy code"
         title="Copy code"
       >
@@ -356,7 +356,7 @@ export const components: MDXComponentsType = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={clsx(
-        "text-sm bg-zinc-800 p-1 rounded-md font-mono whitespace-pre-wrap break-words",
+        "text-xs bg-zinc-800 p-1 rounded-md font-light font-mono whitespace-pre-wrap break-words",
         className
       )}
       {...props}
