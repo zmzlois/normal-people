@@ -1,6 +1,6 @@
 ---
 author: zmzlois
-date: 2026-01-14
+date: 2026-01-15
 title: 'Why C++ is the worst language '
 type: Blog
 featured: true
@@ -383,13 +383,194 @@ Above two are both same thing.
 
 
 ## `const`
-`const` is another source of confusion. 
+`const` is another source of confusion. It's used for indicating that a variable's value is constant. It tells the compiler to prevent the programmer from modifying it. But counterintuitively, writing mutable const is completly valid C++ code. 
+
+```cpp 
+class MyClass {
+   mutable const int *i
+   void setX(int *x) {
+      this->x = x;
+   }
+}
+
+MyClass myClass;
+myClass.setX(new int(10));
+std::cout << *myClass.x << std::endl; // 10
+```
+
+> Note: this is only valid for class member variables. The `mutable` applies to the pointer variable `i`, allowing you to change where it points even in `const` member functions. But the thing it points to is still `const int`, so you can't modify the value through the pointer. 
+
+If you really want you can remove the constness of a variable by casting it away,
+
+```cpp 
+const_cast<>
+```
+
+but that's considered bad practice. Additionally many beginners are surprised to find out that when you make a member variable const, you can no longer assign your object to another object. 
+
+```cpp 
+class MyClass {
+   public: 
+      MyClass() : x(0) {}
+   private: 
+      const int x; // const member variable imposes restrictions on the object
+}; 
+
+int main() {
+   MyClass a; 
+   MyClass b; 
+   b = a; // Compiler error! Assignment doesn'work. 
+   b = std::move(a); // compiler error. move assignment doesn't work. 
+}
+```
+
+Another quirk of const is that it can go on either side of the type. But both do the exact same thing and there's no point to this. 
+
+```cpp 
+const int i; // west const 
+int const i; // east const 
+```
+There should be only one correct way to do this to avoid confusion because pointers can also be const. 
+
+```cpp 
+int const * const i; 
+// const pointer to const int
+int cnost * const var; 
+// var is a const pointer of const int
+```
+So it takes a bit of practice getting used to figuring out if the const keyword applies to the value of the type or the pointer. The general rule of thumb is read it from right to left. But this is stupid and unintuitive because most humans read from left to right. 
 
 ## Formatting and Style 
 
+C++ developers just can't seem to agree on how to format and style their code. Should you use `snake_case` or `camelCase` ? Should the opening curly brace go on a new line or not? Should the private section of a class be written at the top or the bottom? Should you prefix a variable based on the types or the context (`int m_member` vs `int member`)? What's the best way to split the code if it's too long? Should you put each parameter on a new line or just divide the function in the middle? Should you use the virtual keyword in derived functions or not? Should you use east const or west const? Should references and pointers stick to the type or the name? 
+
+```cpp 
+int& ref = i; 
+int &ref = i; 
+int* ptr; 
+int *ptr; 
+```
+Which extension should you use for the header files? `.h` or `.hpp` or `.hh`? And which one should you use for the implementation files? `.cpp` or `.cc` or `.cxx`, `.c++`, `.C`?  Also tabs or spaces, and if so, how many? 
+
+It's like every single C++ codebase is an entirely different language. 
+
+You could spend your entire life working on, say, Unreal Engine C++ projects, and then struggle to do anything else because of all the custom macros and wrappers around it that you'd have to unlearn. 
+
+When I first set out to learn C++, I made it a goal of mine to study the GOogle C++ style guide. However, many seasoned developers cautioned me against it, explaining that the guide is designed for Google's aging codebases and tailored to address Google's specific challenges, many of which are no longer relevant for modern C++. 
+
+There's also the official C++ Core Guidelines, but historically it's always been very incomplete. As of recently, it seems like it's getting better. But nevertheless, most real life code bases just don't follow it. So you're stuck writing C++ in a completely different way depending on which codebase you're contributing to. 
+
 ## Naming Conventions 
 
+Moving forward, nearly everything in the C++ standard library that is important is poorly named. 
+
+In Java, you have simple, accurate, and self-descriptive names for the fundamental containers, like `ArrayList`, `LinkedList`, `HashSet`, and `HashMap`. 
+
+In C++, the most commonly used container is called `vector`. This is kind of like Java's `ArrayList`. But it's a horrible name because a vector is usually thought of as being a physics concept which represents a magnitude and a direction. Even the designer of the standard template library, Alex Stepanov, confessed that the name was a mistake. 
+
+Additionally, if you want to use a hash set or hash map in C++, you might mistakenly reach for `std::set` and `std::map`. But these are not what you think they are. They are implemented as balanced binary trees and give you logarithmic lookup time complexity as opposed to constant time complexity, which is what you would have expected based on the name. If you want constnat lookup time complexity, then you have to use `unordered_set` and `unordered_map`. 
+
+| Java | C++ | 
+| ------- | ----------- | 
+| `ArrayList` | `std::vector` | 
+| `LinkedList` | `std::list` | 
+| `HashSet` | `std::unordered_set` | 
+| `HashMap` | `std::unordered_map` | 
+
+But honestly you shouldn't be using these either, and I'll explain why in just a moment. 
+
+Even the methods of these fundamental data structures are poorly named. Many containers, for example, `vector`, have a `vector.empty()` function. It's hard to tell at first glance if this function is a question which checks if the container is empty or if it's a verb which empties the container. A better name would've been `vector.is_empty()`. 
+
+The standard library is filled to the brim with confusing incomprehensible function names like `std::stoi` and `std::stol` and `std::stoll` and `std::stof`, `std::stod` and `std::stold` etc.
+
+And I know that some of these were probably inspired by their C counterparts and they are just abbreviations of types. But cryptic names like this can be very intimidating to beginners, and it makes everything seems more complicated than it needs to be. 
+
+| C++ Function | C Equivalent | What it does | 
+| ------- | ----------- | ----------- | 
+| `std::stoi` | `atoi` | Converts a string to an integer | 
+| `std::stol` | `atol` | Converts a string to a long integer | 
+| `std::stoll` | `atoll` | Converts a string to a long long integer | 
+| `std::stof` | `atof` | Converts a string to a float | 
+| `std::stod` | `atod` | Converts a string to a double | 
+| `std::stold` | `atold` | Converts a string to a long double | 
+
+Even the most commonly used terms, idioms and best practices in C++ are terribly named. For example, **RAII**, which stands for **Resource Acquisition Is Initialization**. This is a super important idiom in C++, but the name makes it so much more confusing than it actually is. It just means that when an object goes out of scope, its resources should be freed automatically. So make sure you put the resouce releasing logic in the destructor. 
+
+
+```cpp 
+class MyClass {
+   public: 
+      MyClass() {
+         // acquire resource
+      }
+      ~MyClass() {
+         // release resource
+      }
+}; 
+```
+
+A much better name would have been **Scope Bound Resource Management**. Or **CADRe** which stands for **Constructor Acquires, Destructor Releases**. Too bad neither of them caught on. 
+
+Another example of bad naming is the **CRTP** idiom, which stands for **Curiously Recurring Template Pattern**. The name has very little to do with what it means. **Curiously Recurring** just refers to the fact that the guy who coined the term, James O. Coplien, stumbled upon this pattern on various occasions and was intrigued by it. Hence the name **Curiously Recurring**. This has nothing to do with what the pattern actually does. It only describes his impression of the pattern, which is useless in helping people understand what the pattern is. It should've been called **Static Polymorphism Template Pattern** (**SPTP**) or **Compile Time Inheritance** (**CTI**). It would've been far more self-descriptive and helpful to beginners. 
+
+C++ also has something called `std::monostate`, which is intended to be used inside variants to represent an empty state. The name monostate is the most pretentious deliberately abstruse thing I've ever heard. It's absolutely wild to me that they chose that name. They should've called it `std::empty` or `std::blank` or `std::void` or sth. 
+
+
+#### Deducing This
+
+There's also a feature called **Deducing this** in C++23. Basically when we call an object's member function, under the hood, the object is implicitly passed to the member function, even though you don't see it in the parameter list. "Deducing this" lets you make the parameter explicit. This has various advantages that I won't cover. My main gripe is that it should have been called something more self-descriptive like **Explicit Object Parameter**. 
+
+```cpp 
+// without deducing this
+class MyClass {
+   public: 
+      void doSomething() { // object is passed implicitly
+         // do something with this
+      }
+}; 
+
+// with deducing this
+class MyClass {
+   public: 
+      void doSomething(MyClass& self) { // object is passed explicitly
+         // do something with this
+      }
+}; 
+
+MyClass myClass;
+myClass.doSomething();
+
+```
+
+And the remove function `std::remove` in the standard library doesn't even remove anything. It just moves the elements to the end of the container. 
+
+As C++ evolves, the naming conventions only get more and more confusing. Many new features, which are meant to be improvements of old deprecated ones, have less than ideal names. The standard library has a mutex wrapper called `std::lock_guard`, but it's not able to lock multiple mutexes. 
+
+> `std::lock_guard` 
+> A mutex wrapper that provides a convenient and safe way to manage mutexes using the Resource Acquisition Is Initialization (RAII) pattern.
+> But there are some issues 
+> - Inability to lock multiple mutexes 
+> - Deadlock Risk 
+> - Verbose 
+
+There was a proposal to extend `lock_guard` to include this feature, but that was found to break backwards compatibility. So they made a new mutex wrapper called `std::scoped_lock`. 
+
+Developers have been critical about the choice of this name. It's hard to remember which one is the old version and which one is the new version based on the name alone. Some developers argue that it should have been called `lock_guard2` to make it more explicit that it's the newer version. 
+
+In the same vein, `std::thread` and `std::function` also have issues, but because they can't break backwards compatibility, they made `jthread` and `copyable_function` which contain the fixes. Again the chosen names completely failed to communicate that these are the newer improved versions. They probably should have been called `thread2` and `function2`, respectively. 
+
+| Old | Issues | New |What's fixed |  What it should've been | 
+| ------- | ----------- | ----------- | ----------- | ----------- | 
+| `std::thread`| No automatic join, can terminate program when thread is still running | `std::jthread` | Auto-join with stop token support | `std::thread2` | 
+| `std::function` | const correctness bug | `std::copyable_function` | Fiexes const correctness bug | `std::function2` | 
+| `std::lock_guard` | No ability to lock multiple mutexes | `std::scoped_lock` | Can lock multiple mutexes | `std::lock_guard2` | 
+
+
 ## Header Files 
+
+The only thing more nauseating than the naming convention however, is dealing with header files. Header files are just awful. 
+
+Pretty much everytime you create a C++ file, you also need to create a corresponding header file, and you need to make sure that they're synchronised at all times. This is a blatant violation of the "Don't Repeat Yourself" principle. If you change the parameters of a function in the cpp file. 
 
 ## Namespaces 
 
@@ -532,3 +713,6 @@ Creating a user interface in C++ is another labyrinth that you have to navigate.
 ## Rust 
 
 ## Is C++ Dying 
+
+##### Reference 
+[Lazo Velko](https://www.youtube.com/watch?v=7fGB-hjc2Gc)
