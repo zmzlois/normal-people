@@ -559,7 +559,7 @@ Developers have been critical about the choice of this name. It's hard to rememb
 
 In the same vein, `std::thread` and `std::function` also have issues, but because they can't break backwards compatibility, they made `jthread` and `copyable_function` which contain the fixes. Again the chosen names completely failed to communicate that these are the newer improved versions. They probably should have been called `thread2` and `function2`, respectively. 
 
-| Old | Issues | New |What's fixed |  What it should've been | 
+| Old | Issues | New |What's fixed |  What it should**'**ve been | 
 | ------- | ----------- | ----------- | ----------- | ----------- | 
 | `std::thread`| No automatic join, can terminate program when thread is still running | `std::jthread` | Auto-join with stop token support | `std::thread2` | 
 | `std::function` | const correctness bug | `std::copyable_function` | Fiexes const correctness bug | `std::function2` | 
@@ -570,9 +570,166 @@ In the same vein, `std::thread` and `std::function` also have issues, but becaus
 
 The only thing more nauseating than the naming convention however, is dealing with header files. Header files are just awful. 
 
-Pretty much everytime you create a C++ file, you also need to create a corresponding header file, and you need to make sure that they're synchronised at all times. This is a blatant violation of the "Don't Repeat Yourself" principle. If you change the parameters of a function in the cpp file. 
+Pretty much everytime you create a C++ file, you also need to create a corresponding header file, and you need to make sure that they're synchronised at all times. This is a blatant violation of the "Don't Repeat Yourself" principle. If you change the parameters of a function in the cpp file, you also need to make sure to update the contents in the corresponding header file to match. 
+
+And god forbid, if you use the wrong paremeter names in the header file, it'll comile just fine without letting you know: 
+
+```cpp 
+// header file - this would compile just fine
+void process(int width, int height) {
+   // implementation
+}
+
+// cpp file 
+void process(int height, int width) {
+   // implementation
+}
+```
+
+If you create a class that requires a constructor, you end up writing the class name four times. 
+
+```cpp 
+// twice in the header file 
+class MyClass {
+   MyClass();
+}
+
+// cpp file - two more times in the cpp file where you define the constructor. 
+MyClass::MyClass() {
+   // implementation
+}
+
+```
+
+Compare this to almost any other language like Java, for example, where the exact same thing is half the amount of work. The other problem with header files is that they bloat up your project directory. An application could have only required 100 files to complete, now requires 200 files in total because of the corresponding header files.
+
+This also means that you have twice the amount of files to check in pull requests and code reviews. It just adds so unnecessary mental fatigue to dealing with this language. And there's so many different ways of organising your project structure. 
+
+Some devs keep their header and cpp files in the same folder. This is typically used in applications. Other developers keep them into different folders. This is typically used in libraries. 
+
+Perhaps the worst thing about header files is that when you include them, the compiler just stupidly copies and pastes the content of the file into the line where you've included it. This means that if you've included something more than once due to a transitive dependency, you now have the same types and functions defined more than once. This breaks the [One Definition Rule](https://en.wikipedia.org/wiki/One_Definition_Rule) and gives you a compiler error. 
+
+To fix this, you have to tell thr compiler not to include something again if it's already been included. You do this with **header guards**, whic you have to put inside every single header file in your entire codebase. _It's exhausting._ And developers online argue incessantly about which technique to use because there are at least two ways to do it. 
+
+The first is with `include guards` which are more verbose because it requires three separate preprocessor directives and necessitates that you create and maintain a unique macro name. 
+
+```cpp 
+#ifndef HEADER_NAME_H 
+#define HEADER_NAME_H
+// header content goes here 
+#endif
+```
+
+Ususally this name is based on the file name. Don't forget to update it if you change the file name. 
+
+The second is with `pragma once` which is more concise, but for some reason this is not recognised by the C++ standard. So it's not the officially agreed upon way. 
+
+```cpp 
+#pragma once
+// header content goes here 
+```
+
+And because it's not in the standard, some people say that you should never use it, wherease other say that you should use both together at the same time. 
+
+All these incessant arguing ignores the fact that this issue shouldn't even exist in the first place. The compiler should just know to include a file only once. And if you don't like that, there should be a way to opt out and not the other way around. 
+
+Developers sometimes try to justify the existence of header files by arguing that they represent the public interface to your code. However classes which declared in headers have their private variables and functions exposed there too. 
+
+```cpp 
+class MyClass {
+   public: 
+      void execute();
+   private: 
+      ImplementationDetail detail; 
+}; 
+``` 
+
+This is a leaky abstraction. Private implementation details don't belong in a public interface. But since they exist there, you have to include those dependencies in the header file. This means that anyone who includes your header file now by extension also ends up transitively including the files related to the implementation details of the class. 
+
+To add insult to injury, if you change a private member variable, you have to recompile everything that includes that header. Even if that change is purely internal and semantically irrelevant to client code. 
+
+#### Pimpl
+
+There are some solutions to this, but not really. There is a design pattern called pimpl ([plmpl for compile-time encapsulation in C++](https://learn.microsoft.com/en-us/cpp/cpp/pimpl-for-compile-time-encapsulation-modern-cpp?view=msvc-170), [pointer to implementation](https://en.cppreference.com/w/cpp/language/pimpl.html)) that can be used to hide the implementation details entirely inside the cpp file. But it makes things more complicated and it comes with a performance penalty. 
+
+And honestly, in a well-designed language, private variables like this should be hidden by default without all this unncessary work. 
+
+C++ in general has a very weird ways of hiding implementation details. If you want to isolate your code from the outside, you can use an anonymous namespace, or you can make your function `static` as we discussed earlier, or you can do both at the same time. 
+
+```cpp 
+namespace {
+   void helper() {
+      // implementation
+   }
+}
+
+static void helper() {
+   // implementation
+}
+
+namespace {
+   static void helper() {
+      // implementation
+   }
+}
+
+```
+
+And as I've stated before, I would have preferred a private keyword for this purpose instead. 
+
+You might also see people try to hide their implementation details by putting them in a `detail` or `implementation` folder and corresponding namespace. But there's no built-in mechanism in C++ to prevent others from accessing the code in these folders. Anyone can easily include these implementation files and use them anyways. 
+
+The user has to know which files are ok to include and which are not, usually by reading documentation written by the creator of the library, which may or may not exist. 
+
+Another major flaw of C++'s header files system is how much it pollutes the autocomplete suggestions. As I mention earlier, the `#include` preprocessor directive is just a glorified copy and paste operation. So it dumps all the types, functions, and other symbols from the header file directly into your code, which in turn pollutes your autocomplete suggestions with functions and types from all over your codebase. 
+
+Consider the situation where you include a header that include 10 more headers, and each of those headers include 10 more headers, and so on and so forth. You end up with a million symbols from the entire dependency tree flooding your autocomplete and make it useless. I can hardly rely on using tab to autocomplete my code because it's replete with irrelevant suggestions. 
+
+And this is why developers hate it when noobs `#include <windows.h>`. It imprts like another million symbols into your project and macros make everything even worse. 
+
+#### Macros
+
+Macros in C++ are basically search and replace commands that happens before your code is actually compiled. They are executed by the preprocessor. 
+
+If you write `#define SIZE 100` you're telling the compiler to replace every instance of `SIZE` with `100`. 
+
+Macros don't respect the type system or scoping rules, and they have no semantic awareness, and they operate indiscriminately across all code which is downstream in the `include` chain. This means that if you _include a header with macros, those macros can hijack your code because those search and replace commands are now active in your code, whether you like it or not. It's like inviting someone into your house and they secretly start rearranging your furniture without telling you. 
+
+Imagine that you have a function `SendMessage` and then you `#include <windows.h>`. `windows.h` has a macro for `SendMessage` which ends up overwriting your SendMessage function. 
+
+Or imagine if someone write a macro to make private public, which is sometimes used naively for writing tests. 
+
+```cpp 
+#define private public; 
+
+class MySecureData {
+   private: // surprise! this is now public due to the macro
+      int sensitve_data; 
+}
+
+```
+
+Now all your private variables and functions are exposed.  
+
+Given the fact that the header inclusion system dumps all the symbols directly into your code, the probability of there being name clashes is much higher than in modern languages that have proper module support.  This is something that C++ inherited from C. And has led to the creation of another problematic feature which is namespaces. 
 
 ## Namespaces 
+
+If you're moving to C++ from C, namespace look like a fantastic feature, because the solution to name classing in C was to prefix your functions with your project name. 
+
+```cpp 
+// C 
+LIB_doStuff();
+// C++ 
+lib::doStuff();
+// other languages 
+doStuff();
+```
+But in C++, you use namespaces instead. Wonderful. But if you move from other languages to C this is a serious downgrade (C#, Go, TS, JS, Java etc. ), this is a serious downgrade because namespaces make the code look hideous. 
+
+Modern languages don't force you to write namespace prefixes everywhere. In modern languages, name clashing occurs far less frequently because they don't use header files. So you deal with naming ambiguities as they arise. 
+
+And yes, i know that you can use the `using` keyword to omit namespace prefixes in C++, but then you're back to square one. 
 
 ## Compile Times 
 
