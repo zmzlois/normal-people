@@ -1,0 +1,41 @@
+---
+author: zmzlois
+date: 2026-01-18
+title: 'OLTP, OLAP, and HTAP'
+type: Blog
+featured: true
+published: true
+description: 'OLTP, OLAP, and HTAP in Data Warehousing'
+tags: ["database", "engineering"]
+---
+
+# OLTP, OLAP, and HTAP in Data Warehousing
+
+We want to explain from the bottom up of why OLTP (online transactional processing) and OLAP (online analytical processing) exists and what is this new thing called HTAP (hybrid transactional&analytical processing).
+
+## Processing in a database
+
+We start with processing in a database, and then we create our data model - and this is usually you're gonna do a normalised data model. (You don't have to but you can...) And part of that you want to execute queries that ensures that you have these acid properties: the atomicity, consistency, isolation and durability. 
+
+And then you execute these queries - you touch multiple tables, you do dml which is data manipulation language kind of queries and you edit those tables. And if you edit multiple tables you want this view to be consistent right - you don't want to execute one query to write one table and then the power goes off and then your database has a kind of inconsistent state where something is written and it's not written on the backend. That's bad. Transactions need to be consistent. 
+
+And as part of making these queries consistent, you split these tables into multiple tables based on your entity model right? So you have an order table and a product table and a customer table and so on. And then you join accordingly based on the type of queries and you start inserting stuff, you create transactions, the system - this is your production database, where your application hits this database by executing these dml queries and occasionally it's gonna also query. 
+
+What's wrong with that? Most of the time this is the queries you execute right? However we don't only edit, we also read. Because of the nature of queries that you execute for reads, how they perform really depends on the data model. And nothing will stop you from query a product's 10 years' price and see the moving trend of this product. 
+
+But first of all, this type of queries are not cheap, because if you understand what the database is doing - you will appreciate how the database works first, right, and then you appreciate the open source maintainers, the people who are building these systems. It's not easy. You harmlessly do a `SELECT COUNT` on your backend application to return the count of how many instagram likes - that pretty much scans the entire table. If you have billions of rows, how do you count? 
+
+## OLTP
+
+OLTP is the process of handling transactions. It is the process of handling the data that is being updated and modified. It is the process of handling the data that is being inserted, updated, and deleted. It is the process of handling the data that is being queried.
+
+## OLAP
+
+OLAP is the process of handling analytical queries. It is the process of handling the data that is being queried. It is the process of handling the data that is being aggregated. It is the process of handling the data that is being summarized.
+
+## HTAP
+
+HTAP is the process of handling both transactional and analytical queries. It is the process of handling the data that is being updated and modified. It is the process of handling the data that is being queried. It is the process of handling the data that is being aggregated. It is the process of handling the data that is being summarized.
+
+## Reference 
+[The Tale of OLTP, OLAP, and HTAP in Data Warehousing](https://www.youtube.com/watch?v=Iqx90bjsV34)
