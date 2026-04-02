@@ -7,7 +7,7 @@ export default function ProjectPage() {
     <div>
       <Toaster />
       <ProjectHeader />
-      <div className="py-6 flex flex-col gap-4">
+      <div className="py-8 flex flex-col gap-4">
         <Project />
       </div>
     </div>

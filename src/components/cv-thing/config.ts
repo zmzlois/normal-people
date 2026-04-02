@@ -4,7 +4,7 @@ export const Companies: ContentType[] = [
     type: "AI for Dentistry",
     time: "2026.01 - Present",
     title: "Principal Solution Architect",
-    context: "Re-invent analytics for dentists.",
+    context: "Re-invent analytics and payments for dentists.",
     tags: [
       "Data Warehouse",
       "Big Query",
@@ -32,8 +32,10 @@ export const Companies: ContentType[] = [
     title: "Founding Engineer",
     slug: "https://toma.so",
     description: `Voice-AI for Car Dealership's CRM.`,
-    context: "Toma V2 and self-learning policies.",
+    context: "Chasing time with voice | Backed by YC and a16z.",
     tags: [
+      "Toma V2",
+      "Self-leanring policies",
       "Voice AI",
       "CRM",
       "Real-time",

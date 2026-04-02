@@ -1,6 +1,8 @@
-import BlogHeader from "@/components/layout/blogLayout";
 import "../../styles/cv.css";
 import type { Metadata } from "next";
+import Link from "next/link";
+import EnglishAnimate from "@/components/english-animate";
+
 const date = new Date();
 export const metadata: Metadata = {
   metadataBase: new URL("https://loiszhao.com"),
@@ -20,9 +22,18 @@ export const metadata: Metadata = {
   },
 };
 export default function Layout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className=" bg-zinc-900">{children}</div>;
+  return (
+    <div className="bg-zinc-900">
+      <div className="p-8 opacity-80">
+        <Link href="/" aria-label="Back to home">
+          <EnglishAnimate size="small" />
+        </Link>
+      </div>
+      {children}
+    </div>
+  );
 }

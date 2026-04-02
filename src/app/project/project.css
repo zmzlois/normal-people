@@ -26,28 +26,15 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Project list animation */
-ul li {
+/* scoped project card entry animation */
+.project-card {
   filter: blur(20px);
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
 }
 
-/* Delay each item */
-ul li:nth-child(1) { transition-delay: 0s; }
-ul li:nth-child(2) { transition-delay: 0.1s; }
-ul li:nth-child(3) { transition-delay: 0.2s; }
-ul li:nth-child(4) { transition-delay: 0.3s; }
-ul li:nth-child(5) { transition-delay: 0.4s; }
-ul li:nth-child(6) { transition-delay: 0.5s; }
-ul li:nth-child(7) { transition-delay: 0.5s; }
-ul li:nth-child(8) { transition-delay: 0.5s; }
-ul li:nth-child(9) { transition-delay: 0.5s; }
-ul li:nth-child(10) { transition-delay: 0.5s; }
-
-/* Make items visible */
-ul li.animate {
+.project-card.animate {
   filter: blur(0px);
   opacity: 1;
   transform: translateY(0);
@@ -57,7 +44,7 @@ ul li.animate {
   :root {
     background-color: #030303;
   }
-  
+
   h1 {
     @apply text-xl text-zinc-100 font-light py-2;
   }
@@ -65,26 +52,8 @@ ul li.animate {
   h3 {
     @apply text-base text-zinc-200 font-light tracking-[0.02rem];
   }
-  
+
   .cloud {
     @apply underline-offset-4 decoration-slate-300 underline italic z-0 blur-[2px] hover:blur-none transition-all duration-300;
   }
-}
-
-/* subtle image hover effect */
-ul li img {
-  @apply transition-transform duration-300 ease-out rounded-lg;
-}
-
-ul li:hover img {
-  @apply scale-[1.02];
-}
-
-/* better project title hover */
-ul li h2 {
-  @apply transition-colors duration-200;
-}
-
-ul li:hover h2 {
-  @apply text-white;
 }
