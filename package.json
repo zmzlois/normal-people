@@ -33,7 +33,7 @@
     "lowlight": "^3.1.0",
     "lucide-react": "^0.259.0",
     "next": "^13.5.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "node-fetch": "^3.3.2",
     "postcss": "8.4.24",
     "react": "^18.2.0",
@@ -65,9 +65,9 @@
     "prettier-plugin-prisma": "^4.13.0"
   },
   "engines": {
-    "node": "22.10.0"
+    "node": "24.4.0"
   },
   "overrides": {
-    "node": "22.10.0"
+    "node": "24.4.0"
   }
 }
